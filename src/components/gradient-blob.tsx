@@ -9,7 +9,7 @@ export function GradientBlob() {
         src="/images/gen-glow.png"
         className="absolute bottom-0 w-full left-1/2 z-10 -translate-x-1/2 pointer-events-none"
         role="presentation"
-        alt=""
+        alt="Decorative gradient"
         width={1200}
         height={240}
       />

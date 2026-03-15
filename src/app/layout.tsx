@@ -3,18 +3,75 @@ import { ThemeProvider } from 'next-themes';
 import { Onest } from 'next/font/google';
 import './globals.css';
 import { ToasterProvider } from './providers/toaster';
+import { getBaseUrl } from '@/lib/site-url';
+import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
 const onest = Onest({
   subsets: ['latin'],
 });
 
+const defaultTitle = 'DevToolDock – Free Developer Tools & AI Utilities';
+const defaultDescription =
+  'DevToolDock provides free developer tools and AI utilities including JSON formatter, Base64 encoder, regex tester, UUID generator, and AI-powered developer tools.';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(getBaseUrl()),
   title: {
-    default: 'Demo AIStarterKit OSS - Next.js AI Starter Kit Demo',
-    template: '%s | AIStarterKit OSS Demo',
+    default: defaultTitle,
+    template: '%s | DevToolDock',
   },
-  description:
-    'Demo website of AIStarterKit OSS boilerplate. Built using Next.js, Tailwind CSS, Drizzle ORM, and PostgreSQL.',
+  description: defaultDescription,
+  keywords: DEFAULT_KEYWORDS,
+  openGraph: {
+    title: defaultTitle,
+    description: defaultDescription,
+    type: 'website',
+    url: getBaseUrl(),
+    siteName: 'DevToolDock',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: defaultTitle,
+    description: defaultDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: [
+      { url: '/favicons/favicon.ico' },
+      {
+        url: '/favicons/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/favicons/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
+    apple: [
+      {
+        url: '/favicons/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+    other: [
+      {
+        rel: 'android-chrome',
+        url: '/favicons/android-chrome-192x192.png',
+        sizes: '192x192',
+      },
+      {
+        rel: 'android-chrome',
+        url: '/favicons/android-chrome-512x512.png',
+        sizes: '512x512',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -26,6 +83,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`bg-gray-50 dark:bg-dark-secondary min-h-screen flex flex-col ${onest.className}`}
+        suppressHydrationWarning
       >
         <ThemeProvider disableTransitionOnChange>
           {/* ToasterProvider must render before the children components */}

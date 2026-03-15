@@ -2,39 +2,39 @@ import * as icons from "@/assets/homepage/core-features";
 
 export const CORE_FEATURES = [
   {
-    title: "Seamless Content Creation AI",
+    title: "JSON & Data Tools",
     description:
-      "Let our AI-powered service simplify your content creation process. Start using AI today!",
+      "Format, validate, and convert JSON data instantly using fast browser-based utilities.",
     iconUrl: icons.pencil,
   },
   {
-    title: "Your Ideas, Powered by Our Technology",
+    title: "Encoding & Security Tools",
     description:
-      "Discover how AI can transform your ideas into captivating content with our high-quality service.",
+      "Decode JWT tokens, generate hashes, encode URLs, and work with Base64 and security utilities.",
     iconUrl: icons.bulb,
   },
   {
-    title: "Intelligent Writing by Powerful AI",
+    title: "Text & Regex Utilities",
     description:
-      "Effortlessly access AI-generated content for your blogs, websites, and more with our high-quality, convenient service.",
+      "Test regex patterns, manipulate text, convert formats, and process strings easily.",
     iconUrl: icons.robot,
   },
   {
-    title: "AI Generation Made Life Easier",
+    title: "AI Developer Tools",
     description:
-      "Experience effortless content creation with our AI service. Write less, accomplish more.",
+      "Use AI-powered tools to generate code, write SQL queries, create commit messages, explain errors, and automate development workflows.",
     iconUrl: icons.chat,
   },
   {
-    title: "Premium AI-Generated Content",
+    title: "Fast Browser-Based Tools",
     description:
-      "Get expertly crafted content in no time with our AI service. Where quality meets speed.",
+      "All tools run in your browser. No sign-up required.",
     iconUrl: icons.crown,
   },
   {
-    title: "Super Fast AI Writing Companion",
+    title: "Free for Developers",
     description:
-      "Partner with AI to create content that connects with your audience. Give it a try now.",
+      "Use every utility without limits. Built for daily development workflows.",
     iconUrl: icons.lightningBolt,
   },
 ];

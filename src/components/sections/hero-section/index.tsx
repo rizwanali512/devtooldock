@@ -11,24 +11,29 @@ export default function HeroSection() {
         <div className="wrapper">
           <div className="max-w-[800px] mx-auto">
             <div className="text-center pb-16">
-              <Subheading text="Most Powerful AI Tools at One Place" />
+              <Subheading text="Free Developer Tools & AI Utilities" />
 
               <h1 className="text-gray-700 mx-auto font-bold mb-4 text-4xl sm:text-[50px] dark:text-white/90 sm:leading-[64px] max-w-[700px]">
-                Transform Ideas into Reality with Intelligent AI Tools
+                Free Developer Tools & AI Utilities
               </h1>
               <p className="max-w-[537px] text-center mx-auto dark:text-gray-400 text-gray-500 text-base">
-                Unleash the Power of Artificial Intelligence to Streamline Your
-                Workflow, Boost Productivity, and Redefine Success.
+                A powerful collection of developer tools and AI-powered utilities.
+                Format JSON, decode JWT tokens, convert files, test regex patterns, generate code, create SQL queries, and automate development tasks using AI.
               </p>
 
               <div className="mt-9 flex sm:flex-row flex-col gap-3 relative z-30 items-center justify-center">
                 <Link
-                  href="/text-generator"
+                  href="/tools"
                   className="bg-primary-500 transition h-12 inline-flex items-center justify-center hover:bg-primary-600 px-6 py-3 rounded-full text-white text-sm"
                 >
-                  Explore app
+                  Browse Developer Tools
                 </Link>
-
+                <Link
+                  href="/ai-tools"
+                  className="border border-gray-300 dark:border-gray-600 h-12 inline-flex items-center justify-center hover:bg-gray-50 dark:hover:bg-white/5 px-6 py-3 rounded-full text-gray-700 dark:text-gray-300 text-sm"
+                >
+                  Explore AI Tools
+                </Link>
                 <IntroVideo />
               </div>
             </div>
@@ -36,15 +41,15 @@ export default function HeroSection() {
           <div className="max-w-[1000px] mx-auto relative">
             <div className="p-3 sm:p-[18px] relative z-30 rounded-[32px] border border-white/30 dark:border-white/10 bg-white/20">
               <Image
-                src="/images/hero/hero-img.jpg"
-                alt=""
+                src="/images/hero/hero-img.png"
+                alt="Developer tools and AI utilities dashboard screenshot"
                 className="w-full rounded-2xl block dark:hidden"
                 width={966}
                 height={552}
               />
               <Image
-                src="/images/hero/hero-img-dark.png"
-                alt=""
+                src="/images/hero/hero-img-dark1.png"
+                alt="Developer tools and AI utilities dashboard screenshot, dark theme"
                 className="w-full rounded-2xl hidden dark:block"
                 width={966}
                 height={552}
@@ -118,6 +123,7 @@ export default function HeroSection() {
             src="/images/hero/shape-left-1.svg"
             className="absolute top-14 left-16 floating-1"
             alt=""
+            role="presentation"
             width={170}
             height={44}
           />
@@ -125,6 +131,7 @@ export default function HeroSection() {
             src="/images/hero/shape-left-2.svg"
             className="absolute left-[145px] top-[298px] floating-2 max-[1240px]:left-[80px]"
             alt=""
+            role="presentation"
             width={181}
             height={44}
           />
@@ -132,6 +139,7 @@ export default function HeroSection() {
             src="/images/hero/shape-right-1.svg"
             className="absolute right-16 top-[108px] floating-3"
             alt=""
+            role="presentation"
             width={176}
             height={44}
           />
@@ -139,6 +147,7 @@ export default function HeroSection() {
             src="/images/hero/shape-right-2.svg"
             className="absolute top-[316px] right-[200px] floating-4 max-[1240px]:right-[80px] max-[1350px]:right-[150px] max-[1500px]:right-[200px]"
             alt=""
+            role="presentation"
             width={179}
             height={44}
           />

@@ -11,9 +11,7 @@ export function CoreFeatures() {
           </h2>
 
           <p className="max-w-xl mx-auto leading-6 text-gray-500 dark:text-gray-400">
-            Unlock the Potential of Innovation. Discover the Advanced AI Tools
-            Transforming Your Ideas into Reality with Unmatched Precision and
-            Intelligence.
+            Developer utilities for JSON, encoding, security, text, and AI-powered tasks. All run in your browser.
           </p>
         </div>
 

@@ -1,12 +1,13 @@
 'use client';
 import { CloseIcon, MenuIcon } from '@/icons/icons';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import DesktopNav from './desktop-nav';
 import MainMobileNav from './main-mobile-nav';
 import ThemeToggle from './theme-toggle';
 import { usePathname } from 'next/navigation';
+import { features } from '@/config/features';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,27 +22,7 @@ export default function Header() {
       <div className="px-4 sm:px-6 lg:px-7">
         <div className="grid grid-cols-2 items-center lg:grid-cols-[1fr_auto_1fr]">
           <div className="flex items-center">
-            <Link href="/" className="flex items-end gap-2">
-              <Image
-                src="/images/logo-black.svg"
-                className="block dark:hidden"
-                alt="AiStarterKit Logo"
-                width={180}
-                height={30}
-              />
-
-              <Image
-                src="/images/logo-white.svg"
-                className="hidden dark:block"
-                alt="AiStarterKit Logo"
-                width={180}
-                height={30}
-              />
-
-              <span className="inline-block px-1.5 py-0.5 rounded-lg rounded-bl-none bg-primary-500/90 text-white text-xs font-medium mb-0.5">
-                Demo
-              </span>
-            </Link>
+            <BrandLogo />
           </div>
 
           <DesktopNav />
@@ -60,19 +41,22 @@ export default function Header() {
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
 
-            <Link
-              href="/signin"
-              className="text-sm hidden lg:block font-medium text-gray-700 dark:text-gray-400 hover:text-primary-500"
-            >
-              Sign In
-            </Link>
-
-            <Link
-              href="/signup"
-              className="lg:inline-flex items-center px-5 py-3 gradient-btn hidden text-sm text-white rounded-full button-bg h-11"
-            >
-              Get Started Free
-            </Link>
+            {features.authEnabled && (
+              <>
+                <Link
+                  href="/signin"
+                  className="text-sm hidden lg:block font-medium text-gray-700 dark:text-gray-400 hover:text-primary-500"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="lg:inline-flex items-center px-5 py-3 gradient-btn hidden text-sm text-white rounded-full button-bg h-11"
+                >
+                  Get Started Free
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ export function IntroVideo() {
 
   return (
     <>
-      <button
+      {/* <button
         onClick={() => setIsOpen(!isOpen)}
         className="rounded-full video-popup flex h-12 gap-3 items-center text-sm border bg-white dark:bg-white/10 dark:border-white/[0.05] dark:text-white border-gray-100 p-1.5 pr-6"
       >
@@ -35,7 +35,7 @@ export function IntroVideo() {
           </svg>
         </span>
         Watch Intro Video
-      </button>
+      </button> */}
 
       {isMounted &&
         createPortal(

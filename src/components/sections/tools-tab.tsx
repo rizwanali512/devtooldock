@@ -11,6 +11,7 @@ import {
   VideoGeneratorIcon,
 } from '@/icons/icons';
 import Image from 'next/image';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 // Define the tab type
@@ -25,59 +26,59 @@ interface Tab {
 }
 
 export default function AIToolsTabs() {
-  const [activeTab, setActiveTab] = useState('text');
+  const [activeTab, setActiveTab] = useState('json');
 
   // Tab data
   const tabs: Tab[] = [
     {
-      id: 'text',
-      label: 'Text Generator',
-      icon: <TextGeneratorIcon className="w-8 h-8" />,
+      id: 'json',
+      label: 'JSON Formatter',
+      icon: <CodeGeneratorIcon className="w-8 h-8" />,
       lightImage: '/images/tab-image/tab-image-1.jpg',
       darkImage: '/images/tab-image/tab-image-1-dark.jpg',
-      title: 'Easiest way to generate text',
+      title: 'Format and validate JSON',
       description:
-        'Unlock the Potential of Innovation. Discover the Advanced AI Tools Transforming Your Ideas into Reality with Unmatched Precision and Intelligence.',
+        'Format, validate, and beautify JSON with syntax highlighting and clear error messages. Runs instantly in the browser.',
     },
     {
-      id: 'image',
-      label: 'Image Generator',
-      icon: <ImageGeneratorIcon className="w-8 h-8" />,
+      id: 'jwt',
+      label: 'JWT Decoder',
+      icon: <TextGeneratorIcon className="w-8 h-8" />,
       lightImage: '/images/tab-image/tab-image-2.jpg',
       darkImage: '/images/tab-image/tab-image-2-dark.jpg',
-      title: 'Create stunning images with AI',
+      title: 'Decode JWT tokens',
       description:
-        'Unlock the Potential of Innovation. Discover the Advanced AI Tools Transforming Your Ideas into Reality with Unmatched Precision and Intelligence.',
+        'Inspect JWT header and payload. Debug authentication and verify token claims quickly. Runs instantly in the browser.',
     },
     {
-      id: 'code',
-      label: 'Code Generator',
-      icon: <CodeGeneratorIcon className="w-8 h-8" />,
+      id: 'base64',
+      label: 'Base64 Encoder',
+      icon: <ImageGeneratorIcon className="w-8 h-8" />,
       lightImage: '/images/tab-image/tab-image-3.jpg',
       darkImage: '/images/tab-image/tab-image-3-dark.jpg',
-      title: 'Generate code in any language',
+      title: 'Encode and decode Base64',
       description:
-        'Unlock the Potential of Innovation. Discover the Advanced AI Tools Transforming Your Ideas into Reality with Unmatched Precision and Intelligence.',
+        'Encode text to Base64 or decode Base64 to plain text. Runs instantly in the browser. No data leaves your device.',
     },
     {
-      id: 'video',
-      label: 'Video Generator',
+      id: 'regex',
+      label: 'Regex Tester',
       icon: <VideoGeneratorIcon className="w-8 h-8" />,
       lightImage: '/images/tab-image/tab-image-4.jpg',
       darkImage: '/images/tab-image/tab-image-4-dark.jpg',
-      title: 'Create engaging videos with AI',
+      title: 'Test regular expressions',
       description:
-        'Unlock the Potential of Innovation. Discover the Advanced AI Tools Transforming Your Ideas into Reality with Unmatched Precision and Intelligence.',
+        'Test regex patterns against sample text. Highlight matches and debug patterns in real time. Runs instantly in the browser.',
     },
     {
-      id: 'email',
-      label: 'Email Generator',
+      id: 'uuid',
+      label: 'UUID Generator',
       icon: <EmailGeneratorIcon className="w-8 h-8" />,
       lightImage: '/images/tab-image/tab-image-5.jpg',
       darkImage: '/images/tab-image/tab-image-5-dark.jpg',
-      title: 'Write professional emails instantly',
+      title: 'Generate UUIDs instantly',
       description:
-        'Unlock the Potential of Innovation. Discover the Advanced AI Tools Transforming Your Ideas into Reality with Unmatched Precision and Intelligence.',
+        'Generate UUID v4 identifiers with one click. Runs instantly in the browser. Copy to clipboard for use in your projects.',
     },
   ];
 
@@ -89,12 +90,10 @@ export default function AIToolsTabs() {
       <div className="wrapper">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <h2 className="mb-3 font-bold text-center text-gray-800 dark:text-white/90 text-3xl md:text-title-lg">
-            All the AI tools you need, at your Fingertips.
+            Developer tools at your fingertips.
           </h2>
           <p className="max-w-2xl mx-auto leading-6 text-gray-500 dark:text-gray-400">
-            Unlock the Potential of Innovation, Discover the Advanced AI Tools
-            Transforming Your Ideas into Reality with Unmatched Precision and
-            Intelligence.
+            JSON Formatter, Base64 Encoder, JWT Decoder, Regex Tester, UUID Generator, and more. All run instantly in the browser.
           </p>
         </div>
 
@@ -164,9 +163,12 @@ export default function AIToolsTabs() {
               <p className="max-w-xl mx-auto mb-6 text-sm text-gray-500 dark:text-gray-400">
                 {currentTab.description}
               </p>
-              <button className="px-6 py-3 text-sm font-medium text-white transition-colors rounded-full bg-primary-500 hover:bg-primary-600">
-                Try it now for free
-              </button>
+              <Link
+                href="/tools"
+                className="inline-block px-6 py-3 text-sm font-medium text-white transition-colors rounded-full bg-primary-500 hover:bg-primary-600"
+              >
+                Open Tool
+              </Link>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import PricingSection from '@/components/sections/pricing';
 
 export const metadata: Metadata = {
   title: 'Pricing',
+  robots: { index: false, follow: false },
 };
 
 export default async function PricingPage() {

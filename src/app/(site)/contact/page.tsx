@@ -2,9 +2,29 @@ import { Input } from '@/components/ui/inputs';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/inputs/textarea';
 import type { Metadata } from 'next';
+import { getBaseUrl } from '@/lib/site-url';
+import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Contact Us – Get in Touch',
+  description:
+    'Have a question, feedback, or need help with our developer tools? Contact us and we’ll get back to you as soon as we can.',
+  keywords: DEFAULT_KEYWORDS,
+  alternates: { canonical: getBaseUrl() + '/contact' },
+  openGraph: {
+    title: 'Contact Us – Get in Touch',
+    description:
+      'Have a question, feedback, or need help with our developer tools? Contact us and we’ll get back to you as soon as we can.',
+    url: getBaseUrl() + '/contact',
+    type: 'website',
+    siteName: 'DevToolDock',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us – Get in Touch',
+    description:
+      "Have a question, feedback, or need help with our developer tools? Contact us and we'll get back to you as soon as we can.",
+  },
 };
 
 export default function ContactPage() {
@@ -14,34 +34,61 @@ export default function ContactPage() {
         <div className="relative max-w-[800px] mx-auto">
           <div className="contact-wrapper border p-14 relative z-30 bg-white border-gray-100 dark:bg-dark-primary dark:border-gray-800">
             <div className="text-center mb-12">
-              <h3 className="text-gray-800 font-bold dark:text-white text-3xl mb-2">
-                Need any Help? Get in touch 👋
-              </h3>
+              <h1 className="text-gray-800 font-bold dark:text-white text-3xl mb-2">
+                Need help? Get in touch
+              </h1>
               <p className="text-gray-500 dark:text-gray-400">
-                Open a ticket, we will get back to you ASAP
+                Send us a message and we&apos;ll get back to you as soon as we can.
               </p>
             </div>
-            <form>
-              <div className="grid grid-cols-2 gap-6">
+            <form action="#" method="post">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input type="text" placeholder="Jhamse" />
+                  <Label htmlFor="contact-firstName">First name</Label>
+                  <Input
+                    id="contact-firstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="Your first name"
+                    required
+                  />
                 </div>
                 <div>
-                  <Label htmlFor="lastName"> Last Name</Label>
-                  <Input type="text" placeholder="Enter your last name" />
+                  <Label htmlFor="contact-lastName">Last name</Label>
+                  <Input
+                    id="contact-lastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="Your last name"
+                    required
+                  />
                 </div>
-                <div className="col-span-full">
-                  <Label htmlFor="email">Email address</Label>
-                  <Input type="text" placeholder="example@gmail.com" />
+                <div className="sm:col-span-2">
+                  <Label htmlFor="contact-email">Email address</Label>
+                  <Input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                  />
                 </div>
-                <div className="col-span-full">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea rows={6} placeholder="Type your message" />
+                <div className="sm:col-span-2">
+                  <Label htmlFor="contact-message">Message</Label>
+                  <Textarea
+                    id="contact-message"
+                    name="message"
+                    rows={6}
+                    placeholder="How can we help?"
+                    required
+                  />
                 </div>
-                <div className="col-span-full">
-                  <button className="bg-primary-500 hover:bg-primary-600 transition h-12 py-3 px-6 w-full font-medium text-white text-sm rounded-full">
-                    Send Message
+                <div className="sm:col-span-2">
+                  <button
+                    type="submit"
+                    className="bg-primary-500 hover:bg-primary-600 transition h-12 py-3 px-6 w-full font-medium text-white text-sm rounded-full"
+                  >
+                    Send message
                   </button>
                 </div>
               </div>

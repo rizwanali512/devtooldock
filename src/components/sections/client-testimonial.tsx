@@ -10,7 +10,7 @@ import { useState } from 'react';
       company: 'Big Kahuna Burger Ltd',
       image: '/images/users/user-1.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'This platform saves me hours when debugging JSON and working with APIs.',
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ import { useState } from 'react';
       company: 'Biffco Enterprises Ltd.',
       image: '/images/users/user-2.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'Having all developer tools and AI utilities in one place makes my workflow much faster.',
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ import { useState } from 'react';
       company: 'Acme Co.',
       image: '/images/users/user-3.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'The regex tester and JSON formatter are exactly what I needed. Clean UI and they just work.',
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ import { useState } from 'react';
       company: 'Barone LLC.',
       image: '/images/users/user-4.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'Finally a place with all the small utilities in one spot. Base64 and UUID generator are bookmarked.',
     },
     {
       id: 5,
@@ -42,7 +42,7 @@ import { useState } from 'react';
       company: 'Abstergo Ltd.',
       image: '/images/users/user-1.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'The AI tools for regex and code explanation are surprisingly good. Saves me a lot of searching.',
     },
     {
       id: 6,
@@ -50,7 +50,7 @@ import { useState } from 'react';
       company: 'Binford Ltd.',
       image: '/images/users/user-2.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'Free, fast, and no account required. This is how developer tools should be.',
     },
     {
       id: 7,
@@ -58,7 +58,7 @@ import { useState } from 'react';
       company: 'Big Kahuna Burger Ltd',
       image: '/images/users/user-1.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'This platform saves me time when debugging APIs and working with JSON.',
     },
     {
       id: 8,
@@ -66,7 +66,7 @@ import { useState } from 'react';
       company: 'Abstergo Ltd.',
       image: '/images/users/user-2.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'As a developer I use these tools daily. Fast and simple.',
     },
     {
       id: 9,
@@ -74,7 +74,7 @@ import { useState } from 'react';
       company: 'Binford Ltd.',
       image: '/images/users/user-3.png',
       testimonial:
-        'As a Senior Software Developer I found TailAdmin perfect write code that easy can be used in my projects, which some are production already.',
+        'Clean utilities, no fluff. Exactly what I need for quick encoding and decoding.',
     },
   ];
 
@@ -95,9 +95,7 @@ import { useState } from 'react';
                 What our users say
               </h2>
               <p className="max-w-xl mx-auto leading-6 text-gray-500 dark:text-gray-400">
-                Unlock the Potential of Innovation. Discover the Advanced AI
-                Tools Transforming Your Ideas into Reality with Unmatched
-                Precision and Intelligence.
+                Developers use our tools for JSON, JWT, Base64, regex, and more. Fast and free.
               </p>
             </div>
 

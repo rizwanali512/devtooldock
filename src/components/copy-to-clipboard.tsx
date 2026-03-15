@@ -3,14 +3,22 @@
 import { CheckMarkIcon, ClipboardIcon } from '@/icons/icons';
 import copy from 'copy-text-to-clipboard';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
-export function CopyToClipboard({ text }: { text: string }) {
+export function CopyToClipboard({
+  text,
+  toastMessage,
+}: {
+  text: string;
+  /** If set, shows this message in a toast after copying (e.g. "Copied to clipboard"). */
+  toastMessage?: string;
+}) {
   const [isCopied, setIsCopied] = useState(false);
 
   function handleClick() {
     copy(text);
     setIsCopied(true);
-
+    if (toastMessage) toast.success(toastMessage);
     setTimeout(() => {
       setIsCopied(false);
     }, 3000);

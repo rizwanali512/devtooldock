@@ -35,18 +35,18 @@ export default function GeneratorHeader({
               <div className="flex items-center">
                 <Link href="/">
                   <Image
-                    src="/images/logo-black.svg"
+                    src="/images/logo.png"
                     className="block dark:hidden"
                     width={180}
                     height={30}
-                    alt="AiStarterKit Logo"
+                    alt="DevToolDock"
                   />
                   <Image
-                    src="/images/logo-white.svg"
+                    src="/images/logo.png"
                     className="hidden dark:block"
                     width={180}
                     height={30}
-                    alt="AiStarterKit Logo"
+                    alt="DevToolDock"
                   />
                 </Link>
               </div>

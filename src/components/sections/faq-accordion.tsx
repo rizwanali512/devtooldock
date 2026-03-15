@@ -17,33 +17,33 @@ export default function FaqAccordion() {
   const faqItems: FAQItem[] = [
     {
       id: 1,
-      question: "Do I get free updates?",
+      question: "Are these developer tools free to use?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean luctus magna quis tellus euismod, eget pharetra leo mollis. Donec eget lacus non elit blandit pharetra vitae volutpat libero.",
+        "Yes. All developer tools on this platform are free to use. There are no usage limits for tools like JSON formatter, JWT decoder, Base64 encoder, regex tester, UUID generator, and the rest of the collection.",
     },
     {
       id: 2,
-      question: 'What does the number of "Projects" refer to?',
+      question: "Do the tools run in the browser?",
       answer:
-        'The number of "Projects" refers to the total number of separate workspaces you can create and manage within your account. Each project can have its own settings, team members, and resources.',
+        "Yes. Most tools run entirely in your browser. Your data is not sent to our servers when you use the JSON formatter, JWT decoder, Base64 encoder, regex tester, or UUID generator. AI tools may process input to generate results.",
     },
     {
       id: 3,
-      question: "Can I upgrade to a higher plan?",
+      question: "Is my data sent to a server?",
       answer:
-        "Yes, you can upgrade to a higher plan at any time. When you upgrade, you'll be charged the prorated difference for the remainder of your current billing cycle. Your new features will be available immediately after upgrading.",
+        "For most developer tools (JSON, JWT, Base64, regex, UUID, etc.), processing happens in your browser and your data is not sent to our servers. AI-powered tools may send input to generate responses.",
     },
     {
       id: 4,
-      question: 'What does "Unlimited Projects" mean?',
+      question: "What AI tools are available on this platform?",
       answer:
-        '"Unlimited Projects" means you can create as many projects as you need without any restrictions. This allows you to organize your work efficiently without worrying about hitting a project limit.',
+        "We offer AI-powered tools including Text Generator, Code Generator, Image Generator, Email Generator, SQL Generator, Regex Generator, Commit Message Generator, API Documentation Generator, Error Explainer, and Code Refactor Tool. Access them from the AI Tools page.",
     },
     {
       id: 5,
-      question: "How can I add Open AI Key?",
+      question: "Can I use these tools without creating an account?",
       answer:
-        'To add your OpenAI API key, go to your account settings and navigate to the "API Keys" section. Click on "Add New Key", paste your OpenAI API key, and save your changes. The key will be securely stored and used for all AI-powered features.',
+        "Yes. You can use all developer tools without signing up or logging in. No account is required for JSON formatting, JWT decoding, Base64 encoding, regex testing, UUID generation, or any other utility on the platform.",
     },
   ];
 
@@ -59,8 +59,7 @@ export default function FaqAccordion() {
             Frequently Asked Questions
           </h2>
           <p className="max-w-md mx-auto leading-6 text-gray-500 dark:text-gray-400">
-            Answered all frequently asked questions, Still confused? feel free
-            contact with us
+            Common questions about our developer tools and AI utilities. Still confused? Feel free to contact us.
           </p>
         </div>
         <div className="max-w-[600px] mx-auto">

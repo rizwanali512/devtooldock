@@ -12,7 +12,7 @@ export default function HeroLogos() {
           <Image
             src="/images/brands/br-1.svg"
             className="opacity-50 transition hover:opacity-100"
-            alt=""
+            alt="Trusted partner logo"
             width={80}
             height={32}
           />
@@ -21,19 +21,19 @@ export default function HeroLogos() {
             className="opacity-50 transition hover:opacity-100"
             width={80}
             height={32}
-            alt=""
+            alt="Trusted partner logo"
           />
           <Image
             src="/images/brands/br-3.svg"
             className="opacity-50 transition hover:opacity-100"
             width={80}
             height={32}
-            alt=""
+            alt="Trusted partner logo"
           />
           <Image
             src="/images/brands/br-4.svg"
             className="opacity-50 transition hover:opacity-100"
-            alt=""
+            alt="Trusted partner logo"
             width={80}
             height={32}
           />
@@ -42,21 +42,21 @@ export default function HeroLogos() {
             className="opacity-50 transition hover:opacity-100"
             width={80}
             height={32}
-            alt=""
+            alt="Trusted partner logo"
           />
           <Image
             src="/images/brands/br-6.svg"
             className="opacity-50 transition hover:opacity-100"
             width={80}
             height={32}
-            alt=""
+            alt="Trusted partner logo"
           />
           <Image
             src="/images/brands/br-7.svg"
             className="opacity-50 transition hover:opacity-100"
             width={80}
             height={32}
-            alt=""
+            alt="Trusted partner logo"
           />
         </div>
       </div>

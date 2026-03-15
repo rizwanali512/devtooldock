@@ -6,28 +6,33 @@ export const navItems = [
   },
   {
     type: 'link',
-    label: 'Chat',
-    href: '/text-generator',
+    label: 'Tools',
+    href: '/tools',
   },
   {
     type: 'link',
-    label: 'Pricing',
-    href: '/pricing',
+    label: 'AI Tools',
+    href: '/ai-tools',
+  },
+  {
+    type: 'link',
+    label: 'Categories',
+    href: '/categories',
+  },
+  {
+    type: 'link',
+    label: 'Blog',
+    href: '/blog',
+  },
+  {
+    type: 'link',
+    label: 'About',
+    href: '/about',
   },
   {
     type: 'link',
     label: 'Contact',
     href: '/contact',
-  },
-  {
-    type: 'dropdown',
-    label: 'Pages',
-    items: [
-      { href: '/signin', label: 'Sign In' },
-      { href: '/signup', label: 'Sign Up' },
-      { href: '/reset-password', label: 'Reset Password' },
-      { href: '/not-found', label: '404 Error' },
-    ],
   },
 ] satisfies NavItem[];
 

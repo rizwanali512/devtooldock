@@ -71,14 +71,14 @@ export default function NotFoundPage() {
           height={240}
           src="/images/404.svg"
           className="mb-10 block dark:hidden"
-          alt=""
+          alt="Page not found - 404 illustration"
         />
         <Image
           width={450}
           height={240}
           src="/images/404-white.svg"
           className="mb-10 hidden dark:block"
-          alt=""
+          alt="Page not found - 404 illustration"
         />
         <h1 className="text-4xl font-black text-gray-800 mb-2 dark:text-white/90">
           OPPS! Page Not Found

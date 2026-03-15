@@ -16,15 +16,32 @@
 }
 
 @theme inline {
+  /* Brand (primary purple) */
+  --color-brand: #7a5af8;
+  --color-brand-hover: #6941c6;
   --color-primary-50: #f4f3ff;
   --color-primary-100: #ebe9fe;
   --color-primary-200: #d9d6fe;
   --color-primary-300: #bdb4fe;
   --color-primary-400: #9b8afb;
   --color-primary-500: #7a5af8;
-  --color-primary-600: #6938ef;
+  --color-primary-600: #6941c6;
   --color-primary-700: #5925dc;
   --color-primary-800: #4a1fb8;
+
+  /* Accent (AI green) */
+  --color-accent: #22c55e;
+
+  /* Dark mode backgrounds */
+  --color-darkbg: #0f172a;
+  --color-cardbg: #111827;
+  --color-dark-primary: #111827;
+  --color-dark-secondary: #0f172a;
+
+  /* Light UI & text (for reference / future use) */
+  --color-light-ui: #f4f3ff;
+  --color-text-primary: #e5e7eb;
+  --color-text-secondary: #9ca3af;
 
   --color-success-50: #ecfdf3;
   --color-success-500: #ecfdf3;
@@ -34,9 +51,6 @@
   --color-error-100: #fee4e2;
   --color-error-500: #f04438;
   --color-error-600: #d92d20;
-
-  --color-dark-primary: #171f2e;
-  --color-dark-secondary: #1a2231;
 
   --text-title-lg: 44px;
   --text-title-lg--line-height: 52px;
@@ -52,25 +66,30 @@
   --background-image-gradient-1: linear-gradient(
     180deg,
     #f8fcff 0%,
-    #f1efff 50%,
-    #f8dcff 100%
+    #f4f3ff 50%,
+    #e8f5e9 100%
   );
   --background-image-gradient-2: linear-gradient(
     97deg,
-    #725cff 0%,
-    #b5b1ff 140.21%
+    #7a5af8 0%,
+    #22c55e 100%
   );
 }
 
+/* Brand → accent gradient (hero / highlights) */
+.bg-gradient-brand-accent {
+  background-image: linear-gradient(to right, #7a5af8, #22c55e);
+}
+
 .button-bg {
-  background-image: linear-gradient(97deg, #725cff 0%, #b5b1ff 140.21%);
+  background-image: linear-gradient(97deg, #7a5af8 0%, #6941c6 100%);
 }
 
 .tab-img-bg {
   background: linear-gradient(
     90deg,
-    rgba(255, 88, 213, 0.2) 0%,
-    rgba(78, 110, 255, 0.2) 100%
+    rgba(122, 90, 248, 0.2) 0%,
+    rgba(34, 197, 94, 0.2) 100%
   );
   position: relative;
   z-index: 20;
@@ -89,7 +108,7 @@
 }
 
 [data-theme="dark"] .tab-img-bg::after {
-  background: linear-gradient(180deg, rgba(23, 31, 46, 0) 0%, #171f2e 93.51%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, #0f172a 93.51%);
 }
 
 .tab-img-overlay {
@@ -114,14 +133,11 @@
 
 .benefits-bg {
   border-radius: 20px;
-  background: linear-gradient(216deg, #a2e4e4 0%, #1c9ef6 100%);
+  background: linear-gradient(216deg, #7a5af8 0%, #22c55e 100%);
 }
 
 .gradient-bg-two {
-  background-image: var(
-    --Gradient-2,
-    linear-gradient(97deg, #725cff 0%, #b5b1ff 140.21%)
-  );
+  background-image: linear-gradient(97deg, #7a5af8 0%, #22c55e 100%);
 }
 
 @utility hero-glow-bg {
@@ -165,8 +181,8 @@
 .dashboard-gradient {
   background-image: linear-gradient(
     92deg,
-    var(--Colors-Brand-500, #7a5af8) 0%,
-    var(--Colors-Brand-200, #d9d6fe) 100%
+    #7a5af8 0%,
+    #22c55e 100%
   );
 }
 
@@ -231,8 +247,8 @@
   border-radius: inherit;
   background: linear-gradient(
     to right,
-    rgba(255, 87, 213, 0.5),
-    rgba(78, 110, 255, 0.5)
+    rgba(122, 90, 248, 0.5),
+    rgba(34, 197, 94, 0.5)
   );
   z-index: -1;
 }
@@ -257,13 +273,13 @@
 [data-theme="dark"] .white-gradient {
   background-image: linear-gradient(
     180deg,
-    rgba(23, 31, 46, 0) 0%,
-    #171f2e 44.75%
+    rgba(15, 23, 42, 0) 0%,
+    #0f172a 44.75%
   );
 }
 
 .gradient-btn {
-  background-image: linear-gradient(97deg, #725cff 0%, #b5b1ff 140.21%);
+  background-image: linear-gradient(97deg, #7a5af8 0%, #6941c6 100%);
   color: white;
   background-size: 200% auto;
   background-position: 0% center;
@@ -274,7 +290,7 @@
 }
 
 .gradient-btn:hover {
-  background-image: linear-gradient(97deg, #b5b1ff 0%, #725cff 140.21%);
+  background-image: linear-gradient(97deg, #6941c6 0%, #7a5af8 100%);
   background-position: 100% center;
 }
 
