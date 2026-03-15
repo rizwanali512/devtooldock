@@ -1,4 +1,8 @@
-export const navItems = [
+export type NavItem =
+  | { type: 'link'; href: string; label: string }
+  | { type: 'dropdown'; label: string; items: { href: string; label: string }[] };
+
+export const navItems: NavItem[] = [
   {
     type: 'link',
     href: '/',
@@ -34,15 +38,4 @@ export const navItems = [
     label: 'Contact',
     href: '/contact',
   },
-] satisfies NavItem[];
-
-type NavItem = Record<string, string | unknown> &
-  (
-    | {
-        type: 'link';
-        href: string;
-      }
-    | {
-        type: 'dropdown';
-      }
-  );
+];

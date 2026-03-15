@@ -8,9 +8,6 @@ function formatDate(d: Date, format: string) {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
-  const h = String(d.getHours()).padStart(2, '0');
-  const min = String(d.getMinutes()).padStart(2, '0');
-  const s = String(d.getSeconds()).padStart(2, '0');
   if (format === 'iso') return d.toISOString();
   if (format === 'yyyy-mm-dd') return `${y}-${m}-${day}`;
   if (format === 'mm/dd/yyyy') return `${m}/${day}/${y}`;

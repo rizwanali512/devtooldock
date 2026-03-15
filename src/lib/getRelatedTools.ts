@@ -1,7 +1,6 @@
 import { tools } from '@/lib/tools';
 import type { ToolCategory } from '@/lib/tools';
 
-const MIN_RELATED = 4;
 const MAX_RELATED = 6;
 
 export type RelatedTool = {

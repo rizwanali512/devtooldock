@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { ToolLayout } from '@/components/tools/ToolLayout';
 import { ToolExample, ToolFaq } from '@/components/tools/ToolSeoBlocks';
@@ -56,7 +57,7 @@ export default function OpenGraphPreviewPage() {
           <div className="max-w-md rounded-2xl border border-gray-200 dark:border-white/10 overflow-hidden bg-white dark:bg-gray-900 shadow-lg">
             <div className="aspect-[1.91/1] bg-gray-100 dark:bg-gray-800 relative">
               {image ? (
-                <img src={image} alt="Open graph image preview" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                <Image src={image} alt="Open graph image preview" fill className="object-cover" unoptimized onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-gray-400">No image</div>
               )}

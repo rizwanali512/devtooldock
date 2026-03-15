@@ -8,7 +8,7 @@ function jsonToXml(obj: unknown, rootName = 'root'): string {
   if (obj === null || obj === undefined) return '';
   if (typeof obj !== 'object') return `<${rootName}>${String(obj)}</${rootName}>`;
   if (Array.isArray(obj)) {
-    return obj.map((item, i) => jsonToXml(item, `item`)).join('');
+    return obj.map((item) => jsonToXml(item, `item`)).join('');
   }
   const entries = Object.entries(obj as Record<string, unknown>);
   const inner = entries.map(([k, v]) => jsonToXml(v, k.replace(/[^a-zA-Z0-9_-]/g, '_'))).join('');

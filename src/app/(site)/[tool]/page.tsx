@@ -35,7 +35,7 @@ function buildBreadcrumbSchema(tool: { name: string; slug: string }) {
   };
 }
 
-type Loader = () => Promise<{ default: React.ComponentType<any> }>;
+type Loader = () => Promise<{ default: React.ComponentType<object> }>;
 
 const toolLoaders: Record<string, Loader> = {
   'json-formatter': () => import('../tools/json-formatter/page'),

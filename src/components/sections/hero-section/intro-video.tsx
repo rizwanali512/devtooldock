@@ -8,6 +8,7 @@ const videoUrl = 'https://www.youtube.com/watch?v=_iHmNaQBtKk';
 
 export function IntroVideo() {
   const [isMounted, setIsMounted] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- setter reserved for when video button is enabled
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {

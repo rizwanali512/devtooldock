@@ -11,7 +11,6 @@ function beautifyJs(js: string): string {
     .replace(/\s*([{}();,=<>!+\-*\/%&|^?:[\]])\s*/g, '$1')
     .replace(/\s+/g, ' ')
     .trim();
-  const addIndent = () => (out += '  '.repeat(indent));
   for (let i = 0; i < min.length; i++) {
     const c = min[i];
     if (c === '{' || c === '(' || c === '[') {

@@ -2,7 +2,7 @@ import { ChevronDown2Icon } from '@/icons/icons';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { navItems } from './nav-items';
+import { navItems, type NavItem } from './nav-items';
 import { useEffect, useState } from 'react';
 
 export default function DesktopNav() {
@@ -20,7 +20,7 @@ export default function DesktopNav() {
 
   return (
     <nav className="hidden lg:flex lg:items-center bg-[#F9FAFB] dark:bg-white/3 rounded-full p-1 max-h-fit">
-      {navItems.map((item) => {
+      {navItems.map((item: NavItem) => {
         if (item.type === 'link') {
           return (
             <Link

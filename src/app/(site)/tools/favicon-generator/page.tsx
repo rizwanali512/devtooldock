@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { ToolLayout } from '@/components/tools/ToolLayout';
 import { ToolExample, ToolFaq } from '@/components/tools/ToolSeoBlocks';
@@ -41,7 +42,7 @@ export default function FaviconGeneratorPage() {
       slug="favicon-generator"
       whatIs={
         <>
-          <p>Create a small favicon (32×32) with one character and custom background/foreground colors. Output is a data URL you can use in &lt;link rel="icon"&gt;.</p>
+          <p>Create a small favicon (32×32) with one character and custom background/foreground colors. Output is a data URL you can use in &lt;link rel=&quot;icon&quot;&gt;.</p>
           <ToolFaq />
         </>
       }
@@ -80,7 +81,7 @@ export default function FaviconGeneratorPage() {
         </div>
         <div className="flex items-center gap-4">
           <div className="rounded-xl border-2 border-gray-200 dark:border-white/10 overflow-hidden bg-white dark:bg-gray-900" style={{ width: SIZE * 2, height: SIZE * 2 }}>
-            {dataUrl && <img src={dataUrl} alt="Favicon preview" width={SIZE * 2} height={SIZE * 2} className="w-full h-full object-contain" />}
+            {dataUrl && <Image src={dataUrl} alt="Favicon preview" width={SIZE * 2} height={SIZE * 2} className="w-full h-full object-contain" unoptimized />}
           </div>
           <div className="flex-1 min-w-0">
             <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Data URL</label>

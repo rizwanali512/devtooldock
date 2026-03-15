@@ -4,14 +4,14 @@ import { useMemo, useState } from 'react';
 import { ToolLayout } from '@/components/tools/ToolLayout';
 import { ToolExample, ToolFaq } from '@/components/tools/ToolSeoBlocks';
 
-function jsonToTypeScript(value: unknown, interfaceName: string): string {
+function jsonToTypeScript(value: unknown): string {
   if (value === null) return 'null';
   if (typeof value === 'boolean') return 'boolean';
   if (typeof value === 'number') return 'number';
   if (typeof value === 'string') return 'string';
   if (Array.isArray(value)) {
     const first = value[0];
-    const itemType = first !== undefined ? jsonToTypeScript(first, 'Item') : 'unknown';
+    const itemType = first !== undefined ? jsonToTypeScript(first) : 'unknown';
     return `Array<${itemType}>`;
   }
   if (typeof value === 'object') {
@@ -19,7 +19,7 @@ function jsonToTypeScript(value: unknown, interfaceName: string): string {
     const lines = entries.map(([k, v]) => {
       const optional = v === null || v === undefined ? '?' : '';
       const prop = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(k) ? k : `'${k}'`;
-      return `  ${prop}${optional}: ${jsonToTypeScript(v, 'Nested')};`;
+      return `  ${prop}${optional}: ${jsonToTypeScript(v)};`;
     });
     return `{\n${lines.join('\n')}\n}`;
   }
@@ -27,7 +27,7 @@ function jsonToTypeScript(value: unknown, interfaceName: string): string {
 }
 
 function generateInterface(obj: Record<string, unknown>, name: string): string {
-  const body = jsonToTypeScript(obj, name);
+  const body = jsonToTypeScript(obj);
   if (body.startsWith('{')) return `interface ${name} ${body}`;
   return `interface ${name} {\n  value: ${body};\n}`;
 }

@@ -26,8 +26,8 @@ function diffJson(a: unknown, b: unknown, path: string[] = []): DiffItem[] {
   for (const k of Object.keys(b as Record<string, unknown>)) keys.add(k);
 
   for (const k of Array.from(keys).sort()) {
-    const av = (a as any)[k];
-    const bv = (b as any)[k];
+    const av = (a as Record<string, unknown>)[k];
+    const bv = (b as Record<string, unknown>)[k];
     if (av === undefined && bv !== undefined) out.push({ path: [...path, k].join('.'), type: 'added', b: bv });
     else if (av !== undefined && bv === undefined) out.push({ path: [...path, k].join('.'), type: 'removed', a: av });
     else out.push(...diffJson(av, bv, [...path, k]));

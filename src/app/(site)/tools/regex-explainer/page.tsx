@@ -6,9 +6,8 @@ import { Textarea } from '@/components/ui/inputs/textarea';
 
 function explainRegex(pattern: string, flags: string): string {
   if (!pattern.trim()) return 'Enter a regex pattern to see an explanation.';
-  let re: RegExp;
   try {
-    re = new RegExp(pattern, flags);
+    new RegExp(pattern, flags);
   } catch (e) {
     return `Invalid regex: ${e instanceof Error ? e.message : 'Unknown error'}`;
   }
