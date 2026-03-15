@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Onest } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { ToasterProvider } from './providers/toaster';
@@ -93,7 +94,8 @@ export default function RootLayout({
 
           <div className="isolate flex flex-col flex-1">{children}</div>
         </ThemeProvider>
-        {/* SpeedInsights: once in root layout, before closing body */}
+        {/* Vercel Analytics & Speed Insights: once in root layout, before closing body */}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
