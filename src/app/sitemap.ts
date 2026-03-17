@@ -11,6 +11,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getBaseUrl();
   const lastModified = new Date();
 
+  const landingPages: string[] = [
+    '/json-tools-online',
+    '/regex-tools',
+    '/base64-tools',
+    '/free-developer-tools',
+    '/online-developer-tools',
+    '/best-json-formatters',
+    '/best-regex-tools',
+    '/encoding-tools',
+    '/text-tools',
+    '/ai-developer-tools',
+  ];
+
   const corePages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -60,6 +73,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.3,
     },
+    ...landingPages.map((p) => ({
+      url: `${baseUrl}${p}`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    })),
   ];
 
   const blogPages: MetadataRoute.Sitemap = getAllBlogSlugs().map((slug) => {

@@ -2,6 +2,7 @@ import { GradientBlob2 } from '@/components/gradient-blob';
 import type { Metadata } from 'next';
 import ForgotPasswordForm from './_components/forgot-password';
 import ResetPasswordForm from './_components/reset-password';
+import { getBaseUrl } from '@/lib/site-url';
 
 type PageProps = {
   searchParams: Promise<{ token: string | undefined }>;
@@ -9,6 +10,7 @@ type PageProps = {
 
 export const metadata: Metadata = {
   title: 'Reset Password',
+  alternates: { canonical: getBaseUrl() + '/reset-password' },
   robots: { index: false, follow: false },
 };
 

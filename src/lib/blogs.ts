@@ -62,15 +62,50 @@ export const blogs: BlogPost[] = [
     author: 'DevToolDock Team',
     embedTool: 'json-formatter',
     content: `
+      <p>Formatting JSON is one of those small habits that saves hours over the course of a week. Whether you’re debugging an API response, reviewing logs, or editing a config file, readable JSON makes problems obvious—and prevents simple mistakes from turning into production incidents.</p>
+
       <h2>Why format JSON?</h2>
-      <p>JSON is the standard for APIs and config files. Minified JSON is hard to read and debug. Formatting adds indentation and line breaks so you can spot errors and understand structure quickly.</p>
-      <h2>Steps to format JSON online</h2>
+      <p>JSON is the default payload format for modern APIs, webhooks, configuration files, and many developer tools. But JSON is often delivered in a minified form (no line breaks, no indentation). Minified JSON is great for performance, but it’s painful for humans. Formatting (also called “beautifying”) adds consistent indentation, line breaks, and spacing so you can:</p>
       <ul>
-        <li>Paste your raw or minified JSON into the input area</li>
-        <li>Click format to apply consistent indentation</li>
-        <li>Use validate to catch syntax errors before they cause issues</li>
+        <li>Quickly understand nested objects and arrays</li>
+        <li>Spot missing fields, unexpected values, and type mismatches</li>
+        <li>Locate syntax errors (missing commas, quotes, braces)</li>
+        <li>Copy a single branch of data while keeping structure intact</li>
       </ul>
-      <p>Use our <a href="/json-formatter" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Formatter</a> to format and validate JSON in the browser. For related workflows, try the <a href="/json-validator" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Validator</a> and <a href="/json-minifier" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Minifier</a>.</p>
+
+      <h2>How to format JSON online (step-by-step)</h2>
+      <p>To format JSON online, you don’t need any setup. You can do it right inside your browser:</p>
+      <ul>
+        <li><strong>Paste your JSON</strong>: Copy raw or minified JSON into the editor.</li>
+        <li><strong>Format</strong>: Apply indentation so objects and arrays are readable.</li>
+        <li><strong>Validate</strong>: Check for syntax errors before you ship or share.</li>
+        <li><strong>Copy the output</strong>: Use the formatted JSON in your code, logs, or documentation.</li>
+      </ul>
+      <p>Try it now with our <a href="/json-formatter" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Formatter</a>. If you only need error checking (without changing formatting), use the <a href="/json-validator" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Validator</a>.</p>
+
+      <h2>Common JSON errors (and how to fix them)</h2>
+      <p>If your formatter says the JSON is invalid, don’t panic—most issues are simple:</p>
+      <ul>
+        <li><strong>Trailing commas</strong>: JSON does not allow a comma after the last item in an object or array.</li>
+        <li><strong>Single quotes</strong>: JSON requires double quotes for strings and object keys.</li>
+        <li><strong>Unescaped characters</strong>: Quotes inside strings must be escaped like <code>\\"</code>.</li>
+        <li><strong>Mismatched braces</strong>: One extra <code>}</code> or missing <code>]</code> breaks parsing.</li>
+      </ul>
+      <p>A good workflow is: validate → fix the first reported error → validate again. Once it’s valid, format it for readability.</p>
+
+      <h2>Format vs minify: when to use each</h2>
+      <p>Formatting is for humans; minifying is for machines. If you’re sending JSON over the network or storing it in a size-sensitive place, minifying can reduce payload size by removing whitespace. For that, use our <a href="/json-minifier" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Minifier</a>. If you’re reading or debugging JSON, always format first.</p>
+
+      <h2>Use cases developers run into daily</h2>
+      <ul>
+        <li><strong>Debugging API responses</strong>: paste JSON and scan for missing/incorrect fields.</li>
+        <li><strong>Comparing two payloads</strong>: format both then diff them (see <a href="/json-diff-viewer" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Diff Viewer</a>).</li>
+        <li><strong>Cleaning config files</strong>: make large JSON configs readable before committing.</li>
+        <li><strong>Preparing examples</strong>: formatted JSON looks professional in docs and tickets.</li>
+      </ul>
+
+      <h2>Related DevToolDock tools</h2>
+      <p>Once your JSON is clean, you might also want to convert it into another format. DevToolDock includes fast browser-based converters like <a href="/json-to-yaml" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON to YAML</a> and <a href="/json-to-csv" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON to CSV</a>.</p>
     `,
   },
   {
@@ -80,16 +115,53 @@ export const blogs: BlogPost[] = [
     date: '2026-01-15',
     author: 'DevToolDock Team',
     content: `
+      <p>Regular expressions (regex) are one of the highest leverage skills a developer can learn. A good pattern can replace dozens of lines of parsing logic—but a bad pattern can be slow, confusing, or silently wrong. This guide explains regex in plain language and shows how to test patterns safely.</p>
+
       <h2>What are regular expressions?</h2>
-      <p>Regular expressions (regex) are patterns that match text. They are used for validation, search-and-replace, and parsing in almost every language and editor.</p>
-      <h2>Common regex concepts</h2>
+      <p>A regular expression is a pattern that matches text. You’ll see regex used in validators (email/username rules), search-and-replace, log filtering, routing rules, and data extraction. Most languages implement a very similar core syntax, with a few differences in advanced features.</p>
+
+      <h2>Start with the mental model</h2>
+      <p>Think of a regex as a “recipe” for what a valid string looks like. The engine reads your pattern left-to-right and tries to find a match. Some patterns match anywhere in the text; others are anchored to the start and end.</p>
+
+      <h2>Core building blocks</h2>
       <ul>
-        <li><strong>Anchors:</strong> <code>^</code> and <code>$</code> match the start and end of a string</li>
-        <li><strong>Character classes:</strong> <code>\\d</code> for digits, <code>\\w</code> for word characters</li>
-        <li><strong>Quantifiers:</strong> <code>+</code>, <code>*</code>, <code>?</code> for one-or-more, zero-or-more, optional</li>
-        <li><strong>Flags:</strong> <code>g</code> (global), <code>i</code> (case-insensitive), <code>m</code> (multiline)</li>
+        <li><strong>Anchors</strong>: <code>^</code> (start) and <code>$</code> (end). Use them for full-string validation.</li>
+        <li><strong>Character classes</strong>: <code>[a-z]</code>, <code>[0-9]</code>, or shortcuts like <code>\\d</code> (digit), <code>\\w</code> (word char), <code>\\s</code> (whitespace).</li>
+        <li><strong>Quantifiers</strong>: <code>*</code> (0+), <code>+</code> (1+), <code>?</code> (0/1), <code>{n}</code>, <code>{n,}</code>, <code>{n,m}</code>.</li>
+        <li><strong>Groups</strong>: parentheses <code>(...)</code> group parts of a pattern. Some engines support named groups like <code>(?&lt;name&gt;...)</code>.</li>
+        <li><strong>Alternation</strong>: <code>a|b</code> means “match a OR b”.</li>
       </ul>
-      <p>Test your patterns live with our <a href="/regex-tester" class="text-primary-500 hover:text-primary-600 underline font-medium">Regex Tester</a>. For learning and explaining regex, use the <a href="/regex-explainer" class="text-primary-500 hover:text-primary-600 underline font-medium">Regex Explainer</a>.</p>
+
+      <h2>Regex flags you’ll use constantly</h2>
+      <p>Flags change how the pattern behaves:</p>
+      <ul>
+        <li><code>g</code>: global (find all matches, not just the first)</li>
+        <li><code>i</code>: case-insensitive</li>
+        <li><code>m</code>: multiline (<code>^</code> and <code>$</code> work per line)</li>
+        <li><code>s</code>: dotAll (<code>.</code> matches newlines too)</li>
+      </ul>
+
+      <h2>Practical examples</h2>
+      <p>Here are a few useful patterns to practice with:</p>
+      <ul>
+        <li><strong>Simple identifier</strong>: <code>^[a-zA-Z_][a-zA-Z0-9_]*$</code></li>
+        <li><strong>Hex color</strong>: <code>^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$</code></li>
+        <li><strong>Find UUID</strong>: <code>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}</code></li>
+      </ul>
+
+      <h2>How to test regex safely</h2>
+      <p>Regex debugging is easiest when you can see matches and groups immediately. Use our <a href="/regex-tester" class="text-primary-500 hover:text-primary-600 underline font-medium">Regex Tester</a> to experiment with patterns and flags in real time. If you want a human-readable breakdown of what a pattern does, use the <a href="/regex-explainer" class="text-primary-500 hover:text-primary-600 underline font-medium">Regex Explainer</a>.</p>
+
+      <h2>Common mistakes (and how to avoid them)</h2>
+      <ul>
+        <li><strong>Missing anchors</strong>: without <code>^</code> and <code>$</code>, validators may accept partial matches.</li>
+        <li><strong>Overusing <code>.*</code></strong>: it’s greedy and can cause “match too much” bugs; prefer specific character classes.</li>
+        <li><strong>Catastrophic backtracking</strong>: nested quantifiers like <code>(a+)+</code> can be very slow on certain inputs.</li>
+        <li><strong>Escaping confusion</strong>: when writing regex in strings, you often need double escaping (e.g. <code>\\\\d</code> in JS source to mean <code>\\d</code>).</li>
+      </ul>
+
+      <h2>Where regex fits in a modern toolbelt</h2>
+      <p>Regex is great for validation and extraction, but don’t use it as a full HTML parser or when a structured parser exists. When in doubt, write the simplest pattern that works and document it with examples.</p>
     `,
   },
   {
@@ -100,15 +172,38 @@ export const blogs: BlogPost[] = [
     author: 'DevToolDock Team',
     embedTool: 'base64-encoder',
     content: `
+      <p>Base64 shows up everywhere: JWTs, data URLs, API payloads, email attachments, and tooling output. Developers often copy/paste Base64 strings without thinking about what they represent. This article explains Base64 clearly and shows when it’s appropriate to use.</p>
+
       <h2>What is Base64?</h2>
-      <p>Base64 is a way to represent binary data as ASCII text. It uses 64 characters (A–Z, a–z, 0–9, plus two symbols) so data can be safely sent in JSON, XML, or URLs.</p>
-      <h2>When to use Base64</h2>
+      <p>Base64 is an encoding that represents binary data as ASCII characters. It uses 64 symbols (A–Z, a–z, 0–9, plus two additional symbols like <code>+</code> and <code>/</code>) to encode bytes into text. That makes Base64 useful whenever you need to move binary data through systems that expect text: JSON, XML, URLs, or form fields.</p>
+
+      <h2>Encoding vs encryption (important!)</h2>
+      <p>Base64 is not encryption. Anyone can decode Base64 back into the original bytes. If you need secrecy, you need encryption (or signing) in addition to encoding. Base64 is simply a transport-friendly representation.</p>
+
+      <h2>When should you use Base64?</h2>
       <ul>
-        <li>Embedding images in HTML or CSS (data URLs)</li>
-        <li>Storing binary data in JSON or APIs</li>
-        <li>Including attachments in email or API payloads</li>
+        <li><strong>Data URLs</strong>: embed small images/icons directly in HTML/CSS.</li>
+        <li><strong>API payloads</strong>: send binary blobs (like small files) inside JSON when multipart upload isn’t available.</li>
+        <li><strong>Email and MIME</strong>: attachments and inline content are commonly Base64-encoded.</li>
+        <li><strong>Tokens</strong>: JWTs use Base64url for header and payload segments (a URL-safe variant).</li>
       </ul>
-      <p>Encode or decode in the browser with our <a href="/base64-encoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Encoder</a> and <a href="/base64-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Decoder</a>. All processing is client-side—no data is sent to a server.</p>
+
+      <h2>When you should avoid Base64</h2>
+      <p>Base64 increases size by roughly 33% compared to the original bytes. For large files, it’s usually better to upload the file directly (multipart) and store a URL or reference in your JSON instead of the Base64 itself.</p>
+
+      <h2>How to encode Base64 in the browser</h2>
+      <p>To encode plain text, you convert the text to bytes and then encode those bytes into a Base64 string. For files, you read the file and encode its bytes. DevToolDock does this client-side so your input isn’t sent to a server.</p>
+      <p>Use our <a href="/base64-encoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Encoder</a> to encode text instantly. If you’re trying to see what a Base64 blob contains, use the <a href="/base64-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Decoder</a> to reverse it.</p>
+
+      <h2>Common Base64 pitfalls</h2>
+      <ul>
+        <li><strong>Newlines</strong>: some encoders insert line breaks; many decoders can handle them but some can’t.</li>
+        <li><strong>Padding</strong>: Base64 often ends with <code>=</code> or <code>==</code>. Removing padding can break strict decoders.</li>
+        <li><strong>Base64 vs Base64url</strong>: JWT uses Base64url which swaps characters and removes padding for URL safety.</li>
+      </ul>
+
+      <h2>Related tools</h2>
+      <p>If you’re dealing with tokens, Base64 often appears inside JWTs. After decoding Base64, you may want to inspect a token with our <a href="/jwt-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">JWT Decoder</a>. For converting images, try <a href="/image-to-base64" class="text-primary-500 hover:text-primary-600 underline font-medium">Image to Base64</a> and <a href="/base64-to-image" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 to Image</a>.</p>
     `,
   },
   {
@@ -118,16 +213,47 @@ export const blogs: BlogPost[] = [
     date: '2026-02-01',
     author: 'DevToolDock Team',
     content: `
-      <h2>Must-have categories</h2>
-      <p>Developers rely on a small set of tool categories every day: data formatting, encoding, validation, and conversion.</p>
-      <h2>Top tools to bookmark</h2>
+      <p>The “best developer tools” aren’t always the fanciest. They’re the ones you reach for multiple times per day: formatters, encoders/decoders, validators, converters, and tiny utilities that turn minutes of friction into seconds of flow. In 2026, a modern developer toolkit is a mix of browser-based utilities, IDE features, and a few trusted command-line tools.</p>
+
+      <h2>What makes a tool worth bookmarking?</h2>
       <ul>
-        <li><a href="/json-formatter" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Formatter</a> – format, validate, and minify JSON</li>
-        <li><a href="/regex-tester" class="text-primary-500 hover:text-primary-600 underline font-medium">Regex Tester</a> – test and debug regular expressions</li>
-        <li><a href="/base64-encoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Encoder</a> / <a href="/base64-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Decoder</a> – encode and decode Base64</li>
-        <li><a href="/jwt-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">JWT Decoder</a> – inspect JWT headers and payloads</li>
+        <li><strong>Fast</strong>: loads quickly and responds instantly.</li>
+        <li><strong>Safe</strong>: ideally runs in the browser for sensitive data.</li>
+        <li><strong>Accurate</strong>: output is deterministic and standards-compliant.</li>
+        <li><strong>Practical</strong>: solves real daily problems (not just demos).</li>
       </ul>
-      <p>Browse all tools on our <a href="/tools" class="text-primary-500 hover:text-primary-600 underline font-medium">Tools</a> page and by <a href="/categories" class="text-primary-500 hover:text-primary-600 underline font-medium">Categories</a>.</p>
+
+      <h2>Must-have categories in 2026</h2>
+      <p>Most developer workflows revolve around a few categories:</p>
+      <ul>
+        <li><strong>Data formatting</strong>: JSON, YAML, CSV, XML</li>
+        <li><strong>Encoding/decoding</strong>: Base64, URL encoding</li>
+        <li><strong>Validation</strong>: JSON validity, UUID format, JWT structure</li>
+        <li><strong>Text utilities</strong>: diffing, casing, slugging, counting</li>
+        <li><strong>Web utilities</strong>: meta tags, robots.txt, HTTP headers</li>
+      </ul>
+
+      <h2>Top DevToolDock tools to bookmark</h2>
+      <ul>
+        <li><a href="/json-formatter" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Formatter</a> – format, validate, and minify JSON for debugging and documentation.</li>
+        <li><a href="/json-validator" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Validator</a> – find syntax errors quickly with clear feedback.</li>
+        <li><a href="/regex-tester" class="text-primary-500 hover:text-primary-600 underline font-medium">Regex Tester</a> – test patterns and flags against real text safely.</li>
+        <li><a href="/base64-encoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Encoder</a> and <a href="/base64-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Decoder</a> – convert strings both directions without sending data to a server.</li>
+        <li><a href="/jwt-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">JWT Decoder</a> – inspect header and payload claims when debugging auth.</li>
+        <li><a href="/url-encoder" class="text-primary-500 hover:text-primary-600 underline font-medium">URL Encoder</a> / <a href="/url-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">URL Decoder</a> – debug query strings and encode unsafe characters.</li>
+      </ul>
+
+      <h2>Use cases these tools cover</h2>
+      <p>Here’s what these tools save you from doing manually:</p>
+      <ul>
+        <li>Reading minified API responses (format JSON first)</li>
+        <li>Fixing an auth issue (decode JWT payload and check expiry)</li>
+        <li>Building a clean URL (encode query parameters properly)</li>
+        <li>Writing validation rules (test regex with real examples)</li>
+      </ul>
+
+      <h2>Explore by category</h2>
+      <p>If you’re building your personal toolbox, start with the essentials and add utilities as you need them. Browse all tools on the <a href="/tools" class="text-primary-500 hover:text-primary-600 underline font-medium">Tools</a> page or discover them by <a href="/categories" class="text-primary-500 hover:text-primary-600 underline font-medium">Categories</a>. DevToolDock is designed to keep common tasks in one place with consistent UX.</p>
     `,
   },
   {
@@ -137,12 +263,41 @@ export const blogs: BlogPost[] = [
     date: '2026-02-05',
     author: 'DevToolDock Team',
     content: `
+      <p>JWTs (JSON Web Tokens) are everywhere in modern authentication. When a login flow breaks, the fastest way to understand what’s happening is to decode the token and inspect the claims. This guide shows how to decode JWTs, what each part means, and what to look for when debugging.</p>
+
       <h2>What is a JWT?</h2>
-      <p>A JWT is a signed token with three Base64url parts: header, payload, and signature. It is used for authentication and passing claims between services.</p>
+      <p>A JWT is a compact token that contains JSON data. A standard JWT has three dot-separated segments:</p>
+      <ul>
+        <li><strong>Header</strong> (Base64url): identifies the signing algorithm and token type</li>
+        <li><strong>Payload</strong> (Base64url): the “claims” (user id, roles, expiry, issuer)</li>
+        <li><strong>Signature</strong>: proves integrity (was signed by the expected secret/private key)</li>
+      </ul>
+      <p>JWTs are often used as bearer tokens in the <code>Authorization</code> header. They can be signed (JWS) and sometimes encrypted (JWE), though encryption is less common in typical web apps.</p>
+
+      <h2>Decoding vs verifying (don’t confuse them)</h2>
+      <p>Decoding means reading the header and payload. It does not prove the token is valid. Verification checks the signature using the correct key and ensures claims like <code>exp</code>, <code>aud</code>, and <code>iss</code> are acceptable. When you decode a token in a tool, you’re typically just inspecting it for debugging.</p>
+
       <h2>Why decode JWTs?</h2>
-      <p>Decoding lets you inspect the header (algorithm, type) and payload (claims like user id, expiry) without verifying the signature. Useful for debugging and understanding token contents.</p>
-      <h2>Decode safely online</h2>
-      <p>Use our <a href="/jwt-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">JWT Decoder</a> to paste a token and see the decoded header and payload. Never paste production secrets—decode only in trusted environments. For generating test tokens, try the <a href="/jwt-generator" class="text-primary-500 hover:text-primary-600 underline font-medium">JWT Generator</a>.</p>
+      <p>Decoding is useful when:</p>
+      <ul>
+        <li>A user is unexpectedly logged out (check <code>exp</code> / expiry)</li>
+        <li>An API rejects a request (check <code>aud</code> / audience and <code>iss</code> / issuer)</li>
+        <li>Permissions look wrong (check roles/claims in the payload)</li>
+        <li>You suspect you’re using the wrong token (check <code>sub</code> or user id)</li>
+      </ul>
+
+      <h2>How to decode a JWT token online</h2>
+      <p>Use our <a href="/jwt-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">JWT Decoder</a> to paste a token and instantly view the decoded header and payload. The decoder helps you see JSON claims clearly without manual Base64url conversions.</p>
+
+      <h2>Security tips</h2>
+      <ul>
+        <li><strong>Don’t paste production tokens into untrusted tools</strong>. DevToolDock tools are designed to run client-side, but always follow your organization’s security policy.</li>
+        <li><strong>Never paste secrets</strong> (JWT signing keys). A decoder doesn’t need your secret.</li>
+        <li><strong>Remember signatures matter</strong>. A decoded payload can be edited; verification is what makes claims trustworthy.</li>
+      </ul>
+
+      <h2>Related DevToolDock tools</h2>
+      <p>JWT segments are Base64url. If you’re doing deeper debugging, you may also need Base64 tools: <a href="/base64-encoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Encoder</a> and <a href="/base64-decoder" class="text-primary-500 hover:text-primary-600 underline font-medium">Base64 Decoder</a>. To generate test tokens for local development, use the <a href="/jwt-generator" class="text-primary-500 hover:text-primary-600 underline font-medium">JWT Generator</a>.</p>
     `,
   },
   {
@@ -153,16 +308,44 @@ export const blogs: BlogPost[] = [
     author: 'DevToolDock Team',
     embedTool: 'json-formatter',
     content: `
+      <p>“Formatter” and “validator” sound similar, but they solve different problems. If you work with APIs, logs, or configs, you’ll use both—often in the same workflow. Here’s how they differ and when to choose each.</p>
+
       <h2>What a JSON formatter does</h2>
-      <p>A <a href="/json-formatter" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Formatter</a> beautifies or minifies JSON: it adds or removes whitespace and indentation. It often also validates so you get both readability and error checking in one step.</p>
-      <h2>What a JSON validator does</h2>
-      <p>A <a href="/json-validator" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Validator</a> checks syntax only. It tells you if the JSON is valid and where errors are (e.g. missing comma, trailing comma). It does not change the structure or formatting.</p>
-      <h2>Which one to use?</h2>
+      <p>A <a href="/json-formatter" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Formatter</a> changes how JSON looks without changing what it means. It can:</p>
       <ul>
-        <li>Use the formatter when you have minified or messy JSON and want it readable (and optionally valid).</li>
-        <li>Use the validator when you only need to know if JSON is valid and where it breaks.</li>
+        <li><strong>Beautify</strong>: add indentation and line breaks so the structure is readable.</li>
+        <li><strong>Minify</strong>: remove whitespace so the payload is smaller (useful for transport).</li>
       </ul>
-      <p>Many developers use the formatter first; if it reports errors, fix them then format again. Both tools are free and run in your browser.</p>
+      <p>Most formatters also validate as part of formatting—because you can’t reliably format invalid JSON. This makes a formatter the fastest “first step” when you paste JSON from logs or an API response.</p>
+
+      <h2>What a JSON validator does</h2>
+      <p>A <a href="/json-validator" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Validator</a> checks whether a string is valid JSON. It focuses on correctness, not appearance. A validator typically helps you answer:</p>
+      <ul>
+        <li>Is the JSON syntactically valid?</li>
+        <li>Where is the first error (line/column), if invalid?</li>
+        <li>What kind of error is it (missing comma, unclosed string, etc.)?</li>
+      </ul>
+      <p>Validators are useful when you want a pure “pass/fail + location” result and don’t want formatting to be part of the workflow.</p>
+
+      <h2>Common scenarios and which tool to use</h2>
+      <ul>
+        <li><strong>Minified API response</strong>: start with the formatter to make it readable.</li>
+        <li><strong>Unit test fixtures</strong>: validate JSON before committing to catch typos early.</li>
+        <li><strong>Performance-sensitive payload</strong>: minify valid JSON using a formatter or a dedicated <a href="/json-minifier" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Minifier</a>.</li>
+        <li><strong>Comparing two payloads</strong>: format both, then diff them with <a href="/json-diff-viewer" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Diff Viewer</a>.</li>
+      </ul>
+
+      <h2>A simple workflow that works</h2>
+      <p>For most developers, this flow is reliable:</p>
+      <ul>
+        <li>Paste JSON into the <a href="/json-formatter" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Formatter</a></li>
+        <li>If invalid, fix the first error and try again</li>
+        <li>Once valid and readable, copy the formatted output</li>
+      </ul>
+      <p>If you only need a validity check for automation or quick verification, use the <a href="/json-validator" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Validator</a>.</p>
+
+      <h2>Related DevToolDock tools</h2>
+      <p>After formatting/validating, you might want to transform the data: <a href="/json-to-yaml" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON to YAML</a>, <a href="/json-to-csv" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON to CSV</a>, or quickly preview differences with <a href="/json-diff-viewer" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Diff Viewer</a>.</p>
     `,
   },
 ];

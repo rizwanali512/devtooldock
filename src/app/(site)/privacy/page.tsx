@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getBaseUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
+  alternates: { canonical: getBaseUrl() + '/privacy' },
 };
 
 export default function PrivacyPage() {

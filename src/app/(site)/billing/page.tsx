@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import { getBaseUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Billing',
+  alternates: { canonical: getBaseUrl() + '/billing' },
   robots: { index: false, follow: false },
 };
 

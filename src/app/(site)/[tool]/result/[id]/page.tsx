@@ -3,17 +3,25 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getResult } from '@/lib/result-storage';
 import { getTool } from '@/lib/tools';
+import { getBaseUrl } from '@/lib/site-url';
 import { ToolResultView } from './ToolResultView';
 
 type PageProps = {
   params: Promise<{ tool: string; id: string }>;
 };
 
-export const metadata: Metadata = {
-  title: 'Shared Result',
-  description: 'View shared tool result',
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { tool, id } = await params;
+  const canonical = `${getBaseUrl()}/${tool}/result/${id}`;
+  return {
+    title: 'Shared Result',
+    description: 'View shared tool result',
+    robots: { index: false, follow: false },
+    alternates: { canonical },
+  };
+}
 
 export default async function ToolResultPage({ params }: PageProps) {
   const { tool: toolSlug, id } = await params;

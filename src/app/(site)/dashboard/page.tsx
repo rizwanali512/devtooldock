@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import { getBaseUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Dashboard',
+  alternates: { canonical: getBaseUrl() + '/dashboard' },
   robots: { index: false, follow: false },
 };
 
