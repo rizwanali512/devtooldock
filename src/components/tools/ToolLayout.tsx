@@ -4,6 +4,7 @@ import { getRelatedTools } from '@/lib/getRelatedTools';
 import { PopularTools } from '@/components/tools/PopularTools';
 import { ShareResultButton } from '@/components/tools/ShareResultButton';
 import { TrackToolVisit } from '@/components/tools/TrackToolVisit';
+import { ToolSeoContent } from '@/components/tools/ToolSeoContent';
 
 interface ToolLayoutProps {
   title: string;
@@ -58,6 +59,9 @@ export function ToolLayout({
           )}
           {children}
         </div>
+
+        {/* SEO content block (below the tool UI) */}
+        <ToolSeoContent title={title} description={description} slug={slug} />
 
         {whatIs && (
           <div className={cardClass}>

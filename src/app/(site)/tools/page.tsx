@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { tools } from '@/lib/tools';
+import { aiTools } from '@/lib/ai-tools';
 
 const CATEGORY_FILTERS = [
   'All',
@@ -110,6 +111,46 @@ export default function ToolsPage() {
           No tools match your search.
         </p>
       )}
+
+      <div className="max-w-6xl mx-auto mt-14 md:mt-18">
+        <div className="flex items-end justify-between gap-4 mb-6">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-white/90">
+            AI tools (quick access)
+          </h2>
+          <Link
+            href="/ai-tools"
+            className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+          >
+            View all AI tools
+          </Link>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {aiTools.map((tool) => (
+            <div
+              key={tool.slug}
+              className="bg-white p-6 border border-gray-200 dark:bg-white/5 dark:border-white/10 rounded-[20px] shadow-[0px_30px_50px_-32px_rgba(107,110,148,0.04)] hover:border-primary-200 dark:hover:border-primary-500/30 transition flex flex-col"
+            >
+              <div className="mb-3">
+                <span className="inline-flex items-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-300">
+                  AI
+                </span>
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">
+                {tool.name}
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-6 flex-1">
+                {tool.description}
+              </p>
+              <Link
+                href={`/ai/${tool.slug}`}
+                className="mt-4 inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-white rounded-full bg-primary-500 hover:bg-primary-600 transition w-fit"
+              >
+                Open Tool
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

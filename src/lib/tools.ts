@@ -535,10 +535,26 @@ export function getRelated(slug: string, limit = 4) {
 /** Slugs of the most used / popular tools, in display order. */
 const POPULAR_TOOL_SLUGS = [
   'json-formatter',
+  'json-validator',
+  'json-minifier',
+  'json-pretty-print',
   'regex-tester',
+  'regex-explainer',
   'base64-encoder',
+  'base64-decoder',
+  'url-encoder',
+  'url-decoder',
   'uuid-generator',
+  'uuid-validator',
   'jwt-decoder',
+  'jwt-generator',
+  'sha256-generator',
+  'md5-generator',
+  'password-generator',
+  'query-string-parser',
+  'http-header-parser',
+  'html-minifier',
+  'js-minifier',
 ] as const;
 
 export function getPopularTools(): Array<{ name: string; description: string; slug: string; href: string }> {

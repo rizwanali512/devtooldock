@@ -4,6 +4,7 @@ import GeneratorInput from '@/components/generator/generator-input';
 import { GradientBlob } from '@/components/gradient-blob';
 import { getAITool } from '@/lib/ai-tools';
 import { useState } from 'react';
+import { AIToolSeoContent } from '@/components/ai/AIToolSeoContent';
 
 type AIToolLayoutProps = {
   toolSlug: string;
@@ -37,6 +38,15 @@ export default function AIToolLayout({ toolSlug, children }: AIToolLayoutProps) 
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 max-w-md">
                 We&apos;re building this feature. Check back later or try another tool from the sidebar.
               </p>
+
+              {/* SEO / indexing content (keeps page valuable even while tool is coming soon) */}
+              <div className="mt-10 w-full">
+                <AIToolSeoContent
+                  toolSlug={tool.slug}
+                  toolName={tool.name}
+                  toolDescription={tool.description}
+                />
+              </div>
             </div>
           ) : (
             children

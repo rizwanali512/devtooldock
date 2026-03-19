@@ -17,7 +17,7 @@ const defaultDescription =
   'DevToolDock provides free developer tools and AI utilities including JSON formatter, Base64 encoder, regex tester, UUID generator, and AI-powered developer tools.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getBaseUrl()),
+  metadataBase: new URL('https://www.devtooldock.com'),
   title: {
     default: defaultTitle,
     template: '%s | DevToolDock',

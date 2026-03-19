@@ -7,5 +7,5 @@ export function getBaseUrl(): string {
     process.env.NEXT_PUBLIC_APP_URL ??
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
   if (url) return url.replace(/\/$/, '');
-  return 'https://devtooldock.com';
+  return 'https://www.devtooldock.com';
 }

@@ -8,7 +8,7 @@ import { ToolExample, ToolFaq } from '@/components/tools/ToolSeoBlocks';
 const DEFAULT_TITLE = 'DevToolDock – Free Developer Tools & AI Utilities';
 const DEFAULT_DESC = 'Free, fast developer tools: JSON formatter, Base64 encoder, regex tester, UUID generator, and more.';
 const DEFAULT_IMAGE = '/images/logo.png';
-const DEFAULT_URL = 'https://devtooldock.com';
+const DEFAULT_URL = 'https://www.devtooldock.com';
 
 export default function OpenGraphPreviewPage() {
   const [title, setTitle] = useState(DEFAULT_TITLE);
