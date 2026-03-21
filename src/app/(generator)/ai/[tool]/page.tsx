@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tool = getAITool(slug);
   if (!tool) return { title: 'AI Tool not found' };
   const canonical = getBaseUrl() + '/ai/' + tool.slug;
-  const title = `${tool.name} – AI Developer Tool`;
+  const title = `${tool.name} – AI Online Tool`;
   const description =
     tool.slug === 'code-generator'
       ? 'Generate code snippets instantly using AI. Automate development tasks and improve productivity.'

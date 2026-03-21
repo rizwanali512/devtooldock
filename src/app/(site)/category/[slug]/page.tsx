@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
-  slugToCategory,
   getToolsByCategory,
   CATEGORY_META,
+  getCategoryLongSeo,
 } from '@/lib/categories';
 import { getBaseUrl } from '@/lib/site-url';
 
@@ -22,12 +22,12 @@ export async function generateMetadata({
   if (!meta) return { title: 'Category not found' };
   const canonical = getBaseUrl() + '/category/' + slug;
   return {
-    title: meta.name,
+    title: `${meta.name} | DevToolDock`,
     description: meta.description,
     keywords: `${meta.name}, developer tools, ${slug}`,
     alternates: { canonical },
     openGraph: {
-      title: meta.name,
+      title: `${meta.name} | DevToolDock`,
       description: meta.description,
       url: canonical,
       type: 'website',
@@ -35,7 +35,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: meta.name,
+      title: `${meta.name} | DevToolDock`,
       description: meta.description,
     },
   };
@@ -47,11 +47,11 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const category = slugToCategory(slug);
-  if (!category) notFound();
-
   const meta = CATEGORY_META.find((c) => c.slug === slug);
-  const categoryTools = getToolsByCategory(category);
+  if (!meta) notFound();
+
+  const categoryTools = getToolsByCategory(slug);
+  const longSeo = getCategoryLongSeo(slug, categoryTools.length);
   const baseUrl = getBaseUrl();
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -62,7 +62,7 @@ export default async function CategoryPage({
       {
         '@type': 'ListItem',
         position: 3,
-        name: meta?.name ?? category,
+        name: meta.name,
         item: baseUrl + '/category/' + slug,
       },
     ],
@@ -77,11 +77,13 @@ export default async function CategoryPage({
       <div className="wrapper py-14 md:py-28">
       <div className="max-w-3xl mb-10">
         <h1 className="mb-3 font-bold text-gray-800 dark:text-white/90 text-3xl md:text-title-lg">
-          {meta?.name ?? category}
+          {meta.name}
         </h1>
         <p className="leading-6 text-gray-500 dark:text-gray-400">
-          {meta?.description ??
-            `Tools in the ${category} category.`}
+          {meta.description}
+        </p>
+        <p className="mt-8 text-gray-500 dark:text-gray-400 leading-7 text-left">
+          {longSeo}
         </p>
       </div>
 

@@ -40,7 +40,7 @@ export default function AIDeveloperToolsLandingPage() {
           'If you’re looking for the full AI catalog, jump to /ai-tools. You can also browse classic utilities on /tools and /all-tools.',
           'For best results, treat AI outputs as a draft: review, test, and adapt them to your project’s standards. In practice, AI shines when you combine it with deterministic tools (formatters, validators, encoders) to verify inputs and outputs as you iterate.',
         ]}
-        filter={{ type: 'categories', categories: ['AI Developer Tools'] }}
+        filter={{ type: 'categories', categories: ['ai'] }}
         useCases={[
           'Draft boilerplate code and then refine it to match your project conventions.',
           'Generate SQL queries from requirements and validate results before running them.',

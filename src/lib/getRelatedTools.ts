@@ -1,6 +1,7 @@
 import { tools } from '@/lib/tools';
-import type { ToolCategory } from '@/lib/tools';
+import { CORE_POPULAR_SLUGS } from '@/lib/popularTools';
 
+const MIN_RELATED = 3;
 const MAX_RELATED = 6;
 
 export type RelatedTool = {
@@ -10,39 +11,72 @@ export type RelatedTool = {
   href: string;
 };
 
-/**
- * Get 4–6 related tools: same category first, then fill from other categories if needed.
- * Works for all current and future tools in lib/tools.ts.
- */
-export function getRelatedTools(
-  currentSlug: string,
-  category?: ToolCategory
-): RelatedTool[] {
-  const current = tools.find((t) => t.slug === currentSlug);
-  const resolvedCategory = category ?? current?.category;
-  if (!current || !resolvedCategory) return [];
+function tagOverlap(a: string[], b: string[]): number {
+  const bs = new Set(b);
+  return a.filter((x) => bs.has(x)).length;
+}
 
-  const sameCategory = tools.filter(
-    (t) => t.category === resolvedCategory && t.slug !== currentSlug
-  );
-  const otherCategories = tools.filter(
-    (t) => t.category !== resolvedCategory && t.slug !== currentSlug
-  );
-
-  const combined = [...sameCategory];
-  if (combined.length < MAX_RELATED) {
-    const needed = Math.min(MAX_RELATED - combined.length, otherCategories.length);
-    for (let i = 0; i < needed; i++) {
-      combined.push(otherCategories[i]);
-    }
-  }
-
-  const slice = combined.slice(0, MAX_RELATED);
-
-  return slice.map((t) => ({
+function toRelated(t: (typeof tools)[number]): RelatedTool {
+  return {
     name: t.name,
     description: t.description,
     slug: t.slug,
     href: `/${t.slug}`,
-  }));
+  };
+}
+
+/**
+ * Related tools for SEO internal linking:
+ * 1) Same category first
+ * 2) Then other tools ranked by shared tags
+ * 3) Fill with core popular tools if still below MIN_RELATED
+ * Max MAX_RELATED links.
+ */
+export function getRelatedTools(currentSlug: string): RelatedTool[] {
+  const current = tools.find((t) => t.slug === currentSlug);
+  if (!current) return [];
+
+  const sameCategory = tools.filter(
+    (t) => t.category === current.category && t.slug !== currentSlug
+  );
+
+  const otherByTags = tools
+    .filter((t) => t.slug !== currentSlug && t.category !== current.category)
+    .map((t) => ({
+      tool: t,
+      score: tagOverlap(current.tags, t.tags),
+    }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((x) => x.tool);
+
+  const othersNoTagMatch = tools.filter(
+    (t) =>
+      t.slug !== currentSlug &&
+      t.category !== current.category &&
+      !otherByTags.some((o) => o.slug === t.slug)
+  );
+
+  const ordered: typeof tools = [];
+  const seen = new Set<string>();
+
+  const push = (t: (typeof tools)[number]) => {
+    if (seen.has(t.slug) || ordered.length >= MAX_RELATED) return;
+    ordered.push(t);
+    seen.add(t.slug);
+  };
+
+  for (const t of sameCategory) push(t);
+  for (const t of otherByTags) push(t);
+  for (const t of othersNoTagMatch) push(t);
+
+  let pi = 0;
+  while (ordered.length < MIN_RELATED && pi < CORE_POPULAR_SLUGS.length) {
+    const slug = CORE_POPULAR_SLUGS[pi++];
+    if (slug === currentSlug || seen.has(slug)) continue;
+    const t = tools.find((x) => x.slug === slug);
+    if (t) push(t);
+  }
+
+  return ordered.slice(0, MAX_RELATED).map(toRelated);
 }

@@ -1,5 +1,4 @@
 import type { Tool } from '@/lib/tools';
-import type { ToolCategory } from '@/lib/tools';
 import { tools } from '@/lib/tools';
 
 export const SEO_PAGE_SLUGS = [
@@ -19,8 +18,8 @@ export type SeoPageConfig = {
   title: string;
   description: string;
   metaDescription: string;
-  /** Category name to show tools from, or null to use custom filter / all */
-  category: ToolCategory | null;
+  /** Category slug (matches tool.category) or null for custom filter / all */
+  category: string | null;
   /** Custom filter; used when category is null. Return true to include tool. */
   filterTools?: (tool: Tool) => boolean;
 };
@@ -33,7 +32,7 @@ const configs: SeoPageConfig[] = [
       'Browse the best JSON tools including JSON formatter, validator, and converters available on DevToolDock.',
     metaDescription:
       'Use free JSON tools online including JSON formatter and JSON converters built for developers.',
-    category: 'JSON Tools',
+    category: 'json',
   },
   {
     slug: 'regex-tools-online',
@@ -42,7 +41,7 @@ const configs: SeoPageConfig[] = [
       'Test and build regex patterns with our free regex tester and regex utilities. No sign-up required.',
     metaDescription:
       'Free regex tools online including regex tester and pattern generator for developers.',
-    category: 'Text Tools',
+    category: 'text',
   },
   {
     slug: 'base64-tools',

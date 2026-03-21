@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { tools } from '@/lib/tools';
 import { aiTools } from '@/lib/ai-tools';
 import { CATEGORY_META, getToolsByCategory } from '@/lib/categories';
-import type { ToolCategory } from '@/lib/tools';
 import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
@@ -45,7 +44,7 @@ export default function AllToolsPage() {
       <div className="max-w-4xl mx-auto space-y-12 md:space-y-14">
         {/* Developer tools grouped by category */}
         {CATEGORY_META.map((cat) => {
-          const categoryTools = getToolsByCategory(cat.name as ToolCategory);
+          const categoryTools = getToolsByCategory(cat.slug);
           if (categoryTools.length === 0) return null;
 
           return (

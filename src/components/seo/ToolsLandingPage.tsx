@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import { tools, type Tool, type ToolCategory } from '@/lib/tools';
+import { tools, type Tool } from '@/lib/tools';
+import { getCategoryDisplayName } from '@/lib/categories';
 import { cn } from '@/lib/utils';
 
 type ToolFilter =
-  | { type: 'categories'; categories: ToolCategory[] }
+  | { type: 'categories'; categories: string[] }
   | { type: 'slugs'; slugs: string[] }
-  | { type: 'mixed'; categories: ToolCategory[]; slugs: string[] };
+  | { type: 'mixed'; categories: string[]; slugs: string[] };
 
 type Props = {
   h1: string;
@@ -103,7 +104,7 @@ export function ToolsLandingPage({
                 <article key={tool.slug} className={cardClass}>
                   <div className="mb-3">
                     <span className="inline-flex items-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-300">
-                      {tool.category}
+                      {getCategoryDisplayName(tool.category)}
                     </span>
                   </div>
                   <h3 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">

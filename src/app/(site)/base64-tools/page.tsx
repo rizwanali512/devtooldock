@@ -40,7 +40,7 @@ export default function Base64ToolsLandingPage() {
       ]}
       filter={{
         type: 'mixed',
-        categories: ['Encoding Tools', 'File Converters'],
+        categories: ['encoding', 'file-converters'],
         slugs: ['base64-encoder', 'base64-decoder', 'base64-to-image', 'image-to-base64'],
       }}
       useCases={[

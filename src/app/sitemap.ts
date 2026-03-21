@@ -7,6 +7,14 @@ import { getBaseUrl } from '@/lib/site-url';
 import { SEO_PAGE_SLUGS } from '@/lib/seo-pages';
 import { COMPARE_PAGE_SLUGS } from '@/lib/compare-pages';
 
+/** Highest-priority tool URLs for crawling (matches SEO landing priorities). */
+const SITEMAP_PRIORITY_TOOLS = new Set([
+  'json-formatter',
+  'base64-encoder',
+  'regex-tester',
+  'jwt-decoder',
+]);
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getBaseUrl();
   const lastModified = new Date();
@@ -95,7 +103,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/${tool.slug}`,
     lastModified,
     changeFrequency: 'weekly' as const,
-    priority: 0.9,
+    priority: SITEMAP_PRIORITY_TOOLS.has(tool.slug) ? 1.0 : 0.9,
   }));
 
   const aiToolPages: MetadataRoute.Sitemap = aiTools.map((tool) => ({

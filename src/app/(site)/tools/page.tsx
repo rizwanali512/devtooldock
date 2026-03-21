@@ -4,23 +4,19 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { tools } from '@/lib/tools';
 import { aiTools } from '@/lib/ai-tools';
+import { CATEGORY_META, getCategoryDisplayName } from '@/lib/categories';
 
 const CATEGORY_FILTERS = [
   'All',
-  'JSON Tools',
-  'Encoding Tools',
-  'Security Tools',
-  'Text Tools',
-  'Web Development Tools',
-  'File Converters',
-  'AI Developer Tools',
-  'Date & Time Tools',
-  'Color Tools',
-  'URL Tools',
-  'Developer Utilities',
+  ...CATEGORY_META.map((c) => c.name),
 ] as const;
 
 type CategoryFilter = (typeof CATEGORY_FILTERS)[number];
+
+const labelToSlug: Record<string, string> = Object.fromEntries([
+  ['All', ''],
+  ...CATEGORY_META.map((c) => [c.name, c.slug] as [string, string]),
+]);
 
 export default function ToolsPage() {
   const [search, setSearch] = useState('');
@@ -30,13 +26,16 @@ export default function ToolsPage() {
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return tools.filter((t) => {
+      const slug = labelToSlug[selectedCategory];
       const matchesCategory =
-        selectedCategory === 'All' || t.category === selectedCategory;
+        selectedCategory === 'All' || t.category === slug;
       const matchesSearch =
         !q ||
         t.name.toLowerCase().includes(q) ||
         t.description.toLowerCase().includes(q) ||
-        t.category.toLowerCase().includes(q);
+        t.category.toLowerCase().includes(q) ||
+        getCategoryDisplayName(t.category).toLowerCase().includes(q) ||
+        t.tags.some((tag) => tag.toLowerCase().includes(q));
       return matchesCategory && matchesSearch;
     });
   }, [search, selectedCategory]);
@@ -87,7 +86,7 @@ export default function ToolsPage() {
           >
             <div className="mb-3">
               <span className="inline-flex items-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-300">
-                {tool.category}
+                {getCategoryDisplayName(tool.category)}
               </span>
             </div>
             <h2 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">

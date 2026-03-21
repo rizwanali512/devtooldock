@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
-import Link from 'next/link';
-import { getRelatedTools } from '@/lib/getRelatedTools';
-import { PopularTools } from '@/components/tools/PopularTools';
 import { ShareResultButton } from '@/components/tools/ShareResultButton';
 import { TrackToolVisit } from '@/components/tools/TrackToolVisit';
-import { ToolSeoContent } from '@/components/tools/ToolSeoContent';
+import { ToolSEOContent } from '@/components/ToolSEOContent';
+import { RelatedTools } from '@/components/RelatedTools';
+import { PopularTools } from '@/components/PopularTools';
+import { MoreFromCategory } from '@/components/MoreFromCategory';
 
 interface ToolLayoutProps {
   title: string;
@@ -31,8 +31,6 @@ export function ToolLayout({
   whatIs,
   shareData,
 }: ToolLayoutProps) {
-  const related = getRelatedTools(slug);
-
   return (
     <div className="wrapper py-8 md:py-12">
       <TrackToolVisit slug={slug} />
@@ -60,8 +58,8 @@ export function ToolLayout({
           {children}
         </div>
 
-        {/* SEO content block (below the tool UI) */}
-        <ToolSeoContent title={title} description={description} slug={slug} />
+        {/* SEO: introduction, how to use, use cases, FAQ (semantic article below tool UI) */}
+        <ToolSEOContent title={title} description={description} slug={slug} />
 
         {whatIs && (
           <div className={cardClass}>
@@ -94,38 +92,9 @@ export function ToolLayout({
           </div>
         </div>
 
-        {related.length > 0 && (
-          <div className={cardClass}>
-            <h2 className="mb-6 text-xl font-bold text-gray-800 dark:text-white/90">
-              Related Tools
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {related.map((tool) => (
-                <div
-                  key={tool.slug}
-                  className="bg-white p-6 border border-gray-200 dark:bg-white/5 dark:border-white/10 rounded-[20px] shadow-[0px_30px_50px_-32px_rgba(107,110,148,0.04)] hover:border-primary-200 dark:hover:border-primary-500/30 transition flex flex-col"
-                >
-                  <h3 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">
-                    {tool.name}
-                  </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 leading-6 flex-1">
-                    {tool.description}
-                  </p>
-                  <Link
-                    href={tool.href}
-                    className="mt-4 inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-white rounded-full bg-primary-500 hover:bg-primary-600 transition w-fit"
-                  >
-                    Open Tool
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div className={cardClass}>
-          <PopularTools />
-        </div>
+        <RelatedTools toolSlug={slug} />
+        <PopularTools excludeSlug={slug} max={6} />
+        <MoreFromCategory toolSlug={slug} />
       </div>
     </div>
   );

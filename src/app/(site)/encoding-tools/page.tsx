@@ -40,7 +40,7 @@ export default function EncodingToolsPage() {
       ]}
       filter={{
         type: 'mixed',
-        categories: ['Encoding Tools', 'URL Tools'],
+        categories: ['encoding', 'url'],
         slugs: [],
       }}
       useCases={[

@@ -3,37 +3,8 @@ import { notFound } from 'next/navigation';
 import { tools } from '@/lib/tools';
 import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
-
-function buildToolSchema(tool: { name: string; slug: string; description: string }) {
-  const baseUrl = getBaseUrl();
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: tool.name,
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'Web',
-    description: tool.description,
-    url: `${baseUrl}/${tool.slug}`,
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-  };
-}
-
-function buildBreadcrumbSchema(tool: { name: string; slug: string }) {
-  const baseUrl = getBaseUrl();
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl + '/' },
-      { '@type': 'ListItem', position: 2, name: 'Tools', item: baseUrl + '/tools' },
-      { '@type': 'ListItem', position: 3, name: tool.name, item: baseUrl + '/' + tool.slug },
-    ],
-  };
-}
+import { generateToolSchema } from '@/lib/generateToolSchema';
+import { getPriorityToolMetadata } from '@/lib/priority-tools-seo';
 
 type Loader = () => Promise<{ default: React.ComponentType<object> }>;
 
@@ -138,15 +109,16 @@ export async function generateMetadata({
   const t = tools.find((x) => x.slug === tool);
   if (!t) return { title: 'Tool not found' };
   const canonical = getBaseUrl() + '/' + t.slug;
-  const title = `${t.name} – Free Developer Tool`;
+  const priority = getPriorityToolMetadata(t.slug);
+  const title = priority?.title ?? `${t.name} – Free Online Tool`;
   const description =
-    t.slug === 'json-formatter'
-      ? 'Format and validate JSON instantly using this free online JSON formatter built for developers.'
-      : `${t.description} Free online tool for developers.`;
+    priority?.description ??
+    `${t.description} Free online developer tool on DevToolDock.`;
+  const keywords = priority?.keywords ?? `${t.name}, ${DEFAULT_KEYWORDS}`;
   return {
     title,
     description,
-    keywords: `${t.name}, ${DEFAULT_KEYWORDS}`,
+    keywords,
     alternates: { canonical },
     openGraph: {
       title,
@@ -175,19 +147,17 @@ export default async function ToolRoute({
 
   const Mod = await loader();
   const ToolPage = Mod.default;
-  const schema = buildToolSchema(tool);
-  const breadcrumbSchema = buildBreadcrumbSchema(tool);
+  const jsonLdSchemas = generateToolSchema(tool);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      {jsonLdSchemas.map((schema, i) => (
+        <script
+          key={`${String(schema['@type'])}-${i}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <ToolPage />
     </>
   );

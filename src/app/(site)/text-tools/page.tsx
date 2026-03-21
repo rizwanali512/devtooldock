@@ -38,7 +38,7 @@ export default function TextToolsLandingPage() {
         'Use the curated list below, then jump to /tools and /all-tools when you need broader coverage.',
         'Text utilities are especially valuable when you’re moving data between systems: turning a title into a URL slug, cleaning a list of values from a spreadsheet, or diffing two versions of output after a refactor. Small transformations like these add up quickly—and having a consistent place to do them saves time.',
       ]}
-      filter={{ type: 'categories', categories: ['Text Tools'] }}
+      filter={{ type: 'categories', categories: ['text'] }}
       useCases={[
         'Debug regex validation rules and confirm matches against sample input.',
         'Compare two versions of text output when refactoring or troubleshooting.',

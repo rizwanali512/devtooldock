@@ -40,7 +40,7 @@ export default function OnlineDeveloperToolsPage() {
       ]}
       filter={{
         type: 'mixed',
-        categories: ['JSON Tools', 'Encoding Tools', 'Text Tools', 'Security Tools', 'URL Tools'],
+        categories: ['json', 'encoding', 'text', 'security', 'url'],
         slugs: [],
       }}
       useCases={[

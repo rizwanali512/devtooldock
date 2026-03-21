@@ -38,7 +38,7 @@ export default function JsonToolsOnlinePage() {
         'On this page you’ll find the most useful JSON utilities—plus quick internal links to the full directory on /tools and /all-tools so you can discover more.',
         'If you regularly work with REST APIs, GraphQL responses, or event payloads, the fastest debugging move is to make the data readable first. Once JSON is formatted and valid, you can verify structure, compare versions, and transform it into other formats (CSV/YAML/XML) without rewriting scripts or switching tools.',
       ]}
-      filter={{ type: 'mixed', categories: ['JSON Tools', 'File Converters'], slugs: [] }}
+      filter={{ type: 'mixed', categories: ['json', 'file-converters'], slugs: [] }}
       useCases={[
         'Beautify a minified API response so you can quickly inspect nested fields and arrays.',
         'Validate JSON before committing fixtures or sending payloads to an endpoint.',

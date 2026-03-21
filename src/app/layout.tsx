@@ -87,12 +87,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'DevToolDock',
+    url: getBaseUrl(),
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`bg-gray-50 dark:bg-dark-secondary min-h-screen flex flex-col ${onest.className}`}
         suppressHydrationWarning
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
         <ThemeProvider disableTransitionOnChange>
           {/* ToasterProvider must render before the children components */}
           {/* https://github.com/emilkowalski/sonner/issues/168#issuecomment-1773734618 */}
