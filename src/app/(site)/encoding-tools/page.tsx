@@ -33,16 +33,62 @@ export default function EncodingToolsPage() {
     <ToolsLandingPage
       h1="Encoding Tools"
       intro={[
-        'Encoding is a daily part of modern development. You encode data to make it safe for transport, embed it inside text-based formats, or preserve special characters across systems. When you’re debugging, the ability to encode and decode quickly can save a surprising amount of time.',
-        'DevToolDock’s encoding tools cover the most common workflows: Base64, URL encoding, and HTML entity conversion. These utilities run in your browser and are designed for fast iteration—copy in, convert, copy out.',
-        'Use the tool list below to jump to a specific converter, then explore related categories for JSON and security helpers.',
-        'Encoding issues usually show up as “weird characters,” broken redirects, or blobs that are impossible to read. Having a dedicated set of encoding tools makes it easy to confirm what data actually looks like at each step (before/after transport), which is especially useful when multiple services are involved.',
+        'Encoding tools are foundational for safe data transport, browser interoperability, and debugging across distributed systems. Developers constantly move data through URLs, headers, HTML templates, tokens, and JSON payloads, and each step can introduce escaped characters or transformed values. This page serves as an SEO-focused hub for encoding utilities, helping users and crawlers discover conversion tools quickly through strong internal linking.',
+        'DevToolDock includes practical online encoding tools for Base64, URL encoding, HTML entities, and related conversion workflows. You can decode unreadable payloads, verify if redirect parameters are correctly escaped, convert images to and from Base64, and inspect token fragments during authentication troubleshooting. These tools are intentionally grouped by workflow so you can move from a single conversion task to adjacent checks without context switching.',
+        'When debugging integration issues, encoding mistakes often appear as broken redirects, invalid signatures, corrupted metadata, or unreadable logs. A repeatable process is to decode first for visibility, validate structure, apply precise re-encoding, and retest the full request path. This landing page supports that flow by linking encoding tools with JSON, URL, and security helpers that commonly appear in the same troubleshooting session.',
+        'Use this index as your central route for encoding and decoding tasks in web and API projects. It improves crawlability by connecting high-intent keyword pages while giving engineers a fast, practical launchpad. For deeper workflows, continue to categories, homepage navigation, and focused hubs like JSON tools online and developer utilities.',
       ]}
       filter={{
         type: 'mixed',
-        categories: ['encoding', 'url'],
-        slugs: [],
+        categories: ['encoding', 'url', 'file-converters'],
+        slugs: [
+          'jwt-decoder',
+          'jwt-generator',
+          'query-string-parser',
+          'url-parser',
+          'json-formatter',
+          'json-validator',
+          'checksum-generator',
+          'sha256-generator',
+        ],
       }}
+      toolGroups={[
+        {
+          title: 'Core encoding and decoding',
+          slugs: [
+            'base64-encoder',
+            'base64-decoder',
+            'url-encoder',
+            'url-decoder',
+            'html-encoder',
+            'html-decoder',
+          ],
+        },
+        {
+          title: 'Transport and file conversion helpers',
+          slugs: [
+            'image-to-base64',
+            'base64-to-image',
+            'query-string-parser',
+            'url-parser',
+            'json-to-xml',
+            'xml-to-json',
+            'json-to-yaml',
+            'yaml-to-json',
+          ],
+        },
+        {
+          title: 'Security and payload checks',
+          slugs: [
+            'jwt-decoder',
+            'jwt-generator',
+            'json-formatter',
+            'json-validator',
+            'sha256-generator',
+            'checksum-generator',
+          ],
+        },
+      ]}
       useCases={[
         'Base64 encode/decode strings when working with tokens, payloads, or fixtures.',
         'URL-encode query string values and decode them when debugging redirects.',
@@ -51,11 +97,13 @@ export default function EncodingToolsPage() {
         'Pair encoding utilities with JSON tools when working with API payloads.',
       ]}
       conclusion={[
-        'Encoding problems are usually small but high-impact—broken URLs, corrupted payloads, or unreadable blobs. Keep encoding tools close to your workflow and you’ll debug faster.',
-        'For deeper debugging, jump to /json-tools-online and /base64-tools, or browse the full directory on /all-tools.',
-        'If you frequently work with auth tokens and signatures, pair encoding tools with security utilities like the JWT decoder so you can inspect claims and payloads without manual conversions.',
+        'Encoding bugs are often small in code but large in impact. A compact set of decode, validate, and re-encode tools saves significant debugging time in API and frontend pipelines.',
+        'This page strengthens indexing by linking conversion intent to related parsing and security pages, giving crawlers a clearer map of the site’s technical coverage.',
+        'For daily work, bookmark Base64, URL, and HTML encoding tools plus one JSON validator. That combination handles most real-world payload and transport problems.',
       ]}
       extraLinks={[
+        { href: '/', label: 'Homepage' },
+        { href: '/categories', label: 'Categories' },
         { href: '/base64-tools', label: 'Base64 Tools' },
         { href: '/json-tools-online', label: 'JSON Tools' },
       ]}

@@ -6,6 +6,7 @@ import { getBlogBySlug, getAllBlogSlugs } from '@/lib/blogs';
 import { getBaseUrl } from '@/lib/site-url';
 import { SEO_PAGE_SLUGS } from '@/lib/seo-pages';
 import { COMPARE_PAGE_SLUGS } from '@/lib/compare-pages';
+import { SEO_PAGES_PUBLISHED } from '@/lib/seoPages';
 
 /** Highest-priority tool URLs for crawling (matches SEO landing priorities). */
 const SITEMAP_PRIORITY_TOOLS = new Set([
@@ -24,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/regex-tools',
     '/base64-tools',
     '/free-developer-tools',
+    '/developer-utilities',
     '/online-developer-tools',
     '/best-json-formatters',
     '/best-regex-tools',
@@ -127,6 +129,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const programmaticSeoPages: MetadataRoute.Sitemap = SEO_PAGES_PUBLISHED.map((page) => ({
+    url: `${baseUrl}/${page.slug}`,
+    lastModified,
+    changeFrequency: 'weekly' as const,
+    priority: 0.75,
+  }));
+
   const comparePages: MetadataRoute.Sitemap = COMPARE_PAGE_SLUGS.map((slug) => ({
     url: `${baseUrl}/compare/${slug}`,
     lastModified,
@@ -140,6 +149,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...aiToolPages,
     ...categoryPages,
     ...seoPages,
+    ...programmaticSeoPages,
     ...comparePages,
     ...blogPages,
   ];

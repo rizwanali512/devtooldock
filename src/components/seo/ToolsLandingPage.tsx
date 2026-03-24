@@ -16,6 +16,8 @@ type Props = {
   filter: ToolFilter;
   /** Optional additional links to show under the intro paragraph. */
   extraLinks?: { href: string; label: string }[];
+  /** Optional grouped link blocks for additional crawl paths. */
+  toolGroups?: { title: string; slugs: string[] }[];
 };
 
 function uniqBySlug(list: Tool[]): Tool[] {
@@ -53,8 +55,18 @@ export function ToolsLandingPage({
   conclusion,
   filter,
   extraLinks,
+  toolGroups,
 }: Props) {
   const selected = pickTools(filter);
+  const selectedSlugSet = new Set(selected.map((t) => t.slug));
+  const groupedTools =
+    toolGroups?.map((group) => ({
+      title: group.title,
+      tools: group.slugs
+        .map((slug) => tools.find((t) => t.slug === slug))
+        .filter((t): t is Tool => Boolean(t))
+        .filter((t) => selectedSlugSet.has(t.slug)),
+    })) ?? [];
 
   return (
     <div className="wrapper py-14 md:py-28">
@@ -150,6 +162,37 @@ export function ToolsLandingPage({
             </div>
           )}
         </section>
+
+        {groupedTools.length > 0 && (
+          <section className="mt-12" aria-label="Grouped tool links">
+            <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">
+              Browse by workflow
+            </h2>
+            <div className="space-y-6">
+              {groupedTools.map((group) => (
+                <div
+                  key={group.title}
+                  className="rounded-2xl border border-gray-200 dark:border-white/10 p-5 bg-white dark:bg-white/5"
+                >
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-white/90 mb-3">
+                    {group.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {group.tools.map((tool) => (
+                      <Link
+                        key={tool.slug}
+                        href={`/${tool.slug}`}
+                        className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-white/90 bg-white dark:bg-white/5 hover:border-primary-200 dark:hover:border-primary-500/30 transition"
+                      >
+                        {tool.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-12" aria-label="Use cases">
           <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">

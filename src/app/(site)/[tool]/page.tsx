@@ -5,6 +5,17 @@ import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 import { generateToolSchema } from '@/lib/generateToolSchema';
 import { getPriorityToolMetadata } from '@/lib/priority-tools-seo';
+import { SEOPageTemplate } from '@/components/SEOPageTemplate';
+import {
+  SEO_PAGES_PUBLISHED,
+  buildFaq,
+  buildHowToUseSteps,
+  buildSeoPageContent,
+  buildUseCases,
+  getBaseToolForSeoPage,
+  getRelatedToolsForSeoPage,
+  getSeoPageBySlug,
+} from '@/lib/seoPages';
 
 type Loader = () => Promise<{ default: React.ComponentType<object> }>;
 
@@ -97,7 +108,10 @@ const toolLoaders: Record<string, Loader> = {
 };
 
 export function generateStaticParams() {
-  return tools.map((t) => ({ tool: t.slug }));
+  return [
+    ...tools.map((t) => ({ tool: t.slug })),
+    ...SEO_PAGES_PUBLISHED.map((p) => ({ tool: p.slug })),
+  ];
 }
 
 export async function generateMetadata({
@@ -107,14 +121,44 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { tool } = await params;
   const t = tools.find((x) => x.slug === tool);
-  if (!t) return { title: 'Tool not found' };
-  const canonical = getBaseUrl() + '/' + t.slug;
-  const priority = getPriorityToolMetadata(t.slug);
-  const title = priority?.title ?? `${t.name} – Free Online Tool`;
-  const description =
-    priority?.description ??
-    `${t.description} Free online developer tool on DevToolDock.`;
-  const keywords = priority?.keywords ?? `${t.name}, ${DEFAULT_KEYWORDS}`;
+  const seoPage = getSeoPageBySlug(tool);
+
+  if (!t && !seoPage) return { title: 'Tool not found' };
+
+  if (t) {
+    const canonical = getBaseUrl() + '/' + t.slug;
+    const priority = getPriorityToolMetadata(t.slug);
+    const title = priority?.title ?? `${t.name} – Free Online Tool`;
+    const description =
+      priority?.description ??
+      `${t.description} Free online developer tool on DevToolDock.`;
+    const keywords = priority?.keywords ?? `${t.name}, ${DEFAULT_KEYWORDS}`;
+    return {
+      title,
+      description,
+      keywords,
+      alternates: { canonical },
+      openGraph: {
+        title,
+        description,
+        url: canonical,
+        type: 'website',
+        siteName: 'DevToolDock',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+      },
+    };
+  }
+
+  const baseTool = seoPage ? getBaseToolForSeoPage(seoPage) : null;
+  if (!seoPage || !baseTool) return { title: 'Page not found' };
+  const canonical = getBaseUrl() + '/' + seoPage.slug;
+  const title = seoPage.title;
+  const description = seoPage.description;
+  const keywords = `${DEFAULT_KEYWORDS}, ${seoPage.keyword}, ${baseTool.name.toLowerCase()}, ${seoPage.category} tools`;
   return {
     title,
     description,
@@ -143,22 +187,88 @@ export default async function ToolRoute({
   const { tool: toolSlug } = await params;
   const tool = tools.find((t) => t.slug === toolSlug);
   const loader = toolLoaders[toolSlug];
-  if (!loader || !tool) notFound();
 
-  const Mod = await loader();
-  const ToolPage = Mod.default;
-  const jsonLdSchemas = generateToolSchema(tool);
+  if (loader && tool) {
+    const Mod = await loader();
+    const ToolPage = Mod.default;
+    const jsonLdSchemas = generateToolSchema(tool);
+
+    return (
+      <>
+        {jsonLdSchemas.map((schema, i) => (
+          <script
+            key={`${String(schema['@type'])}-${i}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
+        <ToolPage />
+      </>
+    );
+  }
+
+  const seoPage = getSeoPageBySlug(toolSlug);
+  if (!seoPage) notFound();
+
+  const baseTool = getBaseToolForSeoPage(seoPage);
+  if (!baseTool) notFound();
+  const baseToolLoader = toolLoaders[baseTool.slug];
+  if (!baseToolLoader) notFound();
+  const BaseToolMod = await baseToolLoader();
+  const EmbeddedTool = BaseToolMod.default;
+  const relatedTools = getRelatedToolsForSeoPage(seoPage, 5);
+  const content = buildSeoPageContent(seoPage, baseTool);
+  const howToUse = buildHowToUseSteps(seoPage, baseTool);
+  const useCases = buildUseCases(seoPage);
+  const faq = buildFaq(seoPage, baseTool);
+  const canonical = getBaseUrl() + '/' + seoPage.slug;
+  const webAppSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: seoPage.title,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Any',
+    url: canonical,
+    description: seoPage.description,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  };
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  };
 
   return (
     <>
-      {jsonLdSchemas.map((schema, i) => (
-        <script
-          key={`${String(schema['@type'])}-${i}`}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <ToolPage />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <SEOPageTemplate
+        page={seoPage}
+        baseTool={baseTool}
+        relatedTools={relatedTools}
+        content={content}
+        howToUse={howToUse}
+        useCases={useCases}
+        faq={faq}
+        embeddedTool={<EmbeddedTool />}
+      />
     </>
   );
 }

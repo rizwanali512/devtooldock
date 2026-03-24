@@ -99,6 +99,69 @@ export default async function Home() {
         <div className="mt-14 md:mt-18 max-w-5xl mx-auto w-full">
           <div className="flex items-end justify-between gap-4 mb-6">
             <h2 className="text-xl font-bold text-gray-800 dark:text-white/90">
+              Popular Developer Tools
+            </h2>
+            <Link
+              href="/free-developer-tools"
+              className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+            >
+              Explore tool hubs
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                href: '/free-developer-tools',
+                title: 'Free Developer Tools',
+                description:
+                  'A broad hub linking top free online coding utilities and debugging tools.',
+              },
+              {
+                href: '/json-tools-online',
+                title: 'JSON Tools Online',
+                description:
+                  'Formatter, validator, minifier, diff, and converters for JSON workflows.',
+              },
+              {
+                href: '/regex-tools',
+                title: 'Regex Tools',
+                description:
+                  'Tester, generator, explainer, and text utilities for regex debugging.',
+              },
+              {
+                href: '/encoding-tools',
+                title: 'Encoding Tools',
+                description:
+                  'Base64, URL, and HTML encoding/decoding tools for transport-safe data.',
+              },
+              {
+                href: '/developer-utilities',
+                title: 'Developer Utilities',
+                description:
+                  'Lookups, validators, generators, and parsers for day-to-day engineering tasks.',
+              },
+            ].map((hub) => (
+              <article key={hub.href} className={cardClass}>
+                <h3 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">
+                  {hub.title}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-6 flex-1">
+                  {hub.description}
+                </p>
+                <Link
+                  href={hub.href}
+                  className="mt-4 inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-white rounded-full bg-primary-500 hover:bg-primary-600 transition w-fit"
+                >
+                  Open hub
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-14 md:mt-18 max-w-5xl mx-auto w-full">
+          <div className="flex items-end justify-between gap-4 mb-6">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-white/90">
               Top AI tools
             </h2>
             <Link

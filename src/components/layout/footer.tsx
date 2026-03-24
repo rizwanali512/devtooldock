@@ -91,6 +91,36 @@ export default function Footer() {
                     >
                       Blog
                     </Link>
+                    <Link
+                      href="/free-developer-tools"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      Free Developer Tools
+                    </Link>
+                    <Link
+                      href="/json-tools-online"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      JSON Tools Online
+                    </Link>
+                    <Link
+                      href="/regex-tools"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      Regex Tools
+                    </Link>
+                    <Link
+                      href="/encoding-tools"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      Encoding Tools
+                    </Link>
+                    <Link
+                      href="/developer-utilities"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      Developer Utilities
+                    </Link>
                   </nav>
                 </div>
                 <div>

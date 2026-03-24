@@ -33,12 +33,75 @@ export default function JsonToolsOnlinePage() {
     <ToolsLandingPage
       h1="JSON Tools Online"
       intro={[
-        'JSON is the default data format for APIs, webhooks, configuration files, and many developer workflows. But raw JSON can be hard to read, easy to break, and time-consuming to debug—especially when it’s minified or deeply nested.',
-        'DevToolDock’s JSON tools help you format, validate, minify, and convert JSON without leaving your browser. Whether you’re cleaning up an API response, preparing examples for documentation, or transforming data for a spreadsheet, these tools are built to be fast and developer-friendly.',
-        'On this page you’ll find the most useful JSON utilities—plus quick internal links to the full directory on /tools and /all-tools so you can discover more.',
-        'If you regularly work with REST APIs, GraphQL responses, or event payloads, the fastest debugging move is to make the data readable first. Once JSON is formatted and valid, you can verify structure, compare versions, and transform it into other formats (CSV/YAML/XML) without rewriting scripts or switching tools.',
+        'JSON tools online are essential for modern API development because nearly every workflow depends on reading, validating, transforming, and sharing JSON payloads. When responses are minified, malformed, or deeply nested, debugging slows down fast. This hub centralizes high-intent JSON utilities with direct links so both developers and search engines can move from broad queries like "JSON formatter online" to specific operations such as validation, diffing, and conversion.',
+        'DevToolDock includes practical browser-based JSON utilities for daily engineering work: formatters, validators, minifiers, and converters between JSON, CSV, XML, and YAML. You can normalize payloads before code review, generate quick test fixtures, prepare data for spreadsheet analysis, and compare object structures during incident response. Because every tool is linked through category and workflow context, this page also improves crawlability for long-tail JSON search terms.',
+        'For teams shipping APIs, a repeatable JSON process is simple and reliable: validate structure first, format for readability, compare revisions, then convert as needed for downstream systems. This landing page supports that flow with grouped internal links and related categories. If your task expands into token inspection, URL parsing, or encoding checks, you can jump directly to connected tools without losing context.',
+        'Use this page as an SEO and productivity hub for JSON tooling. It maps common developer intent to concrete actions and keeps internal linking dense enough to support indexing at scale. Start with the JSON formatter, move to validators and diffing when debugging, and use converters when handing data to analytics, automation, or documentation pipelines.',
       ]}
-      filter={{ type: 'mixed', categories: ['json', 'file-converters'], slugs: [] }}
+      filter={{
+        type: 'slugs',
+        slugs: [
+          'json-formatter',
+          'json-validator',
+          'json-pretty-print',
+          'json-minifier',
+          'json-diff-viewer',
+          'json-to-csv',
+          'csv-to-json',
+          'json-to-xml',
+          'xml-to-json',
+          'json-to-yaml',
+          'yaml-to-json',
+          'json-to-typescript-interface',
+          'csv-to-tsv',
+          'tsv-to-csv',
+          'markdown-to-html',
+          'html-to-markdown',
+          'query-string-parser',
+          'regex-tester',
+          'base64-encoder',
+          'base64-decoder',
+          'url-encoder',
+          'url-decoder',
+        ],
+      }}
+      toolGroups={[
+        {
+          title: 'Core JSON editing and validation',
+          slugs: [
+            'json-formatter',
+            'json-validator',
+            'json-pretty-print',
+            'json-minifier',
+            'json-diff-viewer',
+            'json-to-typescript-interface',
+          ],
+        },
+        {
+          title: 'JSON conversion workflows',
+          slugs: [
+            'json-to-csv',
+            'csv-to-json',
+            'json-to-xml',
+            'xml-to-json',
+            'json-to-yaml',
+            'yaml-to-json',
+            'csv-to-tsv',
+            'tsv-to-csv',
+          ],
+        },
+        {
+          title: 'Related parsing and transport helpers',
+          slugs: [
+            'query-string-parser',
+            'url-encoder',
+            'url-decoder',
+            'base64-encoder',
+            'base64-decoder',
+            'regex-tester',
+          ],
+        },
+      ]}
       useCases={[
         'Beautify a minified API response so you can quickly inspect nested fields and arrays.',
         'Validate JSON before committing fixtures or sending payloads to an endpoint.',
@@ -47,11 +110,12 @@ export default function JsonToolsOnlinePage() {
         'Convert JSON to YAML for configuration (CI, Docker, Kubernetes, app settings).',
       ]}
       conclusion={[
-        'A simple JSON workflow is: validate → format → transform. Start with the JSON Formatter when you need readability, and switch to the JSON Validator when you only need strict correctness.',
-        'When you’re ready to explore beyond JSON, browse DevToolDock’s full directory and categories to build a compact, reliable toolbelt for everyday development.',
-        'Pro tip: keep a small set of “daily drivers” bookmarked—formatter, validator, minifier, and one converter. That covers most real-world payload work and keeps your workflow consistent across projects and teams.',
+        'Strong JSON workflows are built on consistent steps and clear internal linking: validate, format, compare, convert, and then move to adjacent tooling only when needed.',
+        'This hub helps search crawlers discover JSON-intent pages while helping developers jump quickly between payload cleanup, schema checks, and cross-format exports.',
+        'Keep your daily set small and dependable: formatter, validator, minifier, diff viewer, and one converter. That combination handles most production payload debugging with minimal context switching.',
       ]}
       extraLinks={[
+        { href: '/', label: 'Homepage' },
         { href: '/categories', label: 'Browse Categories' },
         { href: '/blog', label: 'Read the Blog' },
       ]}
