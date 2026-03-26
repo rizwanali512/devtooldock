@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         destination: "/:tool",
         permanent: true,
       },
+      {
+        source: "/legal-tools/:slug",
+        destination: "/:slug",
+        permanent: true,
+      },
     ];
   },
 };

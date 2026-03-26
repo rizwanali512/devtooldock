@@ -162,6 +162,49 @@ export default async function Home() {
         <div className="mt-14 md:mt-18 max-w-5xl mx-auto w-full">
           <div className="flex items-end justify-between gap-4 mb-6">
             <h2 className="text-xl font-bold text-gray-800 dark:text-white/90">
+              Legal Tools
+            </h2>
+            <Link
+              href="/legal-tools"
+              className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+            >
+              View all legal tools
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                href: '/privacy-policy-generator',
+                title: 'Privacy Policy Generator',
+                description: 'Generate a privacy policy draft for your website in minutes.',
+              },
+              {
+                href: '/terms-and-conditions-generator',
+                title: 'Terms & Conditions Generator',
+                description: 'Generate terms and conditions for your website or product.',
+              },
+            ].map((hub) => (
+              <article key={hub.href} className={cardClass}>
+                <h3 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">
+                  {hub.title}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-6 flex-1">
+                  {hub.description}
+                </p>
+                <Link
+                  href={hub.href}
+                  className="mt-4 inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-white rounded-full bg-primary-500 hover:bg-primary-600 transition w-fit"
+                >
+                  Open generator
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-14 md:mt-18 max-w-5xl mx-auto w-full">
+          <div className="flex items-end justify-between gap-4 mb-6">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-white/90">
               Top AI tools
             </h2>
             <Link

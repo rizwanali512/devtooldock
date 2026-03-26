@@ -92,6 +92,12 @@ export default function Footer() {
                       Blog
                     </Link>
                     <Link
+                      href="/legal-tools"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      Legal Tools
+                    </Link>
+                    <Link
                       href="/free-developer-tools"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
                     >

@@ -1,5 +1,6 @@
 import { tools } from '@/lib/tools';
 import { getPriorityToolSeoSpec } from '@/lib/priority-tools-seo';
+import { generateSEOContent } from '@/lib/generateSEOContent';
 
 /** High-level SEO cluster (ToolBaz-style grouping). */
 export type SeoCluster =
@@ -185,47 +186,34 @@ function defaultSpec(
   cluster: SeoCluster
 ): ToolSeoSpec {
   const hint = clusterHint(cluster);
+  const auto = generateSEOContent({
+    keyword: title.toLowerCase(),
+    toolName: title,
+    category: cluster,
+    type: 'tool',
+  });
   return {
     cluster,
-    intro: wordyIntro(title, description, hint),
-    steps: defaultSteps(title, cluster),
+    intro: `${auto.intro} ${hint}`,
+    steps: auto.howToUse.length ? auto.howToUse : defaultSteps(title, cluster),
     features: [
       `Fast ${title} results in your browser`,
       'Clear output you can copy into code or docs',
       'Designed as a practical free developer tool',
       'Works well alongside other DevToolDock formatters and validators',
     ],
-    useCases: [
-      `Use ${title} for day-to-day developer tasks without local setup`,
-      'Reduce manual work when preparing data for tests or documentation',
-      'Iterate quickly when debugging integrations and payloads',
-    ],
+    useCases: auto.useCases.length
+      ? auto.useCases
+      : [
+          `Use ${title} for day-to-day developer tasks without local setup`,
+          'Reduce manual work when preparing data for tests or documentation',
+          'Iterate quickly when debugging integrations and payloads',
+        ],
     example: {
       input: 'Sample input (paste your real data in the tool)',
       output: 'Processed output appears here after you run the tool',
     },
-    faqs: [
-      {
-        q: `Is ${title} free to use?`,
-        a: 'Yes. DevToolDock offers this as a free online developer tool.',
-      },
-      {
-        q: `Does ${title} run in the browser?`,
-        a: 'Most tools are built for fast client-side workflows; check the tool UI for specifics.',
-      },
-      {
-        q: `What if the output looks wrong?`,
-        a: 'Validate input format, try a smaller sample, and use related validators in the same category.',
-      },
-      {
-        q: `Where can I find related utilities?`,
-        a: 'Browse your category page, Popular Tools, and the full tools directory on DevToolDock.',
-      },
-      {
-        q: `Can I use this for production data?`,
-        a: 'Follow your organization’s data policy; avoid pasting secrets into any online tool.',
-      },
-    ],
+    faqs: auto.faq.map((f) => ({ q: f.question, a: f.answer })),
   };
 }
 

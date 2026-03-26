@@ -7,6 +7,8 @@ import { getBaseUrl } from '@/lib/site-url';
 import { SEO_PAGE_SLUGS } from '@/lib/seo-pages';
 import { COMPARE_PAGE_SLUGS } from '@/lib/compare-pages';
 import { SEO_PAGES_PUBLISHED } from '@/lib/seoPages';
+import { legalTools } from '@/lib/legalTools';
+import { legalSeoPagesPublished } from '@/lib/legalSeoPages';
 
 /** Highest-priority tool URLs for crawling (matches SEO landing priorities). */
 const SITEMAP_PRIORITY_TOOLS = new Set([
@@ -143,6 +145,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const legalToolPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/legal-tools`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    ...legalTools.map((t) => ({
+      url: `${baseUrl}/${t.slug}`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.65,
+    })),
+  ];
+
+  const legalProgrammaticSeoPages: MetadataRoute.Sitemap =
+    legalSeoPagesPublished.map((p) => ({
+      url: `${baseUrl}/${p.slug}`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
+
   return [
     ...corePages,
     ...developerToolPages,
@@ -151,6 +176,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...seoPages,
     ...programmaticSeoPages,
     ...comparePages,
+    ...legalToolPages,
+    ...legalProgrammaticSeoPages,
     ...blogPages,
   ];
 }

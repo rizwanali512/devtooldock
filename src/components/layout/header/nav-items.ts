@@ -25,6 +25,11 @@ export const navItems: NavItem[] = [
   },
   {
     type: 'link',
+    label: 'Legal Tools',
+    href: '/legal-tools',
+  },
+  {
+    type: 'link',
     label: 'Blog',
     href: '/blog',
   },

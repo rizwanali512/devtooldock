@@ -16,6 +16,21 @@ import {
   getRelatedToolsForSeoPage,
   getSeoPageBySlug,
 } from '@/lib/seoPages';
+import { getLegalTool, legalTools } from '@/lib/legalTools';
+import { LegalToolSeoPage, getLegalToolSchemas } from '@/components/legal/LegalToolSeoPage';
+import {
+  getLegalBaseTool,
+  getLegalSeoPageBySlug,
+  getRelatedLegalTools,
+  legalSeoPagesPublished,
+  buildLegalSeoContent,
+  buildLegalSeoFaq,
+} from '@/lib/legalSeoPages';
+import { LegalSEOPageTemplate } from '@/components/LegalSEOPageTemplate';
+import { LegalGeneratorTemplate } from '@/components/LegalGeneratorTemplate';
+import { generateSEOContent } from '@/lib/generateSEOContent';
+
+export const revalidate = 86400;
 
 type Loader = () => Promise<{ default: React.ComponentType<object> }>;
 
@@ -111,6 +126,8 @@ export function generateStaticParams() {
   return [
     ...tools.map((t) => ({ tool: t.slug })),
     ...SEO_PAGES_PUBLISHED.map((p) => ({ tool: p.slug })),
+    ...legalTools.map((t) => ({ tool: t.slug })),
+    ...legalSeoPagesPublished.map((p) => ({ tool: p.slug })),
   ];
 }
 
@@ -122,8 +139,10 @@ export async function generateMetadata({
   const { tool } = await params;
   const t = tools.find((x) => x.slug === tool);
   const seoPage = getSeoPageBySlug(tool);
+  const legalTool = getLegalTool(tool);
+  const legalSeo = getLegalSeoPageBySlug(tool);
 
-  if (!t && !seoPage) return { title: 'Tool not found' };
+  if (!t && !seoPage && !legalTool && !legalSeo) return { title: 'Tool not found' };
 
   if (t) {
     const canonical = getBaseUrl() + '/' + t.slug;
@@ -137,6 +156,56 @@ export async function generateMetadata({
       title,
       description,
       keywords,
+      alternates: { canonical },
+      openGraph: {
+        title,
+        description,
+        url: canonical,
+        type: 'website',
+        siteName: 'DevToolDock',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+      },
+    };
+  }
+
+  if (legalTool) {
+    const canonical = `${getBaseUrl()}/${legalTool.slug}`;
+    const title = `${legalTool.name} – Free Online Tool | DevToolDock`;
+    const description = legalTool.description;
+    return {
+      title,
+      description,
+      keywords: `${DEFAULT_KEYWORDS}, ${legalTool.name.toLowerCase()}, legal generator, legal tools`,
+      alternates: { canonical },
+      openGraph: {
+        title,
+        description,
+        url: canonical,
+        type: 'website',
+        siteName: 'DevToolDock',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+      },
+    };
+  }
+
+  if (legalSeo) {
+    const baseTool = getLegalBaseTool(legalSeo);
+    if (!baseTool) return { title: 'Page not found' };
+    const canonical = `${getBaseUrl()}/${legalSeo.slug}`;
+    const title = legalSeo.title;
+    const description = `Use ${legalSeo.keyword} with DevToolDock’s ${baseTool.name}. Generate a draft online, then explore related legal templates.`;
+    return {
+      title,
+      description,
+      keywords: `${DEFAULT_KEYWORDS}, ${legalSeo.keyword}, ${baseTool.name.toLowerCase()}, legal tools`,
       alternates: { canonical },
       openGraph: {
         title,
@@ -203,6 +272,89 @@ export default async function ToolRoute({
           />
         ))}
         <ToolPage />
+      </>
+    );
+  }
+
+  const legalTool = getLegalTool(toolSlug);
+  if (legalTool) {
+    const canonical = `${getBaseUrl()}/${legalTool.slug}`;
+    const { webAppSchema, faqSchema } = getLegalToolSchemas(legalTool);
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <LegalToolSeoPage tool={legalTool} />
+        <link rel="canonical" href={canonical} />
+      </>
+    );
+  }
+
+  const legalSeo = getLegalSeoPageBySlug(toolSlug);
+  if (legalSeo) {
+    const baseTool = getLegalBaseTool(legalSeo);
+    if (!baseTool) notFound();
+    const related = getRelatedLegalTools(baseTool.slug, 5);
+    const canonical = `${getBaseUrl()}/${legalSeo.slug}`;
+
+    const auto = generateSEOContent({
+      keyword: legalSeo.keyword,
+      toolName: baseTool.name,
+      category: 'legal',
+      type: 'seo',
+    });
+    const content = auto.intro.split(/\n\n+/).filter(Boolean);
+    const howToUse = auto.howToUse;
+    const useCases = auto.useCases;
+    const faq = auto.faq.map((f) => ({ q: f.question, a: f.answer }));
+
+    const webAppSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: legalSeo.title,
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Any',
+      url: canonical,
+      description: `Generate a draft using ${baseTool.name} for the keyword "${legalSeo.keyword}".`,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    };
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    };
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <LegalSEOPageTemplate
+          page={legalSeo}
+          baseTool={baseTool}
+          content={content}
+          howToUse={howToUse}
+          useCases={useCases}
+          faq={faq}
+          relatedTools={related}
+          embeddedTool={<LegalGeneratorTemplate tool={baseTool} />}
+        />
+        <link rel="canonical" href={canonical} />
       </>
     );
   }
