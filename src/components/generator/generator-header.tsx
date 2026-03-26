@@ -36,14 +36,14 @@ export default function GeneratorHeader({
                 <Link href="/">
                   <Image
                     src="/images/logo.png"
-                    className="block dark:hidden"
+                    className="block dark:hidden h-9 w-auto"
                     width={180}
                     height={30}
                     alt="DevToolDock"
                   />
                   <Image
                     src="/images/logo.png"
-                    className="hidden dark:block"
+                    className="hidden dark:block h-9 w-auto"
                     width={180}
                     height={30}
                     alt="DevToolDock"

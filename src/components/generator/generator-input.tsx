@@ -2,6 +2,7 @@ import { AttachmentIcon, LongArrowUpIcon } from '@/icons/icons';
 import { useEffect, useRef } from 'react';
 
 type PropsType = {
+  onSubmit?: () => void;
   onChange?: (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -9,12 +10,15 @@ type PropsType = {
   ) => void;
   value?: string;
   disabled?: boolean;
+  loading?: boolean;
 };
 
 export default function GeneratorInput({
+  onSubmit,
   onChange,
   value,
   disabled,
+  loading,
 }: PropsType) {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -69,10 +73,41 @@ export default function GeneratorInput({
             type="submit"
             ref={submitButtonRef}
             className="size-10 flex bg-[#1D2939] dark:bg-primary-500 dark:disabled:bg-white/20 transition items-center justify-center rounded-full text-white"
-            disabled={!value?.trim()}
+            disabled={!value?.trim() || disabled || loading}
+            onClick={(e) => {
+              e.preventDefault();
+              if (disabled || loading) return;
+              onSubmit?.();
+            }}
           >
             <span className="sr-only">Submit</span>
-            <LongArrowUpIcon />
+            {loading ? (
+              <svg
+                className="h-5 w-5 animate-spin"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  opacity="0.25"
+                />
+                <path
+                  d="M21 12a9 9 0 0 0-9-9"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  opacity="0.9"
+                />
+              </svg>
+            ) : (
+              <LongArrowUpIcon />
+            )}
           </button>
         </div>
       </div>

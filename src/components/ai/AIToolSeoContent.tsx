@@ -88,9 +88,6 @@ export function AIToolSeoContent({ toolSlug, toolName, toolDescription }: Props)
 
   return (
     <div className="w-full max-w-3xl mx-auto text-left">
-      <h2 className="mt-10 mb-3 text-2xl font-bold text-gray-800 dark:text-white/90">
-        About this AI tool
-      </h2>
       <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{intro}</p>
 
       <h2 className="mt-8 mb-3 text-2xl font-bold text-gray-800 dark:text-white/90">
