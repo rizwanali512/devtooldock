@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 import { legalTools, getLegalToolCategoryLabel, type LegalToolCategory } from '@/lib/legalTools';

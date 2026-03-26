@@ -77,7 +77,7 @@ export function LegalToolSeoPage({ tool }: { tool: LegalTool }) {
     category: tool.category,
     type: 'legal' as const,
   };
-  const { faq } = getLegalToolSchemas(tool);
+  void getLegalToolSchemas(tool);
   const related = legalTools.filter((t) => t.slug !== tool.slug).slice(0, 4);
   const popular = getPopularTools().slice(0, 5);
 

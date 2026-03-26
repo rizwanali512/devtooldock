@@ -8,17 +8,12 @@ import { CopyToClipboard } from '@/components/copy-to-clipboard';
 
 type AIToolLayoutProps = {
   toolSlug: string;
-  children?: React.ReactNode;
 };
 
-export default function AIToolLayout({
-  toolSlug,
-  children: _children,
-}: AIToolLayoutProps) {
+export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const tool = getAITool(toolSlug);
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   type ChatMessage = { role: 'user' | 'assistant'; content: string };
@@ -35,13 +30,14 @@ export default function AIToolLayout({
 
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
 
-  if (!tool) return null;
-
   const showComingSoon = false;
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, loading]);
+
+  const tool = getAITool(toolSlug);
+  if (!tool) return null;
 
   const run = async () => {
     const prompt = inputValue.trim();

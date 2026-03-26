@@ -5,6 +5,9 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+type ChatMessageParam = OpenAI.ChatCompletionMessageParam;
+type ChatRole = 'user' | 'assistant';
+
 // Basic in-memory rate limit: 10 requests per minute per IP (best-effort)
 const RATE_LIMIT_MAX = 10;
 const RATE_LIMIT_WINDOW_MS = 60_000;
@@ -62,12 +65,11 @@ export async function POST(req: Request) {
 
     const systemPrompt = getToolPrompt(tool);
 
-    const userMessages =
+    const userMessages: ChatMessageParam[] =
       Array.isArray(body.messages) && body.messages.length
         ? body.messages
             .map((m) => ({
-              role:
-                m?.role === 'assistant' || m?.role === 'user' ? (m.role as any) : 'user',
+              role: (m?.role === 'assistant' || m?.role === 'user' ? m.role : 'user') as ChatRole,
               content: String(m?.content ?? '').trim(),
             }))
             .filter((m) => m.content.length > 0)
@@ -85,7 +87,7 @@ export async function POST(req: Request) {
     const stream = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       stream: true,
-      messages: [{ role: 'system', content: systemPrompt }, ...(userMessages as any)],
+      messages: [{ role: 'system', content: systemPrompt }, ...userMessages],
     });
 
     const encoder = new TextEncoder();

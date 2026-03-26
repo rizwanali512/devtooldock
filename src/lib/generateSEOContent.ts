@@ -1,4 +1,3 @@
-import 'server-only';
 import { getCachedContent, setCachedContent } from '@/lib/contentCache';
 
 export type SeoContentInput = {

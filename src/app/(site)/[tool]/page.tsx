@@ -23,8 +23,6 @@ import {
   getLegalSeoPageBySlug,
   getRelatedLegalTools,
   legalSeoPagesPublished,
-  buildLegalSeoContent,
-  buildLegalSeoFaq,
 } from '@/lib/legalSeoPages';
 import { LegalSEOPageTemplate } from '@/components/LegalSEOPageTemplate';
 import { LegalGeneratorTemplate } from '@/components/LegalGeneratorTemplate';

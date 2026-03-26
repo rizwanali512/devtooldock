@@ -110,10 +110,13 @@ export function getPriorityToolMetadata(slug: string): {
 
 export function getPriorityToolSeoSpec(
   slug: string,
-  title: string,
+  _title: string,
   _description: string,
   _category: string
 ): ToolSeoSpec | null {
+  void _title;
+  void _description;
+  void _category;
   switch (slug) {
     case 'json-formatter':
       return {

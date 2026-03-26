@@ -47,13 +47,6 @@ function replacePlaceholders(template: string, map: PlaceholderMap): string {
   return template.replace(/\{\{\s*([a-z0-9_]+)\s*\}\}/gi, (_, key: string) => map[key] ?? '');
 }
 
-function joinSections(sections: string[]): string {
-  return sections
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .join('\n\n');
-}
-
 function buildPlaceholderMap(data: LegalFormData): PlaceholderMap {
   const url = normalizeUrl(data.websiteUrl) || data.websiteUrl;
   const email = (data.contactEmail ?? '').trim() || (data.dmcaContactEmail ?? '').trim();

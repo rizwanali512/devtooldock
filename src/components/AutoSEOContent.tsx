@@ -8,7 +8,7 @@ export function AutoSEOContent({
 }: {
   section: Section;
   input: SeoContentInput;
-}): JSX.Element {
+}) {
   const out = generateSEOContent(input);
 
   if (section === 'intro') {
