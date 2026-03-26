@@ -1,12 +1,18 @@
 import OpenAI from 'openai';
 import { getToolPrompt } from '@/lib/getToolPrompt';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 type ChatMessageParam = OpenAI.ChatCompletionMessageParam;
 type ChatRole = 'user' | 'assistant';
+
+function getOpenAIClient(): OpenAI {
+  const apiKey = process.env.OPENAI_API_KEY?.trim();
+  if (!apiKey) {
+    throw new Error(
+      'Missing OPENAI_API_KEY. Add it in your environment variables (e.g. Vercel Project Settings → Environment Variables).'
+    );
+  }
+  return new OpenAI({ apiKey });
+}
 
 // Basic in-memory rate limit: 10 requests per minute per IP (best-effort)
 const RATE_LIMIT_MAX = 10;
@@ -36,13 +42,6 @@ function rateLimit(ip: string): { ok: boolean; retryAfterSec?: number } {
 
 export async function POST(req: Request) {
   try {
-    if (!process.env.OPENAI_API_KEY) {
-      return new Response('Missing OPENAI_API_KEY. Set it in .env.local.', {
-        status: 500,
-        headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-      });
-    }
-
     const ip = getClientIp(req);
     const rl = rateLimit(ip);
     if (!rl.ok) {
@@ -64,6 +63,7 @@ export async function POST(req: Request) {
     const prompt = body.prompt?.trim();
 
     const systemPrompt = getToolPrompt(tool);
+    const openai = getOpenAIClient();
 
     const userMessages: ChatMessageParam[] =
       Array.isArray(body.messages) && body.messages.length
