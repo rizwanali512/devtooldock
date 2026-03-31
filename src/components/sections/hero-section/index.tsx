@@ -38,7 +38,7 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
-          <div className="max-w-[1000px] mx-auto relative">
+          <div className="hidden md:block max-w-[1000px] mx-auto relative">
             <div className="p-3 sm:p-[18px] relative z-30 rounded-[32px] border border-white/30 dark:border-white/10 bg-white/20">
               <Image
                 src="/images/hero/hero-img.png"
@@ -46,6 +46,8 @@ export default function HeroSection() {
                 className="w-full rounded-2xl block dark:hidden"
                 width={966}
                 height={552}
+                priority
+                fetchPriority="high"
               />
               <Image
                 src="/images/hero/hero-img-dark1.png"
@@ -53,6 +55,8 @@ export default function HeroSection() {
                 className="w-full rounded-2xl hidden dark:block"
                 width={966}
                 height={552}
+                priority
+                fetchPriority="high"
               />
             </div>
             <div className="absolute hidden lg:block z-10 -top-20 -translate-y-20 left-1/2 -translate-x-1/2">
