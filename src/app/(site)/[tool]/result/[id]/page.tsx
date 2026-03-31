@@ -36,14 +36,14 @@ export default async function ToolResultPage({ params }: PageProps) {
       <div className="max-w-3xl mx-auto">
         <Link
           href={`/${toolSlug}`}
-          className="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 mb-6"
+          className="inline-flex items-center text-sm text-gray-700 dark:text-gray-300 hover:text-primary-700 dark:hover:text-primary-400 mb-6"
         >
           ← Back to {toolName}
         </Link>
         <h1 className="mb-2 font-bold text-gray-800 dark:text-white/90 text-2xl md:text-3xl">
           {toolName} – Shared Result
         </h1>
-        <p className="mb-8 text-sm text-gray-500 dark:text-gray-400">
+        <p className="mb-8 text-sm text-gray-700 dark:text-gray-300">
           This is a shareable result. Data is stored temporarily.
         </p>
         <ToolResultView

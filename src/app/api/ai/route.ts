@@ -1,17 +1,12 @@
 import OpenAI from 'openai';
 import { getToolPrompt } from '@/lib/getToolPrompt';
+import { requireOpenAIKey } from '@/lib/env';
 
 type ChatMessageParam = OpenAI.ChatCompletionMessageParam;
 type ChatRole = 'user' | 'assistant';
 
 function getOpenAIClient(): OpenAI {
-  const apiKey = process.env.OPENAI_API_KEY?.trim();
-  if (!apiKey) {
-    throw new Error(
-      'Missing OPENAI_API_KEY. Add it in your environment variables (e.g. Vercel Project Settings → Environment Variables).'
-    );
-  }
-  return new OpenAI({ apiKey });
+  return new OpenAI({ apiKey: requireOpenAIKey() });
 }
 
 // Basic in-memory rate limit: 10 requests per minute per IP (best-effort)

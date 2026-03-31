@@ -31,7 +31,7 @@ export function RelatedTools({ toolSlug }: Props) {
       <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">
         Related tools
       </h2>
-      <p className="mb-6 text-gray-500 dark:text-gray-400 leading-7">
+      <p className="mb-6 text-gray-700 dark:text-gray-300 leading-7">
         Explore more free online developer tools that pair well with this page.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -40,12 +40,12 @@ export function RelatedTools({ toolSlug }: Props) {
             <h3 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">
               <Link
                 href={t.href}
-                className="hover:text-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 rounded"
+                className="hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 rounded"
               >
                 {t.name}
               </Link>
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 leading-6 flex-1">
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-6 flex-1">
               {t.description}
             </p>
             <Link

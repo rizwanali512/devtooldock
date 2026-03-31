@@ -124,28 +124,28 @@ export function AIToolSeoContent({ toolSlug, toolName, toolDescription }: Props)
         After AI generates structured content, validate and format it with{' '}
         <Link
           href="/json-formatter"
-          className="text-primary-500 hover:text-primary-600 underline font-medium"
+          className="text-primary-700 hover:text-primary-800 underline font-medium"
         >
           JSON Formatter
         </Link>
         , test patterns with the{' '}
         <Link
           href="/regex-tester"
-          className="text-primary-500 hover:text-primary-600 underline font-medium"
+          className="text-primary-700 hover:text-primary-800 underline font-medium"
         >
           Regex Tester
         </Link>
         , encode data with the{' '}
         <Link
           href="/base64-encoder"
-          className="text-primary-500 hover:text-primary-600 underline font-medium"
+          className="text-primary-700 hover:text-primary-800 underline font-medium"
         >
           Base64 Encoder
         </Link>
         , and inspect tokens using the{' '}
         <Link
           href="/jwt-decoder"
-          className="text-primary-500 hover:text-primary-600 underline font-medium"
+          className="text-primary-700 hover:text-primary-800 underline font-medium"
         >
           JWT Decoder
         </Link>
@@ -171,25 +171,25 @@ export function AIToolSeoContent({ toolSlug, toolName, toolDescription }: Props)
         Browse all AI utilities on{' '}
         <Link
           href="/ai-tools"
-          className="text-primary-500 hover:text-primary-600 underline font-medium"
+          className="text-primary-700 hover:text-primary-800 underline font-medium"
         >
           AI Tools
         </Link>
         , explore classic utilities on{' '}
-        <Link href="/tools" className="text-primary-500 hover:text-primary-600 underline font-medium">
+        <Link href="/tools" className="text-primary-700 hover:text-primary-800 underline font-medium">
           Tools
         </Link>{' '}
         and{' '}
         <Link
           href="/all-tools"
-          className="text-primary-500 hover:text-primary-600 underline font-medium"
+          className="text-primary-700 hover:text-primary-800 underline font-medium"
         >
           All Tools
         </Link>
         , or open{' '}
         <Link
           href="/categories"
-          className="text-primary-500 hover:text-primary-600 underline font-medium"
+          className="text-primary-700 hover:text-primary-800 underline font-medium"
         >
           Categories
         </Link>{' '}
@@ -206,7 +206,7 @@ export function AIToolSeoContent({ toolSlug, toolName, toolDescription }: Props)
               <li key={t.slug}>
                 <Link
                   href={`/ai/${t.slug}`}
-                  className="text-primary-500 hover:text-primary-600 underline font-medium"
+                  className="text-primary-700 hover:text-primary-800 underline font-medium"
                 >
                   {t.name}
                 </Link>

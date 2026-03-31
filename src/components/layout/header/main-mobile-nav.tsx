@@ -102,7 +102,7 @@ export default function MainMobileNav({ isOpen }: MobileMenuProps) {
           <div className="flex flex-col pt-2 pb-3 space-y-3 px-8">
             <Link
               href="/signin"
-              className="text-sm block w-full border h-11 border-gray-200 px-5 py-3 rounded-full text-center font-medium text-gray-700 dark:text-gray-400 hover:text-primary-500"
+              className="text-sm block w-full border h-11 border-gray-200 px-5 py-3 rounded-full text-center font-medium text-gray-700 dark:text-gray-400 hover:text-primary-700"
             >
               Sign In
             </Link>

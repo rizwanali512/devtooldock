@@ -38,7 +38,7 @@ export function ToolLayout({
         <h1 className="mb-3 font-bold text-gray-800 dark:text-white/90 text-3xl md:text-title-lg">
           {title}
         </h1>
-        <p className="text-gray-500 dark:text-gray-400 leading-6 max-w-3xl">
+        <p className="text-gray-700 dark:text-gray-300 leading-6 max-w-3xl">
           {description}
         </p>
       </div>
@@ -66,7 +66,7 @@ export function ToolLayout({
             <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">
               What is {title}?
             </h2>
-            <div className="text-gray-500 dark:text-gray-400 leading-6 prose prose-sm dark:prose-invert max-w-none">
+            <div className="text-gray-700 dark:text-gray-300 leading-6 prose prose-sm dark:prose-invert max-w-none">
               {whatIs}
             </div>
           </div>
@@ -77,7 +77,7 @@ export function ToolLayout({
             <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">
               Example usage
             </h2>
-            <div className="text-gray-500 dark:text-gray-400 leading-6 prose prose-sm dark:prose-invert max-w-none">
+            <div className="text-gray-700 dark:text-gray-300 leading-6 prose prose-sm dark:prose-invert max-w-none">
               {exampleUsage}
             </div>
           </div>
@@ -87,7 +87,7 @@ export function ToolLayout({
           <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">
             How to use
           </h2>
-          <div className="text-gray-500 dark:text-gray-400 leading-6 prose prose-sm dark:prose-invert max-w-none">
+          <div className="text-gray-700 dark:text-gray-300 leading-6 prose prose-sm dark:prose-invert max-w-none">
             {howToUse}
           </div>
         </div>

@@ -31,7 +31,7 @@ export function LegalSEOPageTemplate({
           <h1 className="mb-4 font-bold text-gray-800 dark:text-white/90 text-3xl md:text-title-lg">
             {page.title}
           </h1>
-          <div className="space-y-4 text-gray-500 dark:text-gray-400 leading-7">
+          <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-7">
             {content.map((p) => (
               <p key={p}>{p}</p>
             ))}
@@ -42,7 +42,7 @@ export function LegalSEOPageTemplate({
           <h2 className="mb-3 text-xl font-bold text-gray-800 dark:text-white/90">
             Generate with {baseTool.name}
           </h2>
-          <p className="mb-5 text-gray-500 dark:text-gray-400 leading-7">
+          <p className="mb-5 text-gray-700 dark:text-gray-300 leading-7">
             This page embeds the actual generator form so you can complete the workflow immediately.
           </p>
           <div className="rounded-2xl border border-gray-200 dark:border-white/10 p-3">
@@ -52,7 +52,7 @@ export function LegalSEOPageTemplate({
 
         <section className="mt-12" aria-label="How to use">
           <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">How to Use</h2>
-          <ol className="list-decimal pl-5 space-y-2 text-gray-500 dark:text-gray-400 leading-7">
+          <ol className="list-decimal pl-5 space-y-2 text-gray-700 dark:text-gray-300 leading-7">
             {howToUse.map((step) => (
               <li key={step}>{step}</li>
             ))}
@@ -61,7 +61,7 @@ export function LegalSEOPageTemplate({
 
         <section className="mt-12" aria-label="Use cases">
           <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">Use Cases</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-500 dark:text-gray-400 leading-7">
+          <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 leading-7">
             {useCases.map((u) => (
               <li key={u}>{u}</li>
             ))}
@@ -70,7 +70,7 @@ export function LegalSEOPageTemplate({
 
         <section className="mt-12" aria-label="Frequently asked questions">
           <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">FAQ</h2>
-          <div className="space-y-4 text-gray-500 dark:text-gray-400 leading-7">
+          <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-7">
             {faq.map((item) => (
               <div key={item.q}>
                 <h3 className="font-semibold text-gray-800 dark:text-white/90">{item.q}</h3>

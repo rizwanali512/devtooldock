@@ -8,6 +8,7 @@ import ThemeToggle from './theme-toggle';
 import { usePathname } from 'next/navigation';
 import { features } from '@/config/features';
 import BrandLogo from '@/components/BrandLogo';
+import HeaderSearch from '@/components/HeaderSearch';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,6 +29,9 @@ export default function Header() {
           <DesktopNav />
 
           <div className="flex items-center gap-4 justify-self-end">
+            <div className="hidden lg:block w-[360px]">
+              <HeaderSearch />
+            </div>
             <ThemeToggle />
 
             <button
@@ -36,7 +40,7 @@ export default function Header() {
                 setMobileMenuOpen(!mobileMenuOpen);
               }}
               type="button"
-              className="order-last shrink-0 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 lg:hidden"
+              className="order-last shrink-0 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark-primary lg:hidden"
             >
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
@@ -45,7 +49,7 @@ export default function Header() {
               <>
                 <Link
                   href="/signin"
-                  className="text-sm hidden lg:block font-medium text-gray-700 dark:text-gray-400 hover:text-primary-500"
+                  className="text-sm hidden lg:block font-medium text-gray-700 dark:text-gray-400 hover:text-primary-700"
                 >
                   Sign In
                 </Link>
@@ -58,6 +62,10 @@ export default function Header() {
               </>
             )}
           </div>
+        </div>
+
+        <div className="mt-3 lg:hidden">
+          <HeaderSearch />
         </div>
       </div>
 

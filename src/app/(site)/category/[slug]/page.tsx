@@ -75,19 +75,19 @@ export default async function CategoryPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="wrapper py-14 md:py-28">
-      <div className="max-w-3xl mb-10">
+      <div className="max-w-3xl mx-auto mb-10 text-center">
         <h1 className="mb-3 font-bold text-gray-800 dark:text-white/90 text-3xl md:text-title-lg">
           {meta.name}
         </h1>
-        <p className="leading-6 text-gray-500 dark:text-gray-400">
+        <p className="leading-6 text-gray-700 dark:text-gray-300">
           {meta.description}
         </p>
-        <p className="mt-8 text-gray-500 dark:text-gray-400 leading-7 text-left">
+        <p className="mt-8 text-gray-700 dark:text-gray-300 leading-7 text-left">
           {longSeo}
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-6xl">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {categoryTools.map((tool) => (
           <div
             key={tool.slug}
@@ -110,7 +110,7 @@ export default async function CategoryPage({
       </div>
 
       {categoryTools.length === 0 && (
-        <p className="text-gray-500 dark:text-gray-400 py-8">
+        <p className="text-gray-700 dark:text-gray-300 py-8 text-center">
           No tools in this category yet.
         </p>
       )}

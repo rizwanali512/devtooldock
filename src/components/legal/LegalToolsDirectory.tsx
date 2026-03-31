@@ -55,7 +55,7 @@ export default function LegalToolsDirectory({
             ))}
           </select>
         </div>
-        <div className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+        <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap">
           {filtered.length} tools
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function LegalToolsDirectory({
             <h2 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">
               {t.name}
             </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 leading-6 flex-1">
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-6 flex-1">
               {t.description}
             </p>
             <Link

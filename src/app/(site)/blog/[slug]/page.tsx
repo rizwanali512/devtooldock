@@ -107,7 +107,7 @@ export default async function BlogPostPage({
         <article className="max-w-3xl mx-auto">
           <Link
             href="/blog"
-            className="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 mb-6"
+            className="inline-flex items-center text-sm text-gray-700 dark:text-gray-300 hover:text-primary-700 dark:hover:text-primary-400 mb-6"
           >
             ← Back to blog
           </Link>

@@ -11,7 +11,8 @@ export default function BrandLogo() {
     >
       <Image
         src="/images/logo.png"
-        alt="DevToolDock"
+        alt=""
+        aria-hidden="true"
         width={32}
         height={32}
         className="h-8 w-auto shrink-0"

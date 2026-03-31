@@ -1,7 +1,6 @@
-import { getCurrentYear } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import { features } from "@/config/features";
+import { getCurrentYear } from '@/lib/utils';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -47,44 +46,69 @@ export default function Footer() {
           <div className="grid gap-y-8 gap-x-6 lg:grid-cols-12">
             <div className="lg:col-span-3 xl:col-span-4">
               <div>
-                <Link href="/" className="block mb-6">
+                <Link
+                  href="/"
+                  className="flex items-center gap-2.5 whitespace-nowrap transition-opacity hover:opacity-90 mb-5"
+                >
                   <Image
-                    src="/images/logo-white.svg"
-                    alt="DevToolDock - Free Developer Tools & AI Utilities"
-                    width={128}
+                    src="/images/logo.png"
+                    alt=""
+                    aria-hidden="true"
+                    width={32}
                     height={32}
+                    className="h-8 w-auto shrink-0"
                   />
+                  <span className="text-lg font-semibold tracking-tight text-white">
+                    DevTool<span className="text-primary-400">Dock</span>
+                  </span>
                 </Link>
-                <p className="block text-sm text-gray-400 mb-9">
-                  Free Developer Tools & AI Utilities
+                <p className="block text-sm text-gray-400 mb-9 leading-6">
+                  Free Online Developer Tools for Code Formatting, JSON Processing, Data
+                  Conversion, and Efficient Development Tasks
                 </p>
               </div>
             </div>
-            <div className="lg:col-span-6 xl:col-span-5">
+            <div className="lg:col-span-9 xl:col-span-8">
               <div className="grid sm:grid-cols-3 gap-7">
                 <div>
-                  <span className="block mb-6 text-sm text-gray-400">
-                    Product
-                  </span>
+                  <span className="block mb-6 text-sm text-gray-400">Tools</span>
                   <nav className="flex flex-col space-y-3">
                     <Link
-                      href="/tools"
+                      href="/json-formatter"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
                     >
-                      Tools
+                      JSON Formatter
                     </Link>
                     <Link
-                      href="/ai-tools"
+                      href="/password-generator"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
                     >
-                      AI Tools
+                      Password Generator
                     </Link>
                     <Link
-                      href="/categories"
+                      href="/image-compressor"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
                     >
-                      Categories
+                      Image Compressor
                     </Link>
+                    <Link
+                      href="/word-counter"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      Word Counter
+                    </Link>
+                    <Link
+                      href="/all-tools"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      All Tools
+                    </Link>
+                  </nav>
+                </div>
+
+                <div>
+                  <span className="block mb-6 text-sm text-gray-400">Resources</span>
+                  <nav className="flex flex-col space-y-3">
                     <Link
                       href="/blog"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
@@ -92,80 +116,34 @@ export default function Footer() {
                       Blog
                     </Link>
                     <Link
-                      href="/legal-tools"
+                      href="/blog"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
                     >
-                      Legal Tools
+                      Guides / Tutorials
                     </Link>
                     <Link
-                      href="/free-developer-tools"
+                      href="/faqs"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
                     >
-                      Free Developer Tools
+                      FAQs
                     </Link>
-                    <Link
-                      href="/json-tools-online"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      JSON Tools Online
-                    </Link>
-                    <Link
-                      href="/regex-tools"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Regex Tools
-                    </Link>
-                    <Link
-                      href="/encoding-tools"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Encoding Tools
-                    </Link>
-                    <Link
-                      href="/developer-utilities"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Developer Utilities
-                    </Link>
-                  </nav>
-                </div>
-                <div>
-                  <span className="block mb-6 text-sm text-gray-400">
-                    Company
-                  </span>
-                  <nav className="flex flex-col space-y-3">
                     <Link
                       href="/about"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
                     >
-                      About
+                      About Us
                     </Link>
+                  </nav>
+                </div>
+
+                <div>
+                  <span className="block mb-6 text-sm text-gray-400">Customer Support</span>
+                  <nav className="flex flex-col space-y-3">
                     <Link
                       href="/contact"
                       className="text-sm font-normal text-gray-400 transition hover:text-white"
                     >
-                      Contact
-                    </Link>
-                    {features.pricingEnabled && (
-                      <Link
-                        href="/pricing"
-                        className="text-sm font-normal text-gray-400 transition hover:text-white"
-                      >
-                        Pricing
-                      </Link>
-                    )}
-                  </nav>
-                </div>
-                <div>
-                  <span className="block mb-6 text-sm text-gray-400">
-                    Legal
-                  </span>
-                  <nav className="flex flex-col space-y-3">
-                    <Link
-                      href="/terms"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Terms &amp; Conditions
+                      Contact Us
                     </Link>
                     <Link
                       href="/privacy-policy"
@@ -173,46 +151,23 @@ export default function Footer() {
                     >
                       Privacy Policy
                     </Link>
+                    <Link
+                      href="/terms"
+                      className="text-sm font-normal text-gray-400 transition hover:text-white"
+                    >
+                      Terms and Conditions
+                    </Link>
                   </nav>
                 </div>
               </div>
             </div>
-            {features.authEnabled && (
-              <div className="lg:col-span-3">
-                <div>
-                  <span className="block mb-6 text-sm text-gray-400">
-                    Account
-                  </span>
-                  <nav className="flex flex-col space-y-3">
-                    <Link
-                      href="/signin"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Sign in
-                    </Link>
-                    <Link
-                      href="/signup"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Sign up
-                    </Link>
-                    <Link
-                      href="/reset-password"
-                      className="text-sm font-normal text-gray-400 transition hover:text-white"
-                    >
-                      Reset password
-                    </Link>
-                  </nav>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
       <div className="border-t border-gray-800">
         <div className="container relative z-10 px-5 mx-auto sm:px-7">
           <div className="py-5 text-center">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400">
               &copy; {getCurrentYear()} DevToolDock. All rights reserved.
             </p>
           </div>

@@ -51,21 +51,21 @@ export function ToolSEOContent({ title, description, slug }: Props) {
           Explore more in{' '}
           <Link
             href="/tools"
-            className="text-primary-500 hover:text-primary-600 underline font-medium"
+            className="text-primary-700 hover:text-primary-800 underline font-medium"
           >
             Tools
           </Link>
           ,{' '}
           <Link
             href="/all-tools"
-            className="text-primary-500 hover:text-primary-600 underline font-medium"
+            className="text-primary-700 hover:text-primary-800 underline font-medium"
           >
             All Tools
           </Link>
           , or the{' '}
           <Link
             href={categoryHref}
-            className="text-primary-500 hover:text-primary-600 underline font-medium"
+            className="text-primary-700 hover:text-primary-800 underline font-medium"
           >
             {categoryLabel}
           </Link>{' '}

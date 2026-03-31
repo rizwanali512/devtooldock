@@ -27,7 +27,7 @@ export default function DesktopNav() {
               key={item.href}
               href={item.href}
               className={cn(
-                'text-gray-500 dark:text-gray-400 text-sm px-4 py-1.5 rounded-full hover:text-primary-500 font-medium',
+                'text-gray-500 dark:text-gray-400 text-sm px-4 py-1.5 rounded-full hover:text-primary-700 font-medium',
                 {
                   'bg-white dark:bg-white/5 font-medium text-gray-800 dark:text-white/90 shadow-xs':
                     pathname === item.href,
@@ -58,7 +58,7 @@ export default function DesktopNav() {
                   }
                 }}
                 className={cn(
-                  'text-gray-500 dark:text-gray-400 hover:text-primary-500 group text-sm inline-flex gap-1 items-center px-4 py-1.5 font-medium rounded-full',
+                  'text-gray-500 dark:text-gray-400 hover:text-primary-700 group text-sm inline-flex gap-1 items-center px-4 py-1.5 font-medium rounded-full',
                   {
                     'bg-white dark:bg-white/5 font-medium text-gray-800 dark:text-white/90 shadow-xs':
                       item.items.some(({ href }) => pathname?.includes(href)),

@@ -61,11 +61,11 @@ export default function AIDeveloperToolsLandingPage() {
 
       <div className="wrapper -mt-10 pb-14 md:pb-28">
         <div className="max-w-3xl mx-auto">
-          <p className="text-sm text-gray-500 dark:text-gray-400 leading-6">
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-6">
             Looking for AI generators? Visit{' '}
             <Link
               href="/ai-tools"
-              className="text-primary-500 hover:text-primary-600 underline font-medium"
+              className="text-primary-700 hover:text-primary-800 underline font-medium"
             >
               /ai-tools
             </Link>{' '}

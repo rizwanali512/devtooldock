@@ -54,7 +54,7 @@ export default function ToolsPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search developer tools..."
-          className="w-full max-w-md mx-auto rounded-3xl border border-gray-300 dark:border-gray-700 px-4 py-3 text-sm text-gray-800 dark:text-white/90 bg-white dark:bg-white/5 placeholder:text-gray-400 focus:border-primary-300 focus:outline-0 focus:ring-2 focus:ring-primary-300/20 block"
+          className="w-full max-w-md mx-auto rounded-3xl border border-gray-300 dark:border-gray-700 px-4 py-3 text-sm text-gray-800 dark:text-white/90 bg-white dark:bg-white/5 placeholder:text-gray-400 focus-visible:border-primary-300 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark-primary block"
         />
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">

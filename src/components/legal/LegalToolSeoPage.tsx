@@ -152,7 +152,7 @@ export function LegalToolSeoPage({ tool }: { tool: LegalTool }) {
                 <li key={t.slug}>
                   <Link
                     href={t.href}
-                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 hover:underline text-sm md:text-base"
+                    className="text-primary-700 hover:text-primary-800 dark:hover:text-primary-400 hover:underline text-sm md:text-base"
                   >
                     {t.name}
                   </Link>

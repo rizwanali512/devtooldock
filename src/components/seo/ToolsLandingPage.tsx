@@ -146,14 +146,14 @@ export function ToolsLandingPage({
                 the full directory on{' '}
                 <Link
                   href="/tools"
-                  className="text-primary-500 hover:text-primary-600 underline font-medium"
+                  className="text-primary-700 hover:text-primary-800 underline font-medium"
                 >
                   Tools
                 </Link>{' '}
                 or{' '}
                 <Link
                   href="/all-tools"
-                  className="text-primary-500 hover:text-primary-600 underline font-medium"
+                  className="text-primary-700 hover:text-primary-800 underline font-medium"
                 >
                   All Tools
                 </Link>

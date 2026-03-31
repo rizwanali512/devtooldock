@@ -35,12 +35,12 @@ export function PopularTools({ excludeSlug, max = 24 }: Props) {
             <h3 className="mb-2 text-lg font-bold text-gray-800 dark:text-white/90">
               <Link
                 href={tool.href}
-                className="hover:text-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 rounded"
+                className="hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 rounded"
               >
                 {tool.name}
               </Link>
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 leading-6 flex-1">
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-6 flex-1">
               {tool.description}
             </p>
             <Link

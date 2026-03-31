@@ -35,7 +35,7 @@ export default function RightSidebar({ isOpen, toggleIsOpen }: PropsType) {
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full py-2.5 px-4 pr-12 dark:text-white dark:focus:border-gray-600 border border-gray-200 rounded-full dark:bg-dark-primary bg-white focus:outline-none focus:border focus:border-gray-300 text-sm placeholder:text-sm placeholder:text-gray-500 dark:border-gray-700 dark:placeholder:text-white/30 shadow-xs"
+              className="w-full py-2.5 px-4 pr-12 dark:text-white border border-gray-200 rounded-full dark:bg-dark-primary bg-white text-sm placeholder:text-sm placeholder:text-gray-500 dark:border-gray-700 dark:placeholder:text-white/30 shadow-xs focus-visible:border-primary-300 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark-primary"
             />
 
             <SearchIcon className="absolute right-3.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />

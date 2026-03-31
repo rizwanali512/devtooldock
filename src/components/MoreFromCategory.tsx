@@ -39,7 +39,7 @@ export function MoreFromCategory({ toolSlug, max = 6 }: Props) {
         Browse the full{' '}
         <Link
           href={categoryHref}
-          className="text-primary-500 hover:text-primary-600 underline font-medium"
+          className="text-primary-700 hover:text-primary-800 underline font-medium"
         >
           {label}
         </Link>{' '}
@@ -50,7 +50,7 @@ export function MoreFromCategory({ toolSlug, max = 6 }: Props) {
           <li key={t.slug}>
             <Link
               href={`/${t.slug}`}
-              className="text-primary-500 hover:text-primary-600 underline font-medium"
+              className="text-primary-700 hover:text-primary-800 underline font-medium"
             >
               {t.name}
             </Link>

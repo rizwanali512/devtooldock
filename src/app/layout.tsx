@@ -8,6 +8,8 @@ import './globals.css';
 import { ToasterProvider } from './providers/toaster';
 import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
+import { env } from '@/lib/env';
+import CommandPalette from '@/components/CommandPalette';
 
 const onest = Onest({
   subsets: ['latin'],
@@ -18,10 +20,10 @@ const defaultDescription =
   'DevToolDock provides free developer tools and AI utilities including JSON formatter, Base64 encoder, regex tester, UUID generator, and AI-powered developer tools.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.devtooldock.com'),
+  metadataBase: new URL(getBaseUrl()),
   title: {
     default: defaultTitle,
-    template: '%s | DevToolDock',
+    template: `%s | ${env.SITE_NAME}`,
   },
   description: defaultDescription,
   keywords: DEFAULT_KEYWORDS,
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     description: defaultDescription,
     type: 'website',
     url: getBaseUrl(),
-    siteName: 'DevToolDock',
+    siteName: env.SITE_NAME,
   },
   twitter: {
     card: 'summary_large_image',
@@ -90,7 +92,7 @@ export default function RootLayout({
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'DevToolDock',
+    name: env.SITE_NAME,
     url: getBaseUrl(),
   };
 
@@ -112,23 +114,28 @@ export default function RootLayout({
           <ToasterProvider />
 
           <div className="isolate flex flex-col flex-1">{children}</div>
+          <CommandPalette />
         </ThemeProvider>
         {/* Vercel Analytics & Speed Insights: once in root layout, before closing body */}
         <Analytics />
         <SpeedInsights />
 
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-          `}
-        </Script>
+        {env.GA_ID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${env.GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${env.GA_ID}');
+              `}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );

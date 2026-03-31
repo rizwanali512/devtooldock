@@ -50,7 +50,7 @@ export default function GeneratorInput({
                 submitButtonRef.current?.click();
               }
             }}
-            className="dark:text-white/90 focus:outline-0 placeholder:text-sm dark:placeholder:text-white/50 resize-none max-h-44 leading-5 w-full custom-scrollbar pb-8"
+            className="dark:text-white/90 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark-primary placeholder:text-sm dark:placeholder:text-white/50 resize-none max-h-44 leading-5 w-full custom-scrollbar pb-8"
             required
             rows={1}
           />

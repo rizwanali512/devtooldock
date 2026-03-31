@@ -15,7 +15,7 @@ export default function SidebarWidget() {
             </p>
           </div>
 
-          <span className="bg-white dark:bg-white/10 text-[#344054] dark:text-white/70 px-2 py-0.5 text-xs font-medium rounded-full">
+          <span className="bg-white dark:bg-white/10 text-[#344054] dark:text-white/90 px-2 py-0.5 text-xs font-medium rounded-full">
             Free
           </span>
         </div>
