@@ -40,6 +40,8 @@ export default function Header() {
                 setMobileMenuOpen(!mobileMenuOpen);
               }}
               type="button"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              title={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               className="order-last shrink-0 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark-primary lg:hidden"
             >
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}

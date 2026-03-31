@@ -118,7 +118,7 @@ export default function ToolsPage() {
           </h2>
           <Link
             href="/ai-tools"
-            className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+            className="text-sm font-medium text-primary-700 hover:text-primary-800 hover:underline"
           >
             View all AI tools
           </Link>

@@ -67,7 +67,7 @@ export default async function Home() {
             </h2>
             <Link
               href="/tools"
-              className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+              className="text-sm font-medium text-primary-700 hover:text-primary-800 hover:underline"
             >
               Browse all tools
             </Link>
@@ -103,7 +103,7 @@ export default async function Home() {
             </h2>
             <Link
               href="/free-developer-tools"
-              className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+              className="text-sm font-medium text-primary-700 hover:text-primary-800 hover:underline"
             >
               Explore tool hubs
             </Link>
@@ -166,7 +166,7 @@ export default async function Home() {
             </h2>
             <Link
               href="/legal-tools"
-              className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+              className="text-sm font-medium text-primary-700 hover:text-primary-800 hover:underline"
             >
               View all legal tools
             </Link>
@@ -209,7 +209,7 @@ export default async function Home() {
             </h2>
             <Link
               href="/ai-tools"
-              className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+              className="text-sm font-medium text-primary-700 hover:text-primary-800 hover:underline"
             >
               View all AI tools
             </Link>
@@ -244,7 +244,7 @@ export default async function Home() {
             </h2>
             <Link
               href="/categories"
-              className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+              className="text-sm font-medium text-primary-700 hover:text-primary-800 hover:underline"
             >
               View all categories
             </Link>
@@ -276,7 +276,7 @@ export default async function Home() {
             </h2>
             <Link
               href="/blog"
-              className="text-sm font-medium text-primary-500 hover:text-primary-600 hover:underline"
+              className="text-sm font-medium text-primary-700 hover:text-primary-800 hover:underline"
             >
               Read the blog
             </Link>

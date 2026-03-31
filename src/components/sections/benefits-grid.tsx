@@ -10,7 +10,7 @@ export default function BenefitsGrid() {
           <h2 className="max-w-lg mx-auto mb-3 font-bold text-center text-white dark:text-white/90 text-3xl md:text-title-lg">
             Browse tools by category.
           </h2>
-          <p className="max-w-2xl mx-auto text-base dark: font-normal leading-6 text-white/90">
+          <p className="max-w-2xl mx-auto text-base dark: font-normal leading-6 text-white">
             Browse tools organized into categories to quickly find the utility you need. JSON Tools, Encoding Tools, Security Tools, Text Tools, File Converters, Date & Time Tools, Color Tools, URL Tools, AI Developer Tools, and more.
           </p>
         </div>
@@ -22,7 +22,7 @@ export default function BenefitsGrid() {
                   <h3 className="font-bold text-white text-2xl md:text-3xl mb-4">
                     Developer tools that run in your browser
                   </h3>
-                  <p className="text-base text-white/90">
+                  <p className="text-base text-white">
                     Format JSON, decode JWTs, test regex, and use AI to generate code—all without leaving the page.
                   </p>
                 </div>
@@ -183,7 +183,7 @@ export default function BenefitsGrid() {
                   <h3 className="font-bold max-w-xs text-white text-2xl md:text-3xl mb-4">
                     Boost your productivity with free developer utilities.
                   </h3>
-                  <p className="text-base max-w-sm text-white/90">
+                  <p className="text-base max-w-sm text-white">
                     No login, no limits. Use JSON formatter, Base64, JWT decoder, and more every day.
                   </p>
                 </div>
@@ -195,7 +195,7 @@ export default function BenefitsGrid() {
                   <h3 className="font-bold text-white text-2xl md:text-3xl mb-4">
                     AI developer tools when you need them
                   </h3>
-                  <p className="text-base text-white/90 mb-8">
+                  <p className="text-base text-white mb-8">
                     AI-powered utilities designed to help developers generate code, automate tasks, and improve productivity. Text Generator, Code Generator, Image Generator, Email Generator, SQL Generator, Regex Generator, Commit Message Generator, API Documentation Generator, Error Explainer, Code Refactor Tool, and more.
                   </p>
                   <Link
