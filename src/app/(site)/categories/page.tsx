@@ -5,24 +5,24 @@ import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Tool Categories',
+  title: 'Developer Tools Categories | Explore AI coding tools, Security, APIs and More',
   description:
-    'Browse developer tools organized by categories including JSON tools, encoding tools, security tools, text tools, and more.',
+    'View all developer tool categories including AI tools, APIs, DevOps, databases, testing tools, and more. Discover free AI tools to improve your development workflow.',
   keywords: `${DEFAULT_KEYWORDS}, tool categories, json tools, encoding tools`,
   alternates: { canonical: getBaseUrl() + '/categories' },
   openGraph: {
-    title: 'Tool Categories – DevToolDock',
+    title: 'Developer Tools Categories | Explore AI coding tools, Security, APIs and More',
     description:
-      'Browse developer tools organized by categories including JSON tools, encoding tools, security tools, text tools, and more.',
+      'View all developer tool categories including AI tools, APIs, DevOps, databases, testing tools, and more. Discover free AI tools to improve your development workflow.',
     url: getBaseUrl() + '/categories',
     type: 'website',
     siteName: 'DevToolDock',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tool Categories – DevToolDock',
+    title: 'Developer Tools Categories | Explore AI coding tools, Security, APIs and More',
     description:
-      'Browse developer tools organized by categories including JSON tools, encoding tools, security tools, and more.',
+      'View all developer tool categories including AI tools, APIs, DevOps, databases, testing tools, and more. Discover free AI tools to improve your development workflow.',
   },
 };
 

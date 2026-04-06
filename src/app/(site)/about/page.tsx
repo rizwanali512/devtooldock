@@ -4,24 +4,24 @@ import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About Us | Free Developer Tools and AI Tools Platform',
   description:
-    'DevToolDock is a collection of free developer tools and AI-powered utilities designed to help developers work faster. The platform includes JSON tools, encoding utilities, regex testers, file converters, and AI tools for generating code and automation tasks.',
+    'Learn about our mission to provide free developer tools and AI-powered utilities. We help developers build faster with easy-to-use tools for coding, automation, and productivity.',
   keywords: DEFAULT_KEYWORDS,
   alternates: { canonical: getBaseUrl() + '/about' },
   openGraph: {
-    title: 'About DevToolDock – Free Developer Tools & AI Utilities',
+    title: 'About Us | Free Developer Tools and AI Tools Platform',
     description:
-      'DevToolDock is a collection of free developer tools and AI-powered utilities designed to help developers work faster. JSON tools, encoding utilities, regex testers, file converters, and AI tools for code and automation.',
+      'Learn about our mission to provide free developer tools and AI-powered utilities. We help developers build faster with easy-to-use tools for coding, automation, and productivity.',
     url: getBaseUrl() + '/about',
     type: 'website',
     siteName: 'DevToolDock',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About DevToolDock – Free Developer Tools & AI Utilities',
+    title: 'About Us | Free Developer Tools and AI Tools Platform',
     description:
-      'DevToolDock is a collection of free developer tools and AI-powered utilities designed to help developers work faster.',
+      'Learn about our mission to provide free developer tools and AI-powered utilities. We help developers build faster with easy-to-use tools for coding, automation, and productivity.',
   },
 };
 

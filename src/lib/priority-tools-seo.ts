@@ -35,9 +35,9 @@ export function getPriorityToolMetadata(slug: string): {
     { title: string; description: string; keywords: string }
   > = {
     'json-formatter': {
-      title: 'JSON Formatter – Beautify, Validate & Pretty-Print JSON Online',
+      title: 'Best and free JSON Formatter and validator Online | JSON viewer and beautifier',
       description:
-        'Free JSON formatter and validator: beautify minified JSON, fix syntax errors, and copy clean output for APIs, configs, and docs. Fast browser-based JSON pretty printer.',
+        'Format, validate, and beautify JSON instantly with our free JSON formatter tool. Minify or prettify JSON data, detect errors, and improve readability with fast, secure, browser-based processing.',
       keywords:
         'json formatter, json validator, pretty print json, beautify json, online json formatter, json lint',
     },
@@ -77,9 +77,9 @@ export function getPriorityToolMetadata(slug: string): {
         'timestamp converter, unix timestamp converter, epoch converter, date to timestamp',
     },
     'json-validator': {
-      title: 'JSON Validator – Check JSON Syntax & Errors Online',
+      title: 'Free JSON Validator Tool | Check and Fix JSON Errors Online',
       description:
-        'Validate JSON syntax and get clear error messages. Fix trailing commas, quotes, and braces before shipping configs, fixtures, or API payloads.',
+        'Validate JSON data instantly with our free JSON validator. Detect syntax errors, fix issues, and ensure valid JSON format with fast, secure, browser-based validation.',
       keywords:
         'json validator, validate json online, json syntax check, json lint',
     },

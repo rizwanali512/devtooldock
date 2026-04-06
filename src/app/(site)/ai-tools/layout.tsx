@@ -3,24 +3,24 @@ import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'AI Tools',
+  title: '20 Best free AI Tools Online | use for Text, code, and image generation',
   description:
-    'AI-powered developer tools: code generation, SQL queries, text generation, commit messages, API docs, and more. Improve productivity with AI utilities.',
+    'Discover the best AI tools online for coding, writing, design, and productivity. Use free AI tools to automate tasks, boost efficiency, and build smarter solutions.',
   keywords: `${DEFAULT_KEYWORDS}, ai code generator, sql generator, text generator`,
   alternates: { canonical: getBaseUrl() + '/ai-tools' },
   openGraph: {
-    title: 'AI Developer Tools – Code, SQL, Docs & More',
+    title: '20 Best free AI Tools Online | use for Text, code, and image generation',
     description:
-      'AI-powered developer tools: code generation, SQL queries, text generation, commit messages, API docs, and more. Improve productivity with AI utilities.',
+      'Discover the best AI tools online for coding, writing, design, and productivity. Use free AI tools to automate tasks, boost efficiency, and build smarter solutions.',
     url: getBaseUrl() + '/ai-tools',
     type: 'website',
     siteName: 'DevToolDock',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Developer Tools – Code, SQL, Docs & More',
+    title: '20 Best free AI Tools Online | use for Text, code, and image generation',
     description:
-      'AI-powered developer tools: code generation, SQL queries, text generation, and more. Improve productivity with AI utilities.',
+      'Discover the best AI tools online for coding, writing, design, and productivity. Use free AI tools to automate tasks, boost efficiency, and build smarter solutions.',
   },
 };
 

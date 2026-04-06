@@ -18,24 +18,24 @@ import { getTopTools } from '@/lib/tools';
 import { CATEGORY_META } from '@/lib/categories';
 
 export const metadata: Metadata = {
-  title: 'DevToolDock – Free Developer Tools & AI Utilities',
+  title: 'Best AI Tools for Coding | Free AI coding assistants for developers',
   description:
-    'DevToolDock provides free developer tools and AI utilities including JSON formatter, Base64 encoder, regex tester, UUID generator, and AI-powered developer tools.',
+    'Use the best AI tools for coding, including 20 free AI coding assistants for developers. Boost productivity, write cleaner code, and build faster with top AI-powered tools designed for modern programmers.',
   keywords: DEFAULT_KEYWORDS,
   alternates: { canonical: getBaseUrl() + '/' },
   openGraph: {
-    title: 'DevToolDock – Free Developer Tools & AI Utilities',
+    title: 'Best AI Tools for Coding | Free AI coding assistants for developers',
     description:
-      'DevToolDock provides free developer tools and AI utilities including JSON formatter, Base64 encoder, regex tester, UUID generator, and AI-powered developer tools.',
+      'Use the best AI tools for coding, including 20 free AI coding assistants for developers. Boost productivity, write cleaner code, and build faster with top AI-powered tools designed for modern programmers.',
     url: getBaseUrl() + '/',
     type: 'website',
     siteName: 'DevToolDock',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DevToolDock – Free Developer Tools & AI Utilities',
+    title: 'Best AI Tools for Coding | Free AI coding assistants for developers',
     description:
-      'DevToolDock provides free developer tools and AI utilities including JSON formatter, Base64 encoder, regex tester, UUID generator, and AI-powered developer tools.',
+      'Use the best AI tools for coding, including 20 free AI coding assistants for developers. Boost productivity, write cleaner code, and build faster with top AI-powered tools designed for modern programmers.',
   },
 };
 

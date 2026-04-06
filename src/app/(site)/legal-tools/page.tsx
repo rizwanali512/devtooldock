@@ -10,24 +10,24 @@ const path = '/legal-tools';
 const canonical = getBaseUrl() + path;
 
 export const metadata: Metadata = {
-  title: 'Legal Tools | DevToolDock',
+  title: 'Free Legal Tools for Websites | Generate Privacy Policies and Terms Instantly',
   description:
-    'Free legal tools to generate website policies: privacy policy generator, terms & conditions generator, cookie policy generator, refund policy generator, and more.',
+    'Create legal documents easily with free legal tools including privacy policy generators, terms and conditions, disclaimers, and compliance tools. Simplify legal processes for your website or business in minutes.',
   keywords: `${DEFAULT_KEYWORDS}, legal tools, privacy policy generator, terms and conditions generator, cookie policy generator, refund policy generator, disclaimer generator`,
   alternates: { canonical },
   openGraph: {
-    title: 'Legal Tools | DevToolDock',
+    title: 'Free Legal Tools for Websites | Generate Privacy Policies and Terms Instantly',
     description:
-      'Free legal tools to generate website policies: privacy policy generator, terms & conditions generator, cookie policy generator, refund policy generator, and more.',
+      'Create legal documents easily with free legal tools including privacy policy generators, terms and conditions, disclaimers, and compliance tools. Simplify legal processes for your website or business in minutes.',
     url: canonical,
     type: 'website',
     siteName: 'DevToolDock',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Legal Tools | DevToolDock',
+    title: 'Free Legal Tools for Websites | Generate Privacy Policies and Terms Instantly',
     description:
-      'Free legal tools to generate website policies: privacy policy generator, terms & conditions generator, cookie policy generator, refund policy generator, and more.',
+      'Create legal documents easily with free legal tools including privacy policy generators, terms and conditions, disclaimers, and compliance tools. Simplify legal processes for your website or business in minutes.',
   },
 };
 

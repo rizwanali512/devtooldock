@@ -5,24 +5,24 @@ import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Developer Blog',
+  title: 'Read Tech Blogs for Developers | AI Tools, Tutorials and Coding Guides',
   description:
-    'Guides, tutorials, and resources for developers. Learn how to use our tools and best practices.',
+    'Discover free ai coding tools, in-depth tutorials, developer assistants, AI insights, and coding tips. Stay ahead with the latest trends, guides, and resources for developers.',
   keywords: `${DEFAULT_KEYWORDS}, developer blog, json tutorial, base64 guide`,
   alternates: { canonical: getBaseUrl() + '/blog' },
   openGraph: {
-    title: 'Developer Blog – Guides & Tutorials for Developers',
+    title: 'Read Tech Blogs for Developers | AI Tools, Tutorials and Coding Guides',
     description:
-      'Guides, tutorials, and resources for developers. Learn how to use our tools and best practices.',
+      'Discover free ai coding tools, in-depth tutorials, developer assistants, AI insights, and coding tips. Stay ahead with the latest trends, guides, and resources for developers.',
     url: getBaseUrl() + '/blog',
     type: 'website',
     siteName: 'DevToolDock',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Developer Blog – Guides & Tutorials for Developers',
+    title: 'Read Tech Blogs for Developers | AI Tools, Tutorials and Coding Guides',
     description:
-      'Guides, tutorials, and resources for developers. Learn how to use our tools and best practices.',
+      'Discover free ai coding tools, in-depth tutorials, developer assistants, AI insights, and coding tips. Stay ahead with the latest trends, guides, and resources for developers.',
   },
   robots: { index: true, follow: true },
 };

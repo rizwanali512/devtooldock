@@ -6,24 +6,24 @@ import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Contact Us – Get in Touch',
+  title: 'Contact Us | Get Support and Share Feedback',
   description:
-    'Have a question, feedback, or need help with our developer tools? Contact us and we’ll get back to you as soon as we can.',
+    'Contact us for support, feedback, bug reports, or feature requests. Reach out to improve your experience with our developer tools and get assistance quickly and easily.',
   keywords: DEFAULT_KEYWORDS,
   alternates: { canonical: getBaseUrl() + '/contact' },
   openGraph: {
-    title: 'Contact Us – Get in Touch',
+    title: 'Contact Us | Get Support and Share Feedback',
     description:
-      'Have a question, feedback, or need help with our developer tools? Contact us and we’ll get back to you as soon as we can.',
+      'Contact us for support, feedback, bug reports, or feature requests. Reach out to improve your experience with our developer tools and get assistance quickly and easily.',
     url: getBaseUrl() + '/contact',
     type: 'website',
     siteName: 'DevToolDock',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Us – Get in Touch',
+    title: 'Contact Us | Get Support and Share Feedback',
     description:
-      "Have a question, feedback, or need help with our developer tools? Contact us and we'll get back to you as soon as we can.",
+      'Contact us for support, feedback, bug reports, or feature requests. Reach out to improve your experience with our developer tools and get assistance quickly and easily.',
   },
 };
 
