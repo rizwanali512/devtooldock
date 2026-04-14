@@ -14,7 +14,8 @@ export default function GeneratorSidebar({
       }`}
     >
       <div className="flex flex-col h-full">
-        <div className="flex-[1_1_0] flex flex-col justify-between overflow-y-auto custom-scrollbar">
+        {/* Scroll only this top section */}
+        <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
           <GeneratorSidebarNav />
 
           <div className="px-3 space-y-7 pb-6">
@@ -65,8 +66,12 @@ export default function GeneratorSidebar({
                 </Link>
               </nav>
             </div>
-            <SidebarWidget />
           </div>
+        </div>
+
+        {/* Keep this bottom section fixed */}
+        <div className="shrink-0 px-3 pb-6">
+          <SidebarWidget />
         </div>
       </div>
     </aside>

@@ -22,8 +22,6 @@ export function getToolPrompt(tool: AIToolSlug | string): string {
       return 'Explain programming errors simply. Provide root cause, common fixes, and a quick checklist.';
     case 'code-refactor':
       return 'Refactor code for better performance and readability. Preserve behavior, improve naming, reduce complexity, and point out trade-offs.';
-    case 'image-generator':
-      return 'Generate an image prompt. Return a clean, detailed image prompt suitable for an image model.';
     default:
       return 'Assist the user with content generation. Be accurate, structured, and actionable.';
   }

@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'UUID Validator',
-  description: 'Validate UUID strings (v1–v5) online in your browser.',
+  title: 'Free UUID Validator online | Check UUID Validity free in Seconds',
+  description:
+    'Is your UUID valid? Verify UUID format, detect errors, and check version instantly. Perfect for debugging APIs, validating database IDs, and ensuring clean data',
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

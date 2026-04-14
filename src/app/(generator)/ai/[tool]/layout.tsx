@@ -24,9 +24,11 @@ export default async function ToolLayout({ children, params }: Props) {
   if (!tool) notFound();
 
   return (
-    <main className="flex flex-col bg-gray-50 dark:bg-gray-900">
-      <div className="flex-[1_1_0]">
-        <div className="relative flex flex-col h-full isolate">{children}</div>
+    <main className="flex flex-col flex-1 min-h-0 bg-gray-50 dark:bg-gray-900">
+      <div className="flex-1 min-h-0">
+        <div className="relative flex flex-col flex-1 min-h-0 isolate">
+          {children}
+        </div>
       </div>
     </main>
   );

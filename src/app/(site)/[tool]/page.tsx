@@ -6,6 +6,7 @@ import { DEFAULT_KEYWORDS } from '@/lib/seo';
 import { generateToolSchema } from '@/lib/generateToolSchema';
 import { getPriorityToolMetadata } from '@/lib/priority-tools-seo';
 import { SEOPageTemplate } from '@/components/SEOPageTemplate';
+import { toolSeoMeta } from '@/lib/toolSeoMeta';
 import {
   SEO_PAGES_PUBLISHED,
   buildFaq,
@@ -135,6 +136,30 @@ export async function generateMetadata({
   params: Promise<{ tool: string }>;
 }): Promise<Metadata> {
   const { tool } = await params;
+
+  const exactMeta = toolSeoMeta[tool];
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? getBaseUrl();
+  if (exactMeta) {
+    const canonical = `${siteUrl}/${tool}`;
+    return {
+      title: { absolute: exactMeta.title },
+      description: exactMeta.description,
+      alternates: { canonical },
+      openGraph: {
+        title: exactMeta.title,
+        description: exactMeta.description,
+        url: canonical,
+        type: 'website',
+        siteName: 'DevToolDock',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: exactMeta.title,
+        description: exactMeta.description,
+      },
+    };
+  }
+
   const t = tools.find((x) => x.slug === tool);
   const seoPage = getSeoPageBySlug(tool);
   const legalTool = getLegalTool(tool);

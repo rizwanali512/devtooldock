@@ -58,6 +58,12 @@ export default function CommandPalette() {
   }, []);
 
   useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener('command-palette:open', onOpen);
+    return () => window.removeEventListener('command-palette:open', onOpen);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
     setActiveIndex(0);
     const t = setTimeout(() => inputRef.current?.focus(), 0);

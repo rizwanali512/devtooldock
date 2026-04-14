@@ -10,11 +10,6 @@ export const aiTools = [
     description: 'Generate code from prompts',
   },
   {
-    name: 'Image Generator',
-    slug: 'image-generator',
-    description: 'Generate images using AI',
-  },
-  {
     name: 'Email Generator',
     slug: 'email-generator',
     description: 'Generate professional emails',

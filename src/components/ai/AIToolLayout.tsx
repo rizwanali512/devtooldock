@@ -14,7 +14,7 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const bottomRef = useRef<HTMLDivElement | null>(null);
+  const messagesScrollRef = useRef<HTMLDivElement | null>(null);
 
   type ChatMessage = { role: 'user' | 'assistant'; content: string };
 
@@ -33,7 +33,12 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
   const showComingSoon = false;
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = messagesScrollRef.current;
+    if (!el) return;
+    // Auto-scroll only the messages container (not the page/center column).
+    requestAnimationFrame(() => {
+      el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+    });
   }, [messages, loading]);
 
   const tool = getAITool(toolSlug);
@@ -123,9 +128,9 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
   };
 
   return (
-    <div className="contents">
-      <div className="flex-[1_1_0] overflow-y-auto custom-scrollbar px-5 pt-12 pb-6 md:px-12">
-        <div className="text-gray-800 dark:text-white/90 space-y-6 max-w-none prose dark:prose-invert">
+    <div className="flex flex-col min-h-0 flex-1">
+      <div className="flex-1 min-h-0 overflow-hidden px-5 pt-12 pb-6 md:px-12">
+        <div className="text-gray-800 dark:text-white/90 max-w-none prose dark:prose-invert h-full">
           {showComingSoon ? (
             <div className="flex flex-col items-center justify-center min-h-[50vh] text-center px-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-amber-300 dark:border-amber-500/60 bg-amber-50 dark:bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-800 dark:text-amber-200 mb-6">
@@ -143,8 +148,8 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
               </p>
             </div>
           ) : (
-            <div className="space-y-6 max-w-3xl mx-auto">
-              <div className="text-center">
+            <div className="max-w-3xl mx-auto h-full flex flex-col min-h-0 gap-6">
+              <div className="text-center shrink-0">
                 <h2 className="mb-2 font-bold text-gray-800 dark:text-white/90 text-3xl md:text-4xl">
                   {tool.name}
                 </h2>
@@ -153,8 +158,8 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
                 </p>
               </div>
 
-              <div className="rounded-[20px] border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6">
-                <div className="flex items-center justify-between gap-3">
+              <div className="rounded-[20px] border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 flex flex-col min-h-0 flex-1">
+                <div className="flex items-center justify-between gap-3 shrink-0">
                   <h3 className="m-0 text-lg font-bold text-gray-800 dark:text-white/90">
                     Chat
                   </h3>
@@ -174,7 +179,10 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
                   </div>
                 ) : null}
 
-                <div className="mt-4 space-y-3">
+                <div
+                  ref={messagesScrollRef}
+                  className="mt-4 flex-1 min-h-0 overflow-y-auto custom-scrollbar space-y-3 pr-1"
+                >
                   {messages.map((msg, index) => (
                     <div
                       key={index}
@@ -204,8 +212,6 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
                       </div>
                     </div>
                   ))}
-
-                  <div ref={bottomRef} />
                 </div>
               </div>
             </div>
@@ -213,7 +219,7 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
         </div>
       </div>
 
-      <div className="px-5 md:px-12">
+      <div className="shrink-0 px-5 md:px-12">
         <form onSubmit={(e) => e.preventDefault()}>
           <GeneratorInput
             value={inputValue}

@@ -1,6 +1,17 @@
 'use client';
 
-import { SearchIcon } from '@/icons/icons';
+import {
+  ApiDocGeneratorIcon,
+  CodeGeneratorIcon,
+  CodeRefactorIcon,
+  CommitMessageGeneratorIcon,
+  EmailGeneratorIcon,
+  ErrorExplainerIcon,
+  RegexGeneratorIcon,
+  SearchIcon,
+  SqlGeneratorIcon,
+  TextGeneratorIcon,
+} from '@/icons/icons';
 import { getAIToolsBySearch } from '@/lib/ai-tools';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
@@ -18,6 +29,31 @@ export default function RightSidebar({ isOpen, toggleIsOpen }: PropsType) {
     () => getAIToolsBySearch(searchQuery),
     [searchQuery]
   );
+
+  const IconForTool = (slug: string) => {
+    switch (slug) {
+      case 'text-generator':
+        return TextGeneratorIcon;
+      case 'code-generator':
+        return CodeGeneratorIcon;
+      case 'email-generator':
+        return EmailGeneratorIcon;
+      case 'sql-generator':
+        return SqlGeneratorIcon;
+      case 'regex-generator':
+        return RegexGeneratorIcon;
+      case 'commit-message-generator':
+        return CommitMessageGeneratorIcon;
+      case 'api-doc-generator':
+        return ApiDocGeneratorIcon;
+      case 'error-explainer':
+        return ErrorExplainerIcon;
+      case 'code-refactor':
+        return CodeRefactorIcon;
+      default:
+        return TextGeneratorIcon;
+    }
+  };
 
   return (
     <aside
@@ -47,14 +83,20 @@ export default function RightSidebar({ isOpen, toggleIsOpen }: PropsType) {
             AI Tools
           </h2>
           {filteredTools.map((tool) => (
+            (() => {
+              const Icon = IconForTool(tool.slug);
+              return (
             <Link
               key={tool.slug}
               href={`/ai/${tool.slug}`}
               onClick={toggleIsOpen}
-              className="block px-3 py-2 text-sm font-medium rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-800 dark:hover:text-white/90 transition"
+              className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-800 dark:hover:text-white/90 transition"
             >
+              <Icon className="size-7 shrink-0" />
               {tool.name}
             </Link>
+              );
+            })()
           ))}
           {filteredTools.length === 0 && (
             <p className="px-3 py-2 text-sm text-gray-400 dark:text-gray-500">

@@ -1,6 +1,16 @@
 'use client';
 
-import { TextGeneratorIcon } from '@/icons/icons';
+import {
+  ApiDocGeneratorIcon,
+  CodeGeneratorIcon,
+  CodeRefactorIcon,
+  CommitMessageGeneratorIcon,
+  EmailGeneratorIcon,
+  ErrorExplainerIcon,
+  RegexGeneratorIcon,
+  SqlGeneratorIcon,
+  TextGeneratorIcon,
+} from '@/icons/icons';
 import { cn } from '@/lib/utils';
 import { aiTools } from '@/lib/ai-tools';
 import Link from 'next/link';
@@ -8,6 +18,31 @@ import { usePathname } from 'next/navigation';
 
 export default function GeneratorSidebarNav() {
   const pathname = usePathname();
+
+  const IconForTool = (slug: string) => {
+    switch (slug) {
+      case 'text-generator':
+        return TextGeneratorIcon;
+      case 'code-generator':
+        return CodeGeneratorIcon;
+      case 'email-generator':
+        return EmailGeneratorIcon;
+      case 'sql-generator':
+        return SqlGeneratorIcon;
+      case 'regex-generator':
+        return RegexGeneratorIcon;
+      case 'commit-message-generator':
+        return CommitMessageGeneratorIcon;
+      case 'api-doc-generator':
+        return ApiDocGeneratorIcon;
+      case 'error-explainer':
+        return ErrorExplainerIcon;
+      case 'code-refactor':
+        return CodeRefactorIcon;
+      default:
+        return TextGeneratorIcon;
+    }
+  };
 
   return (
     <div className="px-5 py-6">
@@ -18,6 +53,7 @@ export default function GeneratorSidebarNav() {
         {aiTools.map((tool) => {
           const href = `/ai/${tool.slug}`;
           const isActive = pathname === href || pathname.startsWith(href + '/');
+          const Icon = IconForTool(tool.slug);
 
           return (
             <Link
@@ -30,7 +66,7 @@ export default function GeneratorSidebarNav() {
                   : 'dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white/90 text-gray-500 hover:bg-gray-100 hover:text-gray-800'
               )}
             >
-              <TextGeneratorIcon className="size-8" />
+              <Icon className="size-8" />
               {tool.name}
             </Link>
           );

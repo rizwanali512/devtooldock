@@ -1,5 +1,5 @@
 'use client';
-import { CloseIcon, MenuIcon } from '@/icons/icons';
+import { CloseIcon, MenuIcon, SearchIcon } from '@/icons/icons';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import DesktopNav from './desktop-nav';
@@ -8,7 +8,6 @@ import ThemeToggle from './theme-toggle';
 import { usePathname } from 'next/navigation';
 import { features } from '@/config/features';
 import BrandLogo from '@/components/BrandLogo';
-import HeaderSearch from '@/components/HeaderSearch';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,9 +28,15 @@ export default function Header() {
           <DesktopNav />
 
           <div className="flex items-center gap-4 justify-self-end">
-            <div className="hidden lg:block w-[360px]">
-              <HeaderSearch />
-            </div>
+            <button
+              type="button"
+              aria-label="Search"
+              title="Search (⌘K / Ctrl+K)"
+              onClick={() => window.dispatchEvent(new Event('command-palette:open'))}
+              className="inline-flex items-center justify-center size-11 rounded-full border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-800 dark:hover:text-white/90 transition focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-dark-primary"
+            >
+              <SearchIcon />
+            </button>
             <ThemeToggle />
 
             <button
@@ -64,10 +69,6 @@ export default function Header() {
               </>
             )}
           </div>
-        </div>
-
-        <div className="mt-3 lg:hidden">
-          <HeaderSearch />
         </div>
       </div>
 

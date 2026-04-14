@@ -627,6 +627,264 @@ export function EmailGeneratorIcon({ className = '' }: { className?: string }) {
   );
 }
 
+export function SqlGeneratorIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill="none"
+    >
+      <path
+        d="M17 7.25c-4.59 0-8.25 1.74-8.25 3.9v11.7c0 2.16 3.66 3.9 8.25 3.9s8.25-1.74 8.25-3.9V11.15c0-2.16-3.66-3.9-8.25-3.9Z"
+        fill="url(#paint0_radial_sql)"
+      />
+      <path
+        d="M8.75 11.15c0 2.16 3.66 3.9 8.25 3.9s8.25-1.74 8.25-3.9"
+        stroke="white"
+        strokeOpacity="0.65"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8.75 17c0 2.16 3.66 3.9 8.25 3.9s8.25-1.74 8.25-3.9"
+        stroke="white"
+        strokeOpacity="0.35"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+      <defs>
+        <radialGradient
+          id="paint0_radial_sql"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(18.5 23.5) rotate(-58) scale(22 22)"
+        >
+          <stop stopColor="#10B981" />
+          <stop offset="1" stopColor="#A7F3D0" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
+export function RegexGeneratorIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill="none"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12.2 9.3c.4.3.46.87.15 1.26-1.2 1.5-1.8 3.35-1.8 5.44s.6 3.94 1.8 5.44c.31.39.25.96-.15 1.26-.39.31-.96.25-1.26-.15-1.46-1.83-2.19-4.04-2.19-6.55s.73-4.72 2.19-6.55c.3-.4.87-.46 1.26-.15Zm9.6 0c.39-.31.96-.25 1.26.15 1.46 1.83 2.19 4.04 2.19 6.55s-.73 4.72-2.19 6.55c-.3.4-.87.46-1.26.15-.4-.3-.46-.87-.15-1.26 1.2-1.5 1.8-3.35 1.8-5.44s-.6-3.94-1.8-5.44c-.31-.39-.25-.96.15-1.26Z"
+        fill="url(#paint0_radial_regex)"
+      />
+      <path
+        d="M14.1 18.65 17 15.75l2.9 2.9M19.9 13.35 17 16.25l-2.9-2.9"
+        stroke="white"
+        strokeOpacity="0.85"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <defs>
+        <radialGradient
+          id="paint0_radial_regex"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(18.5 23.5) rotate(-58) scale(22 22)"
+        >
+          <stop stopColor="#8B5CF6" />
+          <stop offset="1" stopColor="#DDD6FE" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
+export function CommitMessageGeneratorIcon({
+  className = '',
+}: {
+  className?: string;
+}) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill="none"
+    >
+      <path
+        d="M17 8.25a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5Z"
+        fill="url(#paint0_radial_commit)"
+      />
+      <path
+        d="M7.75 12.5h5.6m7.3 0h5.6"
+        stroke="white"
+        strokeOpacity="0.75"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M17 15.2a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4Z"
+        fill="white"
+        fillOpacity="0.85"
+      />
+      <defs>
+        <radialGradient
+          id="paint0_radial_commit"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(18.5 23.5) rotate(-58) scale(22 22)"
+        >
+          <stop stopColor="#F97316" />
+          <stop offset="1" stopColor="#FED7AA" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
+export function ApiDocGeneratorIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill="none"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M11.25 8.5c0-.69.56-1.25 1.25-1.25h6.9c.33 0 .65.13.88.37l3.6 3.6c.24.23.37.55.37.88v11.4c0 .69-.56 1.25-1.25 1.25H12.5c-.69 0-1.25-.56-1.25-1.25V8.5Z"
+        fill="url(#paint0_radial_api)"
+      />
+      <path
+        d="M14 14h7M14 17.5h7M14 21h5"
+        stroke="white"
+        strokeOpacity="0.8"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+      />
+      <defs>
+        <radialGradient
+          id="paint0_radial_api"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(18.5 23.5) rotate(-58) scale(22 22)"
+        >
+          <stop stopColor="#06B6D4" />
+          <stop offset="1" stopColor="#BAE6FD" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
+export function ErrorExplainerIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill="none"
+    >
+      <path
+        d="M17 7.5c.52 0 1 .28 1.25.74l7.6 13.8c.47.86-.14 1.96-1.12 1.96H9.27c-.98 0-1.59-1.1-1.12-1.96l7.6-13.8c.25-.46.73-.74 1.25-.74Z"
+        fill="url(#paint0_radial_err)"
+      />
+      <path
+        d="M17 12v5.3"
+        stroke="white"
+        strokeOpacity="0.85"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M17 20.7h.01"
+        stroke="white"
+        strokeOpacity="0.95"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+      <defs>
+        <radialGradient
+          id="paint0_radial_err"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(18.5 23.5) rotate(-58) scale(22 22)"
+        >
+          <stop stopColor="#EF4444" />
+          <stop offset="1" stopColor="#FECACA" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
+export function CodeRefactorIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill="none"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.2 11.2a1 1 0 0 1 1.41 0l2.35 2.35a1 1 0 0 1 0 1.41l-2.35 2.35a1 1 0 1 1-1.41-1.41l1.64-1.64-1.64-1.64a1 1 0 0 1 0-1.42Zm13.6 0a1 1 0 0 1 0 1.41l-1.64 1.64 1.64 1.64a1 1 0 1 1-1.41 1.41l-2.35-2.35a1 1 0 0 1 0-1.41l2.35-2.35a1 1 0 0 1 1.41 0Z"
+        fill="url(#paint0_radial_ref)"
+      />
+      <path
+        d="M14.3 22.2 19.7 11.8"
+        stroke="white"
+        strokeOpacity="0.8"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+      <defs>
+        <radialGradient
+          id="paint0_radial_ref"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(18.5 23.5) rotate(-58) scale(22 22)"
+        >
+          <stop stopColor="#3B82F6" />
+          <stop offset="1" stopColor="#BFDBFE" />
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
 export function CheckIconSm() {
   return (
     <svg

@@ -27,7 +27,7 @@ export default function GeneratorWrapper({
         toggleRightSidebar={toggleRightSidebar}
       />
 
-      <div className="isolate relative grid lg:grid-cols-[auto_1fr_auto] dark:bg-dark-secondary flex-[1_1_0]">
+      <div className="isolate relative grid lg:grid-cols-[auto_1fr_auto] dark:bg-dark-secondary flex-1 min-h-0">
         <GeneratorSidebar sidebarOpen={sidebarOpen} />
 
         {children}
