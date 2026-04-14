@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { getBlogBySlug, getAllBlogSlugs } from '@/lib/blogs';
 import { getBaseUrl } from '@/lib/site-url';
 import { PopularTools } from '@/components/tools/PopularTools';
+import BlogFaqAccordion from '@/components/blog/BlogFaqAccordion';
 
 /** Tool slugs that can be embedded in blog posts. Maps to the tool page component (reuses ToolLayout). */
 const EMBEDDABLE_TOOL_LOADERS: Record<
@@ -126,11 +128,27 @@ export default async function BlogPostPage({
               </time>
             </div>
           </header>
+
+          {post.imageSrc ? (
+            <div className="mb-8 overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5">
+              <Image
+                src={post.imageSrc}
+                alt={post.imageAlt ?? post.title}
+                width={1200}
+                height={630}
+                priority
+                className="w-full h-auto"
+              />
+            </div>
+          ) : null}
+
           <div
             className="blog-content prose prose-gray dark:prose-invert max-w-none prose-p:leading-7 prose-a:text-primary-500 prose-a:no-underline hover:prose-a:underline"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
+
+        {post.faqs?.length ? <BlogFaqAccordion items={post.faqs} /> : null}
 
         {EmbeddedTool ? (
           <section className="mt-14 md:mt-18" aria-label="Try the tool">

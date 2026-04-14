@@ -4,11 +4,130 @@ export type BlogPost = {
   description: string;
   date: string;
   author: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  faqs?: { question: string; answer: string }[];
   /** HTML content; may include internal links to tools e.g. href="/json-formatter" */
   content: string;
   /** Optional tool slug to embed below the article (e.g. "json-formatter"). Uses existing ToolLayout. */
   embedTool?: string;
 };
+
+function escapeHtml(s: string) {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function markdownToHtml(markdown: string): string {
+  // For this blog system we want PDF-like spacing:
+  // treat each non-empty line as its own paragraph, and support "## " headings.
+  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
+  const blocks: string[] = [];
+
+  for (const raw of lines) {
+    const line = raw;
+    if (!line.trim()) continue;
+
+    if (line.startsWith('## ')) {
+      blocks.push(`<h2>${escapeHtml(line.slice(3).trim())}</h2>`);
+      continue;
+    }
+
+    blocks.push(`<p>${escapeHtml(line)}</p>`);
+  }
+
+  return blocks.join('\n');
+}
+
+function extractFaqsFromMarkdownBody(markdownBody: string): {
+  bodyWithoutFaqs: string;
+  faqs: { question: string; answer: string }[] | undefined;
+} {
+  const lines = markdownBody.replace(/\r\n/g, '\n').split('\n');
+  const faqStart = lines.findIndex((l) => l.trim() === '## FAQs');
+  if (faqStart === -1) {
+    return { bodyWithoutFaqs: markdownBody, faqs: undefined };
+  }
+
+  const before = lines.slice(0, faqStart).join('\n').trim();
+  const after = lines.slice(faqStart + 1);
+
+  const items: { question: string; answer: string }[] = [];
+  let i = 0;
+  while (i < after.length) {
+    while (i < after.length && !after[i]?.trim()) i++;
+    const q = after[i]?.trim();
+    if (!q) break;
+    i++;
+    while (i < after.length && !after[i]?.trim()) i++;
+    const a = after[i]?.trim();
+    if (!a) break;
+    i++;
+    items.push({ question: q, answer: a });
+  }
+
+  return {
+    bodyWithoutFaqs: before,
+    faqs: items.length ? items : undefined,
+  };
+}
+
+function readMarkdownBlog(slug: string): Omit<BlogPost, 'date' | 'author'> | null {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const fs = require('node:fs') as typeof import('node:fs');
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const path = require('node:path') as typeof import('node:path');
+    const file = path.join(process.cwd(), 'content', 'blog', `${slug}.md`);
+    const raw = fs.readFileSync(file, 'utf8');
+
+    const lines = raw.replace(/\r\n/g, '\n').split('\n');
+    if (lines[0] !== '---') return null;
+    const endIdx = lines.indexOf('---', 1);
+    if (endIdx === -1) return null;
+
+    const frontmatterLines = lines.slice(1, endIdx);
+    const body = lines.slice(endIdx + 1).join('\n');
+
+    const fm: Record<string, string> = {};
+    for (const l of frontmatterLines) {
+      const idx = l.indexOf(':');
+      if (idx === -1) continue;
+      const key = l.slice(0, idx).trim();
+      const val = l.slice(idx + 1).trim();
+      // Strip optional surrounding quotes
+      fm[key] = val.replace(/^"(.*)"$/, '$1');
+    }
+
+    const title = fm.title ?? '';
+    const description = fm.description ?? '';
+    const parsedSlug = fm.slug ?? slug;
+    const imageAlt = fm.imageAlt;
+
+    if (!title || !description || !parsedSlug) return null;
+
+    const extracted = extractFaqsFromMarkdownBody(body.trim());
+
+    return {
+      title,
+      description,
+      slug: parsedSlug,
+      imageAlt,
+      imageSrc:
+        parsedSlug === 'ai-for-coding-2026'
+          ? '/images/blogs/Best%20AI%20for%20Coding%20Tools.png'
+          : undefined,
+      faqs: extracted.faqs,
+      content: markdownToHtml(extracted.bodyWithoutFaqs),
+    };
+  } catch {
+    return null;
+  }
+}
 
 export const blogs: BlogPost[] = [
   {
@@ -348,6 +467,15 @@ export const blogs: BlogPost[] = [
       <p>After formatting/validating, you might want to transform the data: <a href="/json-to-yaml" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON to YAML</a>, <a href="/json-to-csv" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON to CSV</a>, or quickly preview differences with <a href="/json-diff-viewer" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Diff Viewer</a>.</p>
     `,
   },
+  ...(readMarkdownBlog('ai-for-coding-2026')
+    ? [
+        {
+          ...readMarkdownBlog('ai-for-coding-2026')!,
+          date: '2026-04-14',
+          author: 'DevToolDock Team',
+        },
+      ]
+    : []),
 ];
 
 export function getBlogBySlug(slug: string): BlogPost | undefined {
