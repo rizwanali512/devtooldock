@@ -23,23 +23,68 @@ function escapeHtml(s: string) {
 }
 
 function markdownToHtml(markdown: string): string {
-  // For this blog system we want PDF-like spacing:
-  // treat each non-empty line as its own paragraph, and support "## " headings.
+  // Treat blank lines as paragraph breaks.
+  // Support "## " headings and a small set of plain-text headings.
   const lines = markdown.replace(/\r\n/g, '\n').split('\n');
   const blocks: string[] = [];
+  let para: string[] = [];
+  let inFaqs = false;
+
+  const plainHeadings = new Set<string>([
+    'What is a Token Maker',
+    'How a Token Maker Works',
+    'Types of Tokens You Can Create',
+    'Best Token Maker Tools in 2026',
+    'How to Create a Crypto Token Without Coding',
+    'Token Maker vs Manual Smart Contract Development',
+    'Free vs Paid Token Maker Tools',
+    'Is Token Creation Safe',
+    'Use Cases of Token Maker',
+    'AI Token Generator Future Trend',
+    'Closing Remarks',
+    'FAQs',
+  ]);
+
+  const flushPara = () => {
+    if (!para.length) return;
+    const text = para.join(' ').trim();
+    if (text) blocks.push(`<p>${escapeHtml(text)}</p>`);
+    para = [];
+  };
 
   for (const raw of lines) {
     const line = raw;
-    if (!line.trim()) continue;
 
-    if (line.startsWith('## ')) {
-      blocks.push(`<h2>${escapeHtml(line.slice(3).trim())}</h2>`);
+    if (!line.trim()) {
+      flushPara();
       continue;
     }
 
-    blocks.push(`<p>${escapeHtml(line)}</p>`);
+    if (inFaqs) {
+      flushPara();
+      blocks.push(`<p>${escapeHtml(line)}</p>`);
+      continue;
+    }
+
+    if (line.startsWith('## ')) {
+      flushPara();
+      const h = line.slice(3).trim();
+      blocks.push(`<h2>${escapeHtml(h)}</h2>`);
+      inFaqs = h === 'FAQs';
+      continue;
+    }
+
+    if (plainHeadings.has(line.trim())) {
+      flushPara();
+      blocks.push(`<h2>${escapeHtml(line.trim())}</h2>`);
+      inFaqs = line.trim() === 'FAQs';
+      continue;
+    }
+
+    para.push(line.trim());
   }
 
+  flushPara();
   return blocks.join('\n');
 }
 
@@ -120,6 +165,8 @@ function readMarkdownBlog(slug: string): Omit<BlogPost, 'date' | 'author'> | nul
       imageSrc:
         parsedSlug === 'ai-for-coding-2026'
           ? '/images/blogs/Best%20AI%20for%20Coding%20Tools.png'
+          : parsedSlug === 'token-maker-online-2026'
+            ? '/images/blogs/Token%20Maker%20Animation.png'
           : undefined,
       faqs: extracted.faqs,
       content: markdownToHtml(extracted.bodyWithoutFaqs),
@@ -472,6 +519,15 @@ export const blogs: BlogPost[] = [
         {
           ...readMarkdownBlog('ai-for-coding-2026')!,
           date: '2026-04-14',
+          author: 'DevToolDock Team',
+        },
+      ]
+    : []),
+  ...(readMarkdownBlog('token-maker-online-2026')
+    ? [
+        {
+          ...readMarkdownBlog('token-maker-online-2026')!,
+          date: '2026-03-15',
           author: 'DevToolDock Team',
         },
       ]
