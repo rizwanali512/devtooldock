@@ -164,9 +164,9 @@ function readMarkdownBlog(slug: string): Omit<BlogPost, 'date' | 'author'> | nul
       imageAlt,
       imageSrc:
         parsedSlug === 'ai-for-coding-2026'
-          ? '/images/blogs/Best%20AI%20for%20Coding%20Tools.png'
+          ? '/images/blogs/ai-for-coding-2026.svg'
           : parsedSlug === 'token-maker-online-2026'
-            ? '/images/blogs/Token%20Maker%20Animation.png'
+            ? '/images/blogs/token-maker-online-2026.svg'
           : undefined,
       faqs: extracted.faqs,
       content: markdownToHtml(extracted.bodyWithoutFaqs),

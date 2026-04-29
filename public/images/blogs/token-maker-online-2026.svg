@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none" role="img" aria-label="Token Maker Online 2026 featured image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#111A2E"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="210" y1="115" x2="980" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C55E" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.6 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.35">
+    <circle cx="1040" cy="120" r="190" fill="#3B82F6"/>
+    <circle cx="220" cy="520" r="220" fill="#22C55E"/>
+  </g>
+
+  <g filter="url(#softGlow)">
+    <rect x="110" y="120" width="980" height="390" rx="28" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="150" y="165" width="420" height="14" rx="7" fill="rgba(255,255,255,0.20)"/>
+    <rect x="150" y="195" width="320" height="14" rx="7" fill="rgba(255,255,255,0.16)"/>
+    <rect x="150" y="225" width="520" height="14" rx="7" fill="rgba(255,255,255,0.12)"/>
+    <rect x="150" y="255" width="450" height="14" rx="7" fill="rgba(255,255,255,0.10)"/>
+
+    <g transform="translate(720 190)">
+      <circle cx="120" cy="125" r="110" fill="url(#accent)" opacity="0.95"/>
+      <circle cx="120" cy="125" r="78" fill="rgba(11,18,32,0.55)"/>
+      <path d="M120 55 L160 80 V125 L120 150 L80 125 V80 Z" fill="rgba(255,255,255,0.92)"/>
+      <path d="M120 150 L160 125" stroke="rgba(255,255,255,0.75)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M120 150 L80 125" stroke="rgba(255,255,255,0.75)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M120 55 L160 80" stroke="rgba(255,255,255,0.65)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M120 55 L80 80" stroke="rgba(255,255,255,0.65)" stroke-width="6" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" fill="#E5E7EB">
+    <text x="150" y="360" font-size="56" font-weight="800">Token Maker Online</text>
+    <text x="150" y="415" font-size="32" font-weight="600" opacity="0.9">Create ERC20 &amp; BEP20 tokens without coding</text>
+    <text x="150" y="465" font-size="26" font-weight="500" opacity="0.75">2026 guide " fast " beginner-friendly</text>
+  </g>
+</svg>

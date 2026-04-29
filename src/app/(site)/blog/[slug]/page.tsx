@@ -38,10 +38,14 @@ export async function generateMetadata({
   const title =
     post.slug === 'how-to-format-json'
       ? 'How to Format JSON – Complete Developer Guide'
+      : post.slug === 'token-maker-online-2026'
+        ? 'Token Maker Online 2026 | Create Crypto Tokens Without Coding'
       : post.title;
   const description =
     post.slug === 'how-to-format-json'
       ? 'Learn how to format JSON, fix common JSON errors, and use online tools to clean and validate JSON data.'
+      : post.slug === 'token-maker-online-2026'
+        ? 'Create your own crypto token online with the best token maker tools. Learn how to generate ERC20 and BEP20 tokens without coding in minutes.'
       : post.description;
 
   return {

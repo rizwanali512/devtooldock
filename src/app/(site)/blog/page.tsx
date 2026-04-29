@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { blogs } from '@/lib/blogs';
 import { getBaseUrl } from '@/lib/site-url';
@@ -45,6 +46,21 @@ export default function BlogListPage() {
             key={post.slug}
             className="bg-white p-6 border border-gray-200 dark:bg-white/5 dark:border-white/10 rounded-[20px] shadow-[0px_30px_50px_-32px_rgba(107,110,148,0.04)] hover:border-primary-200 dark:hover:border-primary-500/30 transition flex flex-col"
           >
+            {post.imageSrc ? (
+              <Link
+                href={`/blog/${post.slug}`}
+                className="mb-4 overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 block"
+                aria-label={`Read: ${post.title}`}
+              >
+                <Image
+                  src={post.imageSrc}
+                  alt={post.imageAlt ?? post.title}
+                  width={1200}
+                  height={630}
+                  className="w-full h-auto"
+                />
+              </Link>
+            ) : null}
             <time
               dateTime={post.date}
               className="text-xs text-gray-500 dark:text-gray-400 mb-2 block"
