@@ -61,11 +61,22 @@ export async function generateMetadata({
       authors: post.author ? [post.author] : undefined,
       url,
       siteName: 'DevToolDock',
+      images: post.imageSrc
+        ? [
+            {
+              url: `${baseUrl}${post.imageSrc}`,
+              width: 1200,
+              height: 630,
+              alt: post.imageAlt ?? post.title,
+            },
+          ]
+        : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: post.imageSrc ? [`${baseUrl}${post.imageSrc}`] : undefined,
     },
     alternates: { canonical: url },
   };

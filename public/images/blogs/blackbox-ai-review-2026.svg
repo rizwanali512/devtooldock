@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none" role="img" aria-label="Blackbox AI Review 2026 featured image">
+  <defs>
+    <linearGradient id="bb-bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#121A33"/>
+    </linearGradient>
+    <linearGradient id="bb-accent" x1="220" y1="120" x2="980" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A855F7" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="bb-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.6 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bb-bg)"/>
+
+  <g opacity="0.35">
+    <circle cx="1010" cy="140" r="200" fill="#22C55E"/>
+    <circle cx="240" cy="520" r="230" fill="#A855F7"/>
+  </g>
+
+  <g filter="url(#bb-glow)">
+    <rect x="110" y="120" width="980" height="390" rx="28" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+
+    <g transform="translate(150 175)">
+      <rect x="0" y="0" width="520" height="44" rx="14" fill="rgba(255,255,255,0.10)"/>
+      <rect x="18" y="14" width="240" height="16" rx="8" fill="rgba(255,255,255,0.22)"/>
+      <rect x="0" y="64" width="520" height="204" rx="18" fill="rgba(255,255,255,0.07)"/>
+      <rect x="22" y="92" width="330" height="12" rx="6" fill="rgba(255,255,255,0.18)"/>
+      <rect x="22" y="122" width="430" height="12" rx="6" fill="rgba(255,255,255,0.14)"/>
+      <rect x="22" y="152" width="380" height="12" rx="6" fill="rgba(255,255,255,0.12)"/>
+      <rect x="22" y="182" width="460" height="12" rx="6" fill="rgba(255,255,255,0.10)"/>
+    </g>
+
+    <g transform="translate(742 190)">
+      <circle cx="125" cy="125" r="112" fill="url(#bb-accent)" opacity="0.95"/>
+      <circle cx="125" cy="125" r="82" fill="rgba(11,18,32,0.55)"/>
+      <path d="M125 62 C160 62 182 90 182 125 C182 160 160 188 125 188 C90 188 68 160 68 125 C68 90 90 62 125 62 Z" fill="rgba(255,255,255,0.92)"/>
+      <circle cx="105" cy="122" r="9" fill="rgba(11,18,32,0.65)"/>
+      <circle cx="145" cy="122" r="9" fill="rgba(11,18,32,0.65)"/>
+      <path d="M105 150 Q125 165 145 150" stroke="rgba(11,18,32,0.6)" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <path d="M125 44 L125 26" stroke="rgba(255,255,255,0.65)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M175 70 L192 56" stroke="rgba(255,255,255,0.50)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M75 70 L58 56" stroke="rgba(255,255,255,0.50)" stroke-width="6" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" fill="#E5E7EB">
+    <text x="150" y="360" font-size="56" font-weight="800">Blackbox AI Review</text>
+    <text x="150" y="415" font-size="32" font-weight="600" opacity="0.9">Features, pricing and honest verdict</text>
+    <text x="150" y="465" font-size="26" font-weight="500" opacity="0.75">2026 guide " multi-agent " real-world</text>
+  </g>
+</svg>
