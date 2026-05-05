@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none" role="img" aria-label="Best Python AI Code Generator featured image">
+  <defs>
+    <linearGradient id="py-bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#131B33"/>
+    </linearGradient>
+    <linearGradient id="py-accent" x1="220" y1="120" x2="980" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBF24" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="py-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 0.6 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#py-bg)"/>
+
+  <g opacity="0.35">
+    <circle cx="1020" cy="520" r="220" fill="#3B82F6"/>
+    <circle cx="210" cy="140" r="190" fill="#FBBF24"/>
+  </g>
+
+  <g filter="url(#py-glow)">
+    <rect x="110" y="120" width="980" height="390" rx="28" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+
+    <g transform="translate(150 175)">
+      <rect x="0" y="0" width="520" height="44" rx="14" fill="rgba(255,255,255,0.10)"/>
+      <rect x="18" y="14" width="255" height="16" rx="8" fill="rgba(255,255,255,0.22)"/>
+      <rect x="0" y="64" width="520" height="204" rx="18" fill="rgba(255,255,255,0.07)"/>
+      <rect x="22" y="92" width="320" height="12" rx="6" fill="rgba(255,255,255,0.18)"/>
+      <rect x="22" y="122" width="430" height="12" rx="6" fill="rgba(255,255,255,0.14)"/>
+      <rect x="22" y="152" width="380" height="12" rx="6" fill="rgba(255,255,255,0.12)"/>
+      <rect x="22" y="182" width="460" height="12" rx="6" fill="rgba(255,255,255,0.10)"/>
+    </g>
+
+    <g transform="translate(735 190)">
+      <circle cx="130" cy="125" r="112" fill="url(#py-accent)" opacity="0.95"/>
+      <circle cx="130" cy="125" r="82" fill="rgba(11,18,32,0.55)"/>
+      <path d="M104 105 h52" stroke="rgba(255,255,255,0.90)" stroke-width="10" stroke-linecap="round"/>
+      <path d="M110 155 h40" stroke="rgba(255,255,255,0.78)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M95 125 l16 -16" stroke="rgba(255,255,255,0.85)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M95 125 l16 16" stroke="rgba(255,255,255,0.85)" stroke-width="8" stroke-linecap="round"/>
+      <text x="130" y="212" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="22" font-weight="800" fill="rgba(255,255,255,0.86)">Python</text>
+    </g>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" fill="#E5E7EB">
+    <text x="150" y="360" font-size="56" font-weight="800">Python AI Code Generator</text>
+    <text x="150" y="415" font-size="32" font-weight="600" opacity="0.9">Best AI tools for coding in 2026</text>
+    <text x="150" y="465" font-size="26" font-weight="500" opacity="0.75">Write " fix " generate Python faster</text>
+  </g>
+</svg>
