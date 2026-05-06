@@ -301,7 +301,6 @@ export default async function ToolRoute({
 
   const legalTool = getLegalTool(toolSlug);
   if (legalTool) {
-    const canonical = `${getBaseUrl()}/${legalTool.slug}`;
     const { webAppSchema, faqSchema } = getLegalToolSchemas(legalTool);
     return (
       <>
@@ -314,7 +313,6 @@ export default async function ToolRoute({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
         <LegalToolSeoPage tool={legalTool} />
-        <link rel="canonical" href={canonical} />
       </>
     );
   }
@@ -377,7 +375,6 @@ export default async function ToolRoute({
           relatedTools={related}
           embeddedTool={<LegalGeneratorTemplate tool={baseTool} />}
         />
-        <link rel="canonical" href={canonical} />
       </>
     );
   }

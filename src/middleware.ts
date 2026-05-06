@@ -12,15 +12,33 @@ export function middleware(req: NextRequest) {
   if (!host) return NextResponse.next();
 
   // Skip local dev / preview hosts
-  if (host.includes('localhost') || host.startsWith('127.0.0.1')) {
+  if (
+    host.includes('localhost') ||
+    host.startsWith('127.0.0.1') ||
+    host.endsWith('.vercel.app')
+  ) {
     return NextResponse.next();
   }
 
-  // Only redirect the apex domain to www
+  const url = req.nextUrl.clone();
+
+  // Enforce HTTPS (helps prevent http/https duplicates)
+  const proto = req.headers.get('x-forwarded-proto');
+  if (proto === 'http') {
+    url.protocol = 'https:';
+    return NextResponse.redirect(url, 308);
+  }
+
+  // Enforce canonical host: apex -> www
   if (host === 'devtooldock.com') {
-    const url = req.nextUrl.clone();
     url.host = 'www.devtooldock.com';
     url.protocol = 'https:';
+    return NextResponse.redirect(url, 308);
+  }
+
+  // Enforce no trailing slash (helps prevent /path vs /path/ duplicates)
+  if (url.pathname !== '/' && url.pathname.endsWith('/')) {
+    url.pathname = url.pathname.replace(/\/+$/, '');
     return NextResponse.redirect(url, 308);
   }
 

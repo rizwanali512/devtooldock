@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   description:
     'Use the best AI tools for coding, including 20 free AI coding assistants for developers. Boost productivity, write cleaner code, and build faster with top AI-powered tools designed for modern programmers.',
   keywords: DEFAULT_KEYWORDS,
-  alternates: { canonical: getBaseUrl() + '/' },
+  alternates: { canonical: getBaseUrl() },
   openGraph: {
     title: 'Best AI Tools for Coding | Free AI coding assistants for developers',
     description:
       'Use the best AI tools for coding, including 20 free AI coding assistants for developers. Boost productivity, write cleaner code, and build faster with top AI-powered tools designed for modern programmers.',
-    url: getBaseUrl() + '/',
+    url: getBaseUrl(),
     type: 'website',
     siteName: 'DevToolDock',
   },
