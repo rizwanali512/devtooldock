@@ -24,7 +24,8 @@ export function middleware(req: NextRequest) {
 
   // Enforce HTTPS (helps prevent http/https duplicates)
   const proto = req.headers.get('x-forwarded-proto');
-  if (proto === 'http') {
+  // Some platforms may not set x-forwarded-proto consistently; fall back to nextUrl.protocol.
+  if (proto === 'http' || url.protocol === 'http:') {
     url.protocol = 'https:';
     return NextResponse.redirect(url, 308);
   }
