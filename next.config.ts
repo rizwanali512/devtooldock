@@ -14,6 +14,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/category/developer-utilities",
+        destination: "/developer-utilities",
+        permanent: true,
+      },
+      {
+        // Legacy category slug; the real hub page is /text-tools
+        source: "/category/text-tools",
+        destination: "/text-tools",
+        permanent: true,
+      },
+      {
         source: "/tools/:tool",
         destination: "/:tool",
         permanent: true,
