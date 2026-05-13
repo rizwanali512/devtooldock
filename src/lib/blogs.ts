@@ -607,21 +607,6 @@ export const blogs: BlogPost[] = [
     `,
   },
   {
-    title: 'How to Format JSON Online',
-    slug: 'how-to-format-json',
-    description:
-      'Learn how to format JSON data using online tools. Validate, beautify, and minify JSON in seconds.',
-    date: '2024-01-15',
-    author: 'DevToolDock Team',
-    embedTool: 'json-formatter',
-    content: `
-      <p>JSON is everywhere in modern development—APIs, configs, and data exchange. Keeping it readable and valid saves time and prevents bugs.</p>
-      <p>Formatting JSON means applying consistent indentation and line breaks so humans can read it. Minifying does the opposite: removes whitespace to shrink payload size.</p>
-      <p>Use our <a href="/json-formatter" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON Formatter</a> here to paste raw JSON and get formatted or minified output with syntax highlighting. You can also validate and fix common syntax errors in one click.</p>
-      <p>For converting between formats, try our <a href="/json-to-csv" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON to CSV</a> and <a href="/json-to-yaml" class="text-primary-500 hover:text-primary-600 underline font-medium">JSON to YAML</a> tools to integrate with spreadsheets or config files.</p>
-    `,
-  },
-  {
     title: 'Encode and Decode Base64 in the Browser',
     slug: 'encode-decode-base64',
     description:

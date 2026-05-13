@@ -10,16 +10,28 @@ const miniCardClass =
 type Props = {
   /** Omit on hub pages; on tool pages pass current slug to avoid a self-link. */
   excludeSlug?: string;
+  /** Exclude multiple slugs (e.g. homepage “Top tools” so “Popular tools” does not repeat). */
+  excludeSlugs?: string[];
   /** Cap links for SEO (tool pages use 6; homepage can use more). */
   max?: number;
+  /** Section heading (default “Popular tools”). */
+  heading?: string;
 };
 
 /**
  * Static popular tools list from `lib/popularTools.ts` (via getPopularTools).
  */
-export function PopularTools({ excludeSlug, max = 24 }: Props) {
+export function PopularTools({
+  excludeSlug,
+  excludeSlugs,
+  max = 24,
+  heading = 'Popular tools',
+}: Props) {
+  const excluded = new Set(
+    [...(excludeSlugs ?? []), ...(excludeSlug ? [excludeSlug] : [])],
+  );
   const popular = getPopularTools()
-    .filter((t) => (excludeSlug ? t.slug !== excludeSlug : true))
+    .filter((t) => !excluded.has(t.slug))
     .slice(0, max);
 
   if (popular.length === 0) return null;
@@ -27,7 +39,7 @@ export function PopularTools({ excludeSlug, max = 24 }: Props) {
   return (
     <section className={`${cardClass} max-w-5xl mx-auto w-full`} aria-label="Popular developer tools">
       <h2 className="mb-6 text-xl font-bold text-gray-800 dark:text-white/90">
-        Popular tools
+        {heading}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {popular.map((tool) => (

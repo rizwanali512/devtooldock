@@ -6,7 +6,10 @@ import { getBaseUrl } from '@/lib/site-url';
 import { DEFAULT_KEYWORDS } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Read Tech Blogs for Developers | AI Tools, Tutorials and Coding Guides',
+  title: {
+    absolute:
+      'Read Tech Blogs for Developers | AI Tools, Tutorials and Coding Guides',
+  },
   description:
     'Discover free ai coding tools, in-depth tutorials, developer assistants, AI insights, and coding tips. Stay ahead with the latest trends, guides, and resources for developers.',
   keywords: `${DEFAULT_KEYWORDS}, developer blog, json tutorial, base64 guide`,

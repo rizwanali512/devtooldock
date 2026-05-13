@@ -29,27 +29,26 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogBySlug(slug);
-  if (!post)
-    return { title: 'Post not found' };
+  if (!post) return { title: { absolute: 'Post not found' } };
 
   const baseUrl = getBaseUrl();
   const url = `${baseUrl}/blog/${post.slug}`;
 
   const title =
-    post.slug === 'how-to-format-json'
+    post.slug === 'how-to-format-json-online'
       ? 'How to Format JSON – Complete Developer Guide'
       : post.slug === 'token-maker-online-2026'
         ? 'Token Maker Online 2026 | Create Crypto Tokens Without Coding'
       : post.title;
   const description =
-    post.slug === 'how-to-format-json'
+    post.slug === 'how-to-format-json-online'
       ? 'Learn how to format JSON, fix common JSON errors, and use online tools to clean and validate JSON data.'
       : post.slug === 'token-maker-online-2026'
         ? 'Create your own crypto token online with the best token maker tools. Learn how to generate ERC20 and BEP20 tokens without coding in minutes.'
       : post.description;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: `${post.title}, developer tools, tutorial`,
     robots: { index: true, follow: true },
@@ -133,7 +132,7 @@ export default async function BlogPostPage({
               {post.title}
             </h1>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
-              <span>{post.author}</span>
+              <span>Author: {post.author}</span>
               <time dateTime={post.date}>
                 {new Date(post.date).toLocaleDateString('en-US', {
                   year: 'numeric',

@@ -548,37 +548,6 @@ export function getRelated(slug: string, limit = 4) {
   return [...same, ...other].slice(0, limit);
 }
 
-/** Curated high-intent tools for homepage “Top tools” (internal linking + SEO). */
-export const TOP_TOOL_SLUGS = [
-  'json-formatter',
-  'base64-encoder',
-  'regex-tester',
-  'jwt-decoder',
-  'uuid-generator',
-  'json-validator',
-  'html-minifier',
-  'query-string-parser',
-] as const;
-
-export function getTopTools(): Array<{
-  name: string;
-  description: string;
-  slug: string;
-  href: string;
-}> {
-  return TOP_TOOL_SLUGS.map((slug) => {
-    const t = tools.find((x) => x.slug === slug);
-    return t
-      ? { name: t.name, description: t.description, slug: t.slug, href: `/${t.slug}` }
-      : null;
-  }).filter(Boolean) as Array<{
-    name: string;
-    description: string;
-    slug: string;
-    href: string;
-  }>;
-}
-
 export function getPopularTools(): Array<{ name: string; description: string; slug: string; href: string }> {
   return POPULAR_TOOL_SLUGS.map((slug) => {
     const t = tools.find((x) => x.slug === slug);
