@@ -6,8 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import './globals.css';
 import { ToasterProvider } from './providers/toaster';
-import { getBaseUrl } from '@/lib/site-url';
-import { DEFAULT_KEYWORDS } from '@/lib/seo';
+import { BASE_URL, DEFAULT_KEYWORDS } from '@/lib/seo';
 import { env } from '@/lib/env';
 import CommandPalette from '@/components/CommandPalette';
 
@@ -20,7 +19,10 @@ const defaultDescription =
   'DevToolDock provides free developer tools and AI utilities including JSON formatter, Base64 encoder, regex tester, UUID generator, and AI-powered developer tools.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getBaseUrl()),
+  metadataBase: new URL(BASE_URL),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: defaultTitle,
     template: `%s | ${env.SITE_NAME}`,
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
     title: defaultTitle,
     description: defaultDescription,
     type: 'website',
-    url: getBaseUrl(),
+    url: BASE_URL,
     siteName: env.SITE_NAME,
   },
   twitter: {
@@ -93,7 +95,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: env.SITE_NAME,
-    url: getBaseUrl(),
+    url: BASE_URL,
   };
 
   return (

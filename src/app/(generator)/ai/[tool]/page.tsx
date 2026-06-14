@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import AIToolLayout from '@/components/ai/AIToolLayout';
 import { getAITool } from '@/lib/ai-tools';
-import { getBaseUrl } from '@/lib/site-url';
-import { DEFAULT_KEYWORDS } from '@/lib/seo';
+import { canonical, DEFAULT_KEYWORDS } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 
 type Props = {
@@ -13,21 +12,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tool: slug } = await params;
   const tool = getAITool(slug);
   if (!tool) return { title: 'AI Tool not found' };
-  const canonical = getBaseUrl() + '/ai/' + tool.slug;
+  const canonicalUrl = canonical(`/ai/${tool.slug}`);
   const title = `${tool.name} – AI Online Tool`;
-  const description =
-    tool.slug === 'code-generator'
-      ? 'Generate code snippets instantly using AI. Automate development tasks and improve productivity.'
-      : `${tool.description} AI-powered developer tool.`;
+  const description = tool.metaDescription;
   return {
     title,
     description,
     keywords: `${tool.name}, ${DEFAULT_KEYWORDS}, ai tools`,
-    alternates: { canonical },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title,
       description,
-      url: canonical,
+      url: canonicalUrl,
       type: 'website',
       siteName: 'DevToolDock',
     },

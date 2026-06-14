@@ -8,9 +8,8 @@ import { CoreFeatures } from '@/components/sections/core-features';
 import PricingSection from '@/components/sections/pricing';
 import { PopularTools } from '@/components/tools/PopularTools';
 import { RecentlyUsedTools } from '@/components/tools/RecentlyUsedTools';
-import { getBaseUrl } from '@/lib/site-url';
 import { features } from '@/config/features';
-import { DEFAULT_KEYWORDS } from '@/lib/seo';
+import { BASE_URL, DEFAULT_KEYWORDS, getCanonicalUrl } from '@/lib/seo';
 import Link from 'next/link';
 import { aiTools } from '@/lib/ai-tools';
 import { blogs } from '@/lib/blogs';
@@ -21,12 +20,12 @@ export const metadata: Metadata = {
   description:
     'Use the best AI tools for coding, including 20 free AI coding assistants for developers. Boost productivity, write cleaner code, and build faster with top AI-powered tools designed for modern programmers.',
   keywords: DEFAULT_KEYWORDS,
-  alternates: { canonical: getBaseUrl() },
+  alternates: { canonical: getCanonicalUrl('/') },
   openGraph: {
     title: 'Best AI Tools for Coding | Free AI coding assistants for developers',
     description:
       'Use the best AI tools for coding, including 20 free AI coding assistants for developers. Boost productivity, write cleaner code, and build faster with top AI-powered tools designed for modern programmers.',
-    url: getBaseUrl(),
+    url: BASE_URL,
     type: 'website',
     siteName: 'DevToolDock',
   },

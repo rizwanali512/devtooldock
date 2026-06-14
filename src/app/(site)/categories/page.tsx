@@ -1,20 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CATEGORY_META } from '@/lib/categories';
-import { getBaseUrl } from '@/lib/site-url';
-import { DEFAULT_KEYWORDS } from '@/lib/seo';
+import { DEFAULT_KEYWORDS, getCanonicalUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Developer Tools Categories | Explore AI coding tools, Security, APIs and More',
   description:
     'View all developer tool categories including AI tools, APIs, DevOps, databases, testing tools, and more. Discover free AI tools to improve your development workflow.',
   keywords: `${DEFAULT_KEYWORDS}, tool categories, json tools, encoding tools`,
-  alternates: { canonical: getBaseUrl() + '/categories' },
+  alternates: { canonical: getCanonicalUrl('/categories') },
   openGraph: {
     title: 'Developer Tools Categories | Explore AI coding tools, Security, APIs and More',
     description:
       'View all developer tool categories including AI tools, APIs, DevOps, databases, testing tools, and more. Discover free AI tools to improve your development workflow.',
-    url: getBaseUrl() + '/categories',
+    url: getCanonicalUrl('/categories'),
     type: 'website',
     siteName: 'DevToolDock',
   },

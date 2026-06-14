@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { tools } from '@/lib/tools';
-import { getBaseUrl } from '@/lib/site-url';
-import { DEFAULT_KEYWORDS } from '@/lib/seo';
+import { DEFAULT_KEYWORDS, getCanonicalUrl } from '@/lib/seo';
 import { generateToolSchema } from '@/lib/generateToolSchema';
 import { getPriorityToolMetadata } from '@/lib/priority-tools-seo';
 import { SEOPageTemplate } from '@/components/SEOPageTemplate';
@@ -138,9 +137,8 @@ export async function generateMetadata({
   const { tool } = await params;
 
   const exactMeta = toolSeoMeta[tool];
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? getBaseUrl();
   if (exactMeta) {
-    const canonical = `${siteUrl}/${tool}`;
+    const canonical = getCanonicalUrl(`/${tool}`);
     return {
       title: { absolute: exactMeta.title },
       description: exactMeta.description,
@@ -168,7 +166,7 @@ export async function generateMetadata({
   if (!t && !seoPage && !legalTool && !legalSeo) return { title: 'Tool not found' };
 
   if (t) {
-    const canonical = getBaseUrl() + '/' + t.slug;
+    const canonical = getCanonicalUrl('/' + t.slug);
     const priority = getPriorityToolMetadata(t.slug);
     const title = priority?.title ?? `${t.name} – Free Online Tool`;
     const description =
@@ -196,7 +194,7 @@ export async function generateMetadata({
   }
 
   if (legalTool) {
-    const canonical = `${getBaseUrl()}/${legalTool.slug}`;
+    const canonical = getCanonicalUrl('/' + legalTool.slug);
     const title = `${legalTool.name} – Free Online Tool | DevToolDock`;
     const description = legalTool.description;
     return {
@@ -222,7 +220,7 @@ export async function generateMetadata({
   if (legalSeo) {
     const baseTool = getLegalBaseTool(legalSeo);
     if (!baseTool) return { title: 'Page not found' };
-    const canonical = `${getBaseUrl()}/${legalSeo.slug}`;
+    const canonical = getCanonicalUrl('/' + legalSeo.slug);
     const title = legalSeo.title;
     const description = `Use ${legalSeo.keyword} with DevToolDock’s ${baseTool.name}. Generate a draft online, then explore related legal templates.`;
     return {
@@ -247,7 +245,7 @@ export async function generateMetadata({
 
   const baseTool = seoPage ? getBaseToolForSeoPage(seoPage) : null;
   if (!seoPage || !baseTool) return { title: 'Page not found' };
-  const canonical = getBaseUrl() + '/' + seoPage.slug;
+  const canonical = getCanonicalUrl('/' + seoPage.slug);
   const title = seoPage.title;
   const description = seoPage.description;
   const keywords = `${DEFAULT_KEYWORDS}, ${seoPage.keyword}, ${baseTool.name.toLowerCase()}, ${seoPage.category} tools`;
@@ -322,7 +320,7 @@ export default async function ToolRoute({
     const baseTool = getLegalBaseTool(legalSeo);
     if (!baseTool) notFound();
     const related = getRelatedLegalTools(baseTool.slug, 5);
-    const canonical = `${getBaseUrl()}/${legalSeo.slug}`;
+    const canonical = getCanonicalUrl('/' + legalSeo.slug);
 
     const auto = generateSEOContent({
       keyword: legalSeo.keyword,
@@ -393,7 +391,7 @@ export default async function ToolRoute({
   const howToUse = buildHowToUseSteps(seoPage, baseTool);
   const useCases = buildUseCases(seoPage);
   const faq = buildFaq(seoPage, baseTool);
-  const canonical = getBaseUrl() + '/' + seoPage.slug;
+  const canonical = getCanonicalUrl('/' + seoPage.slug);
   const webAppSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',

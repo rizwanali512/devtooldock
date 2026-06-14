@@ -39,6 +39,24 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Force the canonical host: 301 non-www -> www (preserve path + query).
+        source: "/:path*",
+        has: [{ type: "host", value: "devtooldock.com" }],
+        destination: "https://www.devtooldock.com/:path*",
+        permanent: true,
+      },
+      {
+        // Canonical trailing-slash redirects for the pages flagged in GSC.
+        source: "/ai-developer-tools/",
+        destination: "/ai-developer-tools",
+        permanent: true,
+      },
+      {
+        source: "/ai/code-refactor/",
+        destination: "/ai/code-refactor",
+        permanent: true,
+      },
+      {
         source: "/category/developer-utilities",
         destination: "/developer-utilities",
         permanent: true,

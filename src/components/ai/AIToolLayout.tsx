@@ -154,7 +154,7 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
                   {tool.name}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                  {tool.description}
+                  {tool.metaDescription}
                 </p>
               </div>
 

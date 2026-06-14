@@ -3,7 +3,7 @@ import { tools } from '@/lib/tools';
 import { aiTools } from '@/lib/ai-tools';
 import { CATEGORY_META } from '@/lib/categories';
 import { getBlogBySlug, getAllBlogSlugs } from '@/lib/blogs';
-import { getBaseUrl } from '@/lib/site-url';
+import { BASE_URL } from '@/lib/seo';
 import { SEO_PAGE_SLUGS } from '@/lib/seo-pages';
 import { COMPARE_PAGE_SLUGS } from '@/lib/compare-pages';
 import { SEO_PAGES_PUBLISHED } from '@/lib/seoPages';
@@ -19,7 +19,7 @@ const SITEMAP_PRIORITY_TOOLS = new Set([
 ]);
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = getBaseUrl();
+  const baseUrl = BASE_URL;
   const lastModified = new Date();
 
   const landingPages: string[] = [
