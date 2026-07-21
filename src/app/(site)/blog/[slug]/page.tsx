@@ -106,6 +106,22 @@ export default async function BlogPostPage({
     ],
   };
 
+  const faqSchema =
+    post.faqs && post.faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: post.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   const embedToolSlug = post.embedTool;
   const loader =
     embedToolSlug && EMBEDDABLE_TOOL_LOADERS[embedToolSlug]
@@ -119,6 +135,12 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      ) : null}
       <div className="wrapper py-14 md:py-28">
         <article className="max-w-3xl mx-auto">
           <Link

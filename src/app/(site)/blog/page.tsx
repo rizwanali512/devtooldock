@@ -32,6 +32,15 @@ export const metadata: Metadata = {
 };
 
 export default function BlogListPage() {
+  const featuredSlugs = [
+    'blackbox-ai-review-2026',
+    'best-python-ai-code-generator',
+    'ai-for-coding-2026',
+  ];
+  const featured = featuredSlugs
+    .map((slug) => blogs.find((b) => b.slug === slug))
+    .filter((b): b is (typeof blogs)[number] => Boolean(b));
+
   return (
     <div className="wrapper py-14 md:py-28">
       <div className="max-w-2xl mx-auto mb-10 text-center">
@@ -42,6 +51,30 @@ export default function BlogListPage() {
           Guides, tutorials, and resources for developers.
         </p>
       </div>
+
+      {featured.length > 0 ? (
+        <section className="max-w-6xl mx-auto mb-12" aria-label="Featured guides">
+          <h2 className="mb-4 text-xl font-bold text-gray-800 dark:text-white/90">
+            Featured guides
+          </h2>
+          <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+            {featured.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="text-primary-700 hover:text-primary-800 underline font-medium"
+                >
+                  {post.title}
+                </Link>
+                <span className="text-gray-500 dark:text-gray-400">
+                  {' '}
+                  — {post.description}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {blogs.map((post) => (

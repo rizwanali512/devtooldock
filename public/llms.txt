@@ -1,0 +1,33 @@
+# DevToolDock
+
+> Free online developer tools and AI-powered utilities. Format JSON, decode JWTs, convert files, test regex, generate code, and automate development tasks — all running in the browser, no sign-up required.
+
+## Core tools
+- [JSON Formatter](https://www.devtooldock.com/json-formatter): Format, validate, and beautify JSON.
+- [JSON Validator](https://www.devtooldock.com/json-validator): Validate JSON syntax with clear error messages.
+- [Base64 Encoder](https://www.devtooldock.com/base64-encoder): Encode text to Base64.
+- [Base64 Decoder](https://www.devtooldock.com/base64-decoder): Decode Base64 to text.
+- [JWT Decoder](https://www.devtooldock.com/jwt-decoder): Decode and inspect JWT tokens.
+- [JWT Generator](https://www.devtooldock.com/jwt-generator): Create a signed JWT (HS256).
+- [Regex Tester](https://www.devtooldock.com/regex-tester): Test regular expressions and highlight matches.
+- [UUID Generator](https://www.devtooldock.com/uuid-generator): Generate UUID v4 identifiers.
+- [SHA256 Generator](https://www.devtooldock.com/sha256-generator): Compute SHA-256 hashes.
+- [Password Generator](https://www.devtooldock.com/password-generator): Generate secure random passwords.
+
+## AI tools
+- [AI Code Generator](https://www.devtooldock.com/ai/code-generator): Generate code from natural-language prompts.
+- [AI SQL Generator](https://www.devtooldock.com/ai/sql-generator): Convert plain text to SQL queries.
+- [AI Regex Generator](https://www.devtooldock.com/ai/regex-generator): Generate regex patterns from descriptions.
+- [AI Code Refactor Tool](https://www.devtooldock.com/ai/code-refactor): Improve and refactor existing code.
+
+## Guides
+- [Blackbox AI Review 2026](https://www.devtooldock.com/blog/blackbox-ai-review-2026): Features, pricing, and honest verdict on Blackbox AI.
+- [Best Python AI Code Generator](https://www.devtooldock.com/blog/best-python-ai-code-generator): Comparison of top AI tools for Python coding.
+- [AI for Coding in 2026](https://www.devtooldock.com/blog/ai-for-coding-2026): Overview of free AI coding tools and code fixers.
+- [YAML to JSON Converter Online](https://www.devtooldock.com/blog/yaml-to-json-converter-online): How to convert YAML to JSON.
+
+## Hubs
+- [All Tools](https://www.devtooldock.com/tools): Full directory of developer tools.
+- [JSON Tools](https://www.devtooldock.com/json-tools-online): Formatter, validator, minifier, and converters for JSON.
+- [Encoding Tools](https://www.devtooldock.com/encoding-tools): Base64, URL, and HTML encoding/decoding.
+- [Legal Tools](https://www.devtooldock.com/legal-tools): Privacy policy, terms, and disclaimer generators.

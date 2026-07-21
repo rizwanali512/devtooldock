@@ -3,6 +3,7 @@
 import GeneratorInput from '@/components/generator/generator-input';
 import { GradientBlob } from '@/components/gradient-blob';
 import { getAITool } from '@/lib/ai-tools';
+import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
 
@@ -155,6 +156,29 @@ export default function AIToolLayout({ toolSlug }: AIToolLayoutProps) {
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
                   {tool.metaDescription}
+                </p>
+                <p className="mt-3 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                  Related guides:{' '}
+                  <Link
+                    href="/blog/blackbox-ai-review-2026"
+                    className="text-primary-700 hover:text-primary-800 underline font-medium"
+                  >
+                    Blackbox AI Review 2026
+                  </Link>
+                  {' · '}
+                  <Link
+                    href="/blog/best-python-ai-code-generator"
+                    className="text-primary-700 hover:text-primary-800 underline font-medium"
+                  >
+                    Best AI Code Generators for Python
+                  </Link>
+                  {' · '}
+                  <Link
+                    href="/blog"
+                    className="text-primary-700 hover:text-primary-800 underline font-medium"
+                  >
+                    Developer blog
+                  </Link>
                 </p>
               </div>
 
